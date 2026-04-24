@@ -19,6 +19,7 @@ add_executable(wch-desktop
   core/ports/authservice.h
   infrastructure/network/qtauthservice.h
   infrastructure/network/qtauthservice.cpp
+  presentation/chat/chatlistmodel.cpp
 )
 
 target_include_directories(wch-desktop PRIVATE
