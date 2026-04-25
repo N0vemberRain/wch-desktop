@@ -8,6 +8,7 @@ cmake_minimum_required(VERSION 3.5)
 
 add_executable(wch-desktop
   app/main.cpp
+  ../test.qrc
   presentation/main/mainwindow.cpp
   presentation/main/mainwindow.h
   presentation/main/mainwindow.ui
@@ -20,6 +21,7 @@ add_executable(wch-desktop
   infrastructure/network/qtauthservice.h
   infrastructure/network/qtauthservice.cpp
   presentation/chat/chatlistmodel.cpp
+  presentation/chat/chatdelegate.cpp
 )
 
 target_include_directories(wch-desktop PRIVATE

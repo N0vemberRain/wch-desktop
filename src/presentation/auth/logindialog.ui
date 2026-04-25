@@ -17,10 +17,18 @@
    <item>
     <layout class="QFormLayout" name="formLayout">
      <item row="0" column="1">
-      <widget class="QLineEdit" name="loginLineEdit"/>
+      <widget class="QLineEdit" name="loginLineEdit">
+       <property name="text">
+        <string>test</string>
+       </property>
+      </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="passwordLineEdit"/>
+      <widget class="QLineEdit" name="passwordLineEdit">
+       <property name="text">
+        <string>123</string>
+       </property>
+      </widget>
      </item>
      <item row="0" column="0">
       <widget class="QLabel" name="label">

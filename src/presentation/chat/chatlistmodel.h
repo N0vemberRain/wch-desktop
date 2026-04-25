@@ -4,6 +4,7 @@
 #include <QAbstractListModel>
 #include <QString>
 #include <QVector>
+#include <QPixmap>
 
 class ChatListModel : public QAbstractListModel
 {
@@ -14,6 +15,7 @@ public:
         QString name;
         QString last_message;
         int unread_count;
+        QPixmap avatar;
     };
 
     explicit ChatListModel(QObject *parent = nullptr);
@@ -28,6 +30,7 @@ public:
         Name = Qt::UserRole + 1,
         LastMessage,
         UnreadCount,
+        Avatar = Qt::UserRole + 4,
     };
 
     void addChat(const ChatItem& item);

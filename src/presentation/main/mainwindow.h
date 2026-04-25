@@ -7,6 +7,7 @@
 #include <QString>
 
 #include "presentation/chat/chatlistmodel.h"
+#include "presentation/chat/chatdelegate.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,5 +27,6 @@ private:
     ChatListModel *chats_model_;
     QListView *list_view_;
     QDockWidget *chats_dock_wgt_;
+    ChatDelegate *chat_delegate_;
 };
 #endif // MAINWINDOW_H
