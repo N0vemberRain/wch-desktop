@@ -19,6 +19,9 @@
      <layout class="QHBoxLayout" name="leftSideLayout"/>
     </item>
     <item>
+     <widget class="QListView" name="chatHistoryListView"/>
+    </item>
+    <item>
      <spacer name="horizontalSpacer">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>

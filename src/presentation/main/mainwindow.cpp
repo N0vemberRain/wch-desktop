@@ -4,6 +4,7 @@
 #include <QPixmap>
 #include <QImageReader>
 #include <QDebug>
+#include <QDateTime>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -30,6 +31,19 @@ MainWindow::MainWindow(QWidget *parent)
     qDebug() << "p2: " << (p2.isNull() ? "null" : "not null");
     chats_model_->addChat({"Igor", "Hello!", 1, p1});
     chats_model_->addChat({"Lisa", "Hi!", 3, p2});
+
+    chat_history_model_ = new ChatHistoryModel{ui->chatHistoryListView};
+    message_delegate_ = new MessageDelegate{ui->chatHistoryListView};
+
+    ui->chatHistoryListView->setModel(chat_history_model_);
+    ui->chatHistoryListView->setItemDelegate(message_delegate_);
+
+    ui->chatHistoryListView->setSelectionMode(QAbstractItemView::NoSelection);
+    ui->chatHistoryListView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    auto timestamp = QDateTime::currentDateTime();
+    chat_history_model_->addMessage({"Hello, World!", timestamp, true});
+    chat_history_model_->addMessage({"Hi! Who are you?", timestamp, false});
 }
 
 MainWindow::~MainWindow()
