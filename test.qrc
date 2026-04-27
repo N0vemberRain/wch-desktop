@@ -4,4 +4,8 @@
         <file>1763883703395.jpg</file>
         <file>b9cb7bcf741565f868e468fcfcfcf3dd.jpg</file>
     </qresource>
+    <qresource prefix="/icons">
+        <file>icons/add.png</file>
+        <file>icons/settings.png</file>
+    </qresource>
 </RCC>

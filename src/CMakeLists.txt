@@ -22,6 +22,8 @@ add_executable(wch-desktop
   infrastructure/network/qtauthservice.cpp
   presentation/chat/chatlistmodel.cpp
   presentation/chat/chatdelegate.cpp
+  presentation/sidebar/sidebarwidget.ui
+  presentation/sidebar/sidebarwidget.cpp
 )
 
 target_include_directories(wch-desktop PRIVATE

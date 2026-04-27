@@ -11,16 +11,16 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    chats_dock_wgt_ = new QDockWidget("chats", this);
-
-    list_view_ = new QListView(chats_dock_wgt_);
+    list_view_ = new QListView(this);
     chats_model_ = new ChatListModel(list_view_);
     chat_delegate_ = new ChatDelegate(list_view_);
+    sidebar_ = new SidebarWidget(this);
+
     list_view_->setModel(chats_model_);
     list_view_->setItemDelegate(chat_delegate_);
 
-    chats_dock_wgt_->setWidget(list_view_);
-    addDockWidget(Qt::DockWidgetArea::LeftDockWidgetArea, chats_dock_wgt_);
+    ui->leftSideLayout->addWidget(sidebar_);
+    ui->leftSideLayout->addWidget(list_view_);
 
     qDebug() << QImageReader::supportedImageFormats();
 
