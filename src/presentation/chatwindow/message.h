@@ -5,6 +5,7 @@
 #include <QDateTime>
 
 struct Message {
+    QString sender;
     QString content;
     QDateTime timestamp;
     bool is_outgoing;

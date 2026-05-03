@@ -32,18 +32,29 @@ MainWindow::MainWindow(QWidget *parent)
     chats_model_->addChat({"Igor", "Hello!", 1, p1});
     chats_model_->addChat({"Lisa", "Hi!", 3, p2});
 
-    chat_history_model_ = new ChatHistoryModel{ui->chatHistoryListView};
-    message_delegate_ = new MessageDelegate{ui->chatHistoryListView};
+    auto lv = new QListView(this);
+    ui->leftSideLayout->addWidget(lv);
+    chat_history_model_ = new ChatHistoryModel{lv};
+    message_delegate_ = new MessageDelegate{lv};
 
-    ui->chatHistoryListView->setModel(chat_history_model_);
-    ui->chatHistoryListView->setItemDelegate(message_delegate_);
+    lv->setModel(chat_history_model_);
+//    ui->chatHistoryListView->setModel(chat_history_model_);
+    lv->setItemDelegate(message_delegate_);
 
-    ui->chatHistoryListView->setSelectionMode(QAbstractItemView::NoSelection);
-    ui->chatHistoryListView->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+    lv->setSelectionMode(QAbstractItemView::NoSelection);
+    lv->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
 
     auto timestamp = QDateTime::currentDateTime();
-    chat_history_model_->addMessage({"Hello, World!", timestamp, true});
-    chat_history_model_->addMessage({"Hi! Who are you?", timestamp, false});
+    chat_history_model_->addMessage({"Igor", "Hello, World!", timestamp, true});
+    chat_history_model_->addMessage({"Maria", "Hello, World!slslslsslslslsllsslawnfwnwjanlfnwalnwfalnwfalnfwalnwfalnfwalnwfalnwafllnawflnawflnawflnafwlnwf", timestamp, false});
+    chat_history_model_->addMessage({"Igor", "Hi! Who are you?knsdjnsjnsgns", timestamp, true});
+    chat_history_model_->addMessage({"Igor", "Hi! Who are you?", timestamp, false});
+    chat_history_model_->addMessage({"Lexa", "Hi! elfmwlmfw", timestamp, true});
+    chat_history_model_->addMessage({"Igor", "Hi! ,aldwdl,l,wdlwd?", timestamp, false});
+    chat_history_model_->addMessage({"Diana", "Hi! Wh    jnsjnsgns", timestamp, false});
+    chat_history_model_->addMessage({"Igor", "Hi! Who are you?", timestamp, false});
+
+    qDebug() << "row count: " << chat_history_model_->rowCount();
 }
 
 MainWindow::~MainWindow()

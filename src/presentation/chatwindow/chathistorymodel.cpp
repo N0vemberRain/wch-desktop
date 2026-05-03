@@ -1,5 +1,7 @@
 #include "chathistorymodel.h"
 
+#include <QDebug>
+
 ChatHistoryModel::ChatHistoryModel(QObject *parent)
     : QAbstractListModel(parent)
 {
@@ -22,9 +24,11 @@ QVariant ChatHistoryModel::data(const QModelIndex &index, int role) const {
     const auto msg = messages_[index.row()];
 
     switch (role) {
+    case Qt::DisplayRole:
     case Roles::ContentRole: return msg.content;
     case Roles::TimestampRole: return msg.timestamp;
     case Roles::IsOutgoingRole: return msg.is_outgoing;
+    case Roles::SenderRole: return msg.sender;
     }
 
     return {};
@@ -34,7 +38,8 @@ QHash<int, QByteArray> ChatHistoryModel::roleNames() const {
     return {
         {Roles::ContentRole, "content"},
         {Roles::TimestampRole, "timestamp"},
-        {Roles::IsOutgoingRole, "is_outgoing"}
+        {Roles::IsOutgoingRole, "is_outgoing"},
+        {Roles::SenderRole, "sender"}
     };
 }
 
@@ -45,12 +50,14 @@ void ChatHistoryModel::addMessage(const Message &msg) noexcept {
 }
 
 bool ChatHistoryModel::setData(const QModelIndex &idx, const QVariant &value, int role) {
+    qDebug() << "ChatHistoryModel.setData: entering. Role " << role;
     if (!idx.isValid() || idx.row() >= messages_.size()) {
         return false;
     }
 
     auto& msg = messages_[idx.row()];
     if (role == Roles::ContentRole) {
+        qDebug() << "ChatHistoryModel.setData: role == ContentRole";
         msg.content = value.toString();
     } else {
         return false;

@@ -15,6 +15,7 @@ public:
         ContentRole = Qt::UserRole + 1,
         TimestampRole,
         IsOutgoingRole,
+        SenderRole,
     };
 
     explicit ChatHistoryModel(QObject *parent = nullptr);
