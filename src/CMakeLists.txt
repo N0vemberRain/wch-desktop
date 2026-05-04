@@ -26,6 +26,7 @@ add_executable(wch-desktop
   presentation/sidebar/sidebarwidget.cpp
   presentation/chatwindow/chathistorymodel.cpp
   presentation/chatwindow/messagedelegate.cpp
+  presentation/chatwindow/chatswitcherdialog.cpp
 )
 
 target_include_directories(wch-desktop PRIVATE

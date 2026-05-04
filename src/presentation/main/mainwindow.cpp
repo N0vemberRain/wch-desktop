@@ -5,6 +5,9 @@
 #include <QImageReader>
 #include <QDebug>
 #include <QDateTime>
+#include <QShortcut>
+
+#include "presentation/chatwindow/chatswitcherdialog.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -55,6 +58,15 @@ MainWindow::MainWindow(QWidget *parent)
     chat_history_model_->addMessage({"Igor", "Hi! Who are you?", timestamp, false});
 
     qDebug() << "row count: " << chat_history_model_->rowCount();
+
+    auto chat_switcher_shortcut = new QShortcut{QKeySequence{"Ctrl+K"}, this};
+    connect(chat_switcher_shortcut, &QShortcut::activated, this, [this]() {
+        ChatSwitcherDialog dialog{chats_model_, this};
+
+        connect(&dialog, &ChatSwitcherDialog::chatSelected, this, &MainWindow::switchToChat);
+
+        dialog.exec();
+    });
 }
 
 MainWindow::~MainWindow()
@@ -62,3 +74,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::switchToChat(const QModelIndex& index) {
+    qDebug() << "switching to the chat " << index.data(Qt::UserRole + 1);
+}

@@ -24,6 +24,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void switchToChat(const QModelIndex& index);
 private:
     Ui::MainWindow *ui;
 
