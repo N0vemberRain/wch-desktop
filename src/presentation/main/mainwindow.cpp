@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QShortcut>
+#include <QSplitter>
 
 #include "presentation/chatwindow/chatswitcherdialog.h"
 
@@ -15,6 +16,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    auto central = new QWidget{this};
+    setCentralWidget(central);
+
+    auto splitter = new QSplitter{Qt::Horizontal, central};
+
     list_view_ = new QListView(this);
     chats_model_ = new ChatListModel(list_view_);
     chat_delegate_ = new ChatDelegate(list_view_);
@@ -23,8 +29,11 @@ MainWindow::MainWindow(QWidget *parent)
     list_view_->setModel(chats_model_);
     list_view_->setItemDelegate(chat_delegate_);
 
-    ui->leftSideLayout->addWidget(sidebar_);
-    ui->leftSideLayout->addWidget(list_view_);
+    splitter->addWidget(sidebar_);
+    splitter->addWidget(list_view_);
+
+//    ui->leftSideLayout->addWidget(sidebar_);
+//    ui->leftSideLayout->addWidget(list_view_);
 
     qDebug() << QImageReader::supportedImageFormats();
 
@@ -36,7 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
     chats_model_->addChat({"Lisa", "Hi!", 3, p2});
 
     auto lv = new QListView(this);
-    ui->leftSideLayout->addWidget(lv);
+//    ui->leftSideLayout->addWidget(lv);
     chat_history_model_ = new ChatHistoryModel{lv};
     message_delegate_ = new MessageDelegate{lv};
 
@@ -46,6 +55,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     lv->setSelectionMode(QAbstractItemView::NoSelection);
     lv->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    splitter->addWidget(lv);
+    splitter->setStretchFactor(0, 0);
+    splitter->setStretchFactor(1, 1);
+    splitter->setStretchFactor(2, 4);
+
+    auto *layout = new QHBoxLayout(central);
+    layout->setContentsMargins(0,0,0,0);
+    layout->addWidget(splitter);
 
     auto timestamp = QDateTime::currentDateTime();
     chat_history_model_->addMessage({"Igor", "Hello, World!", timestamp, true});
