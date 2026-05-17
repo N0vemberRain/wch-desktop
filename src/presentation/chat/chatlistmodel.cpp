@@ -27,6 +27,7 @@ QVariant ChatListModel::data(const QModelIndex &index, int role) const
     case Roles::LastMessage: return item.last_message;
     case Roles::UnreadCount: return item.unread_count;
     case Roles::Avatar: return item.avatar;
+    case Roles::Id: return item.id;
         // if no delegate is used
     case Qt::DisplayRole: return item.name + "-" + item.last_message;
     default: return QVariant();
@@ -39,7 +40,8 @@ QHash<int, QByteArray> ChatListModel::roleNames() const {
         {Roles::Name, "name"},
         {Roles::LastMessage, "last_message"},
         {Roles::UnreadCount, "unread_count"},
-        {Roles::Avatar, "avatar"}
+        {Roles::Avatar, "avatar"},
+        {Roles::Id, "id"},
     };
 }
 

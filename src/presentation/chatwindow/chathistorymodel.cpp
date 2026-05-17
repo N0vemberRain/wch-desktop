@@ -2,6 +2,8 @@
 
 #include <QDebug>
 
+#include "utils.h"
+
 ChatHistoryModel::ChatHistoryModel(QObject *parent)
     : QAbstractListModel(parent)
 {
@@ -43,7 +45,7 @@ QHash<int, QByteArray> ChatHistoryModel::roleNames() const {
     };
 }
 
-void ChatHistoryModel::addMessage(const Message &msg) noexcept {
+void ChatHistoryModel::addMessage(const MessageItem &msg) noexcept {
     beginInsertRows(QModelIndex(), messages_.size(), messages_.size());
     messages_.append(msg);
     endInsertRows();
@@ -77,4 +79,18 @@ bool ChatHistoryModel::removeRows(int row, int count, const QModelIndex& parent)
     endRemoveRows();
 
     return true;
+}
+
+void ChatHistoryModel::setChatData(std::unique_ptr<Chat> data) {
+    chat_ = std::move(data);
+    for (const auto& msg : chat_->messages) {
+        auto time = toQDateTime(msg.created_at);
+        auto msg_item = MessageItem{
+            QString::fromStdString(msg.sender_name),
+            QString::fromStdString(msg.content),
+            time,
+            msg.is_outgoing,
+        };
+        addMessage(msg_item);
+    }
 }

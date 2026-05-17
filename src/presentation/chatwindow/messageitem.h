@@ -1,14 +1,12 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#pragma once
 
 #include <QString>
 #include <QDateTime>
 
-struct Message {
+struct MessageItem {
     QString sender;
     QString content;
     QDateTime timestamp;
     bool is_outgoing;
 };
 
-#endif // MESSAGE_H

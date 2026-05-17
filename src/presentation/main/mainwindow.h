@@ -11,6 +11,7 @@
 #include "presentation/sidebar/sidebarwidget.h"
 #include "presentation/chatwindow/chathistorymodel.h"
 #include "presentation/chatwindow/messagedelegate.h"
+#include "presentation/chatwindow/chatwgt.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,5 +38,7 @@ private:
 
     ChatHistoryModel* chat_history_model_;
     MessageDelegate* message_delegate_;
+
+    ChatWgt* chat_wgt_;
 };
 #endif // MAINWINDOW_H

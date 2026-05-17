@@ -4,7 +4,11 @@
 #include <QAbstractListModel>
 #include <QVector>
 
-#include "message.h"
+#include <memory>
+
+#include "core/domain/chat.h"
+#include "core/domain/message.h"
+#include "messageitem.h"
 
 class ChatHistoryModel : public QAbstractListModel
 {
@@ -25,14 +29,20 @@ public:
 
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
 
-    void addMessage(const Message& msg) noexcept;
+    void addMessage(const MessageItem& msg) noexcept;
     bool setData(const QModelIndex& idx, const QVariant& value, int role) override;
     bool removeRows(int role, int count, const QModelIndex& parent = QModelIndex()) override;
 
+    void setChatData(std::unique_ptr<Chat> data);
+    QString getID() const {
+        return QString::fromStdString(chat_->id);
+    }
 protected:
     QHash<int, QByteArray> roleNames() const override;
 private:
-    QVector<Message> messages_;
+    QVector<MessageItem> messages_;
+
+    std::unique_ptr<Chat> chat_;
 };
 
 #endif // CHATHISTORYMODEL_H

@@ -1,0 +1,21 @@
+{
+  "msgs": [
+    {
+      "id": "319e971f-8300-40b9-a096-027019147274",
+      "chatId": "30d638ef-9daa-451c-903e-d4cc605aec59",
+      "senderId": "66e6350b-31c2-4a77-a73a-133cbf18f116",
+      "content": "RRRRRRRRRRRRRRRRRRRRRRrrrrrrrrrrrrrrrrrrrrrrrr!",
+      "createdAt": "2026-01-13T22:11:21.828795Z",
+      "senderName": "Maria",
+      "outgoing": false
+    },
+    {
+      "id": "ac6e5ce7-2822-4d6c-83f0-7e6d679bc208",
+      "chatId": "30d638ef-9daa-451c-903e-d4cc605aec59",
+      "senderId": "66e6350b-31c2-4a77-a73a-133cbf18f116",
+      "content": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!",
+      "createdAt": "0001-01-01T00:00:00Z",
+      "outgoing": true
+    }
+  ]
+}

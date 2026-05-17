@@ -1,0 +1,19 @@
+{
+    "chats": [
+        {
+            "id": "30d638ef-9daa-451c-903e-d4cc605aec58",
+            "name": "Autistic Team",
+            "type": "group",
+            "avatar": ":/avatars/1763883703395.jpg",
+            "unread_count": "3",
+            "last_massage": "Hi, guys!"
+        },{
+            "id": "30d638ef-9daa-451c-903e-d4cc605aec59",
+            "name": "Maria",
+            "type": "direct",
+            "avatar": ":/avatars/b9cb7bcf741565f868e468fcfcfcf3dd.jpg",
+            "unread_count": "1",
+            "last_massage": "^_^"
+        }
+    ]
+}

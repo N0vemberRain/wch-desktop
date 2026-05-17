@@ -8,4 +8,9 @@
         <file>icons/add.png</file>
         <file>icons/settings.png</file>
     </qresource>
+    <qresource prefix="/mock_data">
+        <file>src/mock/data/chat_history1.json</file>
+        <file>src/mock/data/chat_history2.json</file>
+        <file>src/mock/data/chats_list.json</file>
+    </qresource>
 </RCC>

@@ -5,9 +5,9 @@ cmake_minimum_required(VERSION 3.5)
 #add_subdirectory(infrastructure)
 #add_subdirectory(presentation)
 
-
 add_executable(wch-desktop
   app/main.cpp
+  utils.cpp
   ../test.qrc
   presentation/main/mainwindow.cpp
   presentation/main/mainwindow.h
@@ -16,17 +16,24 @@ add_executable(wch-desktop
   presentation/auth/logindialog.h
   presentation/auth/logindialog.ui
   core/domain/user.cpp
+  core/domain/message.h
+  core/domain/chat.h
   core/usecases/loginusecase.cpp
   core/ports/authservice.h
   infrastructure/network/qtauthservice.h
   infrastructure/network/qtauthservice.cpp
   presentation/chat/chatlistmodel.cpp
   presentation/chat/chatdelegate.cpp
+  presentation/chat/chatslistwgt.cpp
   presentation/sidebar/sidebarwidget.ui
   presentation/sidebar/sidebarwidget.cpp
   presentation/chatwindow/chathistorymodel.cpp
   presentation/chatwindow/messagedelegate.cpp
   presentation/chatwindow/chatswitcherdialog.cpp
+  presentation/chatwindow/chatwgt.cpp
+  presentation/chatwindow/chatwgt.ui
+  presentation/chatwindow/messageitem.h
+  mock/mockchatfactory.cpp
 )
 
 target_include_directories(wch-desktop PRIVATE

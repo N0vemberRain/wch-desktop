@@ -16,6 +16,7 @@ public:
         QString last_message;
         int unread_count;
         QPixmap avatar;
+        QString id;
     };
 
     explicit ChatListModel(QObject *parent = nullptr);
@@ -31,6 +32,7 @@ public:
         LastMessage,
         UnreadCount,
         Avatar = Qt::UserRole + 4,
+        Id = Qt::UserRole + 5,
     };
 
     void addChat(const ChatItem& item);
