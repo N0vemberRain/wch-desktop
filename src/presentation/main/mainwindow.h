@@ -12,6 +12,7 @@
 #include "presentation/chatwindow/chathistorymodel.h"
 #include "presentation/chatwindow/messagedelegate.h"
 #include "presentation/chatwindow/chatwgt.h"
+#include "presentation/chat/chatslistwgt.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,12 +28,15 @@ public:
 
 private slots:
     void switchToChat(const QModelIndex& index);
+    void showChat(const QString& id, const QString& name);
 private:
     Ui::MainWindow *ui;
 
-    ChatListModel *chats_model_;
-    QListView *list_view_;
-    ChatDelegate *chat_delegate_;
+    ChatsListWgt *chats_wgt_;
+
+//    ChatListModel *chats_model_;
+//    QListView *list_view_;
+//    ChatDelegate *chat_delegate_;
 
     SidebarWidget *sidebar_;
 

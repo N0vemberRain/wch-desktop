@@ -9,7 +9,9 @@
 
 #include "utils.h"
 
-std::unique_ptr<Chat> MockChatFactory::create(std::unique_ptr<Chat> chat, const QString& filename) {
+std::unique_ptr<Chat> MockChatFactory::create(const QString& chat_id,
+                                              const QString& chat_name,
+                                              const QString& filename) {
     QFile file{filename};
     if (!file.open(QFile::ReadOnly)) {
         return nullptr;
@@ -25,6 +27,11 @@ std::unique_ptr<Chat> MockChatFactory::create(std::unique_ptr<Chat> chat, const 
 
     QJsonObject root = doc.object();
     QJsonArray msgs = root["msgs"].toArray();
+
+    auto chat = std::make_unique<Chat>();
+
+    chat->id = chat_id.toStdString();
+    chat->name = chat_name.toStdString();
 
     for (const QJsonValue value : msgs)
     {

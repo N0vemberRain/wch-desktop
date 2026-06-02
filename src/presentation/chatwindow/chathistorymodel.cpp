@@ -82,6 +82,7 @@ bool ChatHistoryModel::removeRows(int row, int count, const QModelIndex& parent)
 }
 
 void ChatHistoryModel::setChatData(std::unique_ptr<Chat> data) {
+    Q_ASSERT(data != nullptr);
     chat_ = std::move(data);
     for (const auto& msg : chat_->messages) {
         auto time = toQDateTime(msg.created_at);

@@ -21,9 +21,15 @@ public:
     ~ChatWgt();
 
 public slots:
-    void switchChat(const QString& id);
+    void switchChat(const QString& id, const QString& name);
+
+signals:
+    void updateUnreadMessagesCount(const QString& chat_id, int unread);
+
+private slots:
+    void isScrollBarInEnd(int value);
 private:
-    ChatHistoryModel* loadChatData(const QString& id);
+    ChatHistoryModel* loadChatData(const QString& id, const QString& name);
 
     Ui::ChatWgt *ui;
 

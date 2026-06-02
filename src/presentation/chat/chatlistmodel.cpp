@@ -50,3 +50,12 @@ void ChatListModel::addChat(const ChatItem &item) {
     items_.append(item);
     endInsertRows();
 }
+
+void ChatListModel::setUnreadMessagesCount(const QString &chat_id, int unread) {
+    for (ChatItem& c : items_) {
+        if (c.id == chat_id) {
+            c.unread_count = unread;
+            break;
+        }
+    }
+}

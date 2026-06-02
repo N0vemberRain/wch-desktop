@@ -37,6 +37,13 @@ public:
     QString getID() const {
         return QString::fromStdString(chat_->id);
     }
+
+    auto getUnreadCount() const noexcept {
+        return chat_->unread_count;
+    }
+    void setUnreadCount(int unread) noexcept {
+        chat_->unread_count = unread;
+    }
 protected:
     QHash<int, QByteArray> roleNames() const override;
 private:
