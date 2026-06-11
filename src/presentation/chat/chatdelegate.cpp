@@ -1,5 +1,6 @@
 #include "chatdelegate.h"
 #include <QPainter>
+#include <QPainterPath>
 #include <QApplication>
 
 ChatDelegate::ChatDelegate(QObject *parent)

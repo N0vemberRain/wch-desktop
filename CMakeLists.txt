@@ -12,8 +12,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Widgets Network REQUIRED)
 
-qt5_add_resources(PROJECT_SOURCES test.qrc)
+qt6_add_resources(PROJECT_SOURCES test.qrc)
 
 add_subdirectory(src)

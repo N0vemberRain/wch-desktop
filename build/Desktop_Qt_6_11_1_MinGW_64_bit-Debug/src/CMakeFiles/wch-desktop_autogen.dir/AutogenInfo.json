@@ -1,0 +1,320 @@
+{
+	"BUILD_DIR" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/wch-desktop_autogen",
+	"CMAKE_BINARY_DIR" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug",
+	"CMAKE_CURRENT_BINARY_DIR" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src",
+	"CMAKE_CURRENT_SOURCE_DIR" : "C:/Users/igor/Documents/wch-desktop/src",
+	"CMAKE_EXECUTABLE" : "C:/Program Files/CMake/bin/cmake.exe",
+	"CMAKE_LIST_FILES" : 
+	[
+		"C:/Users/igor/Documents/wch-desktop/src/CMakeLists.txt",
+		"C:/Users/igor/Documents/wch-desktop/test.qrc"
+	],
+	"CMAKE_SOURCE_DIR" : "C:/Users/igor/Documents/wch-desktop",
+	"DEP_FILE" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/wch-desktop_autogen/deps",
+	"DEP_FILE_RULE_NAME" : "wch-desktop_autogen/timestamp",
+	"HEADERS" : 
+	[
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/domain/chat.h",
+			"MU",
+			"CDQSGRUKSD/moc_chat.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h",
+			"MU",
+			"CDQSGRUKSD/moc_message.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/domain/sendmessageresult.h",
+			"MU",
+			"CDQSGRUKSD/moc_sendmessageresult.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/domain/user.h",
+			"MU",
+			"CDQSGRUKSD/moc_user.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/ports/authservice.h",
+			"MU",
+			"Z4XBPWAZIM/moc_authservice.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/ports/msgservice.h",
+			"MU",
+			"Z4XBPWAZIM/moc_msgservice.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/usecases/loginusecase.h",
+			"MU",
+			"MPDCCZTROD/moc_loginusecase.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.h",
+			"MU",
+			"MPDCCZTROD/moc_sendmessageusecase.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtauthservice.h",
+			"MU",
+			"67EROG4H5Y/moc_qtauthservice.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtmessageservice.h",
+			"MU",
+			"67EROG4H5Y/moc_qtmessageservice.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/mock/mockchatfactory.h",
+			"MU",
+			"HJOF3ULKUN/moc_mockchatfactory.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/auth/logindialog.h",
+			"MU",
+			"G6WMAWPHM5/moc_logindialog.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatdelegate.h",
+			"MU",
+			"PMTJ6Y2WMB/moc_chatdelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatlistmodel.h",
+			"MU",
+			"PMTJ6Y2WMB/moc_chatlistmodel.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatslistwgt.h",
+			"MU",
+			"PMTJ6Y2WMB/moc_chatslistwgt.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.h",
+			"MU",
+			"GPIG63K7QR/moc_chathistorymodel.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatswitcherdialog.h",
+			"MU",
+			"GPIG63K7QR/moc_chatswitcherdialog.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatwgt.h",
+			"MU",
+			"GPIG63K7QR/moc_chatwgt.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messagedelegate.h",
+			"MU",
+			"GPIG63K7QR/moc_messagedelegate.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messageitem.h",
+			"MU",
+			"GPIG63K7QR/moc_messageitem.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/main/mainwindow.h",
+			"MU",
+			"4JAL756VDT/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/sidebar/sidebarwidget.h",
+			"MU",
+			"4R6U7YQCG6/moc_sidebarwidget.cpp",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/utils.h",
+			"MU",
+			"EWIEGA46WW/moc_utils.cpp",
+			null
+		]
+	],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/wch-desktop_autogen/include",
+	"MOC_COMPILATION_FILE" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/wch-desktop_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : 
+	[
+		"MINGW_HAS_SECURE_API=1",
+		"QT_CORE_LIB",
+		"QT_GUI_LIB",
+		"QT_NETWORK_LIB",
+		"QT_QML_DEBUG",
+		"QT_WIDGETS_LIB",
+		"UNICODE",
+		"WIN32",
+		"WIN64",
+		"_ENABLE_EXTENDED_ALIGNED_STORAGE",
+		"_UNICODE",
+		"_WIN64"
+	],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src",
+		"C:/Users/igor/Documents/wch-desktop/src",
+		"C:/Qt/6.11.1/mingw_64/include/QtWidgets",
+		"C:/Qt/6.11.1/mingw_64/include",
+		"C:/Qt/6.11.1/mingw_64/include/QtCore",
+		"C:/Qt/6.11.1/mingw_64/mkspecs/win32-g++",
+		"C:/Qt/6.11.1/mingw_64/include/QtGui",
+		"C:/VulkanSDK/1.2.198.1/Include",
+		"C:/Qt/6.11.1/mingw_64/include/QtNetwork",
+		"C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++",
+		"C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32",
+		"C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward",
+		"C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include",
+		"C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed",
+		"C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include"
+	],
+	"MOC_MACRO_NAMES" : 
+	[
+		"Q_OBJECT",
+		"Q_GADGET",
+		"Q_NAMESPACE",
+		"Q_NAMESPACE_EXPORT",
+		"Q_GADGET_EXPORT",
+		"Q_ENUM_NS"
+	],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"C:/Qt/Tools/mingw1310_64/bin/g++.exe",
+		"-std=gnu++17",
+		"-dM",
+		"-E",
+		"-c",
+		"C:/Program Files/CMake/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/wch-desktop_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 4,
+	"PARSE_CACHE_FILE" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/CMakeFiles/wch-desktop_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "C:/Qt/6.11.1/mingw_64/bin/moc.exe",
+	"QT_UIC_EXECUTABLE" : "C:/Qt/6.11.1/mingw_64/bin/uic.exe",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 11,
+	"SETTINGS_FILE" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/CMakeFiles/wch-desktop_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[ "C:/Users/igor/Documents/wch-desktop/src/app/main.cpp", "MU", null ],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/domain/user.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/usecases/loginusecase.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtauthservice.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtmessageservice.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/mock/mockchatfactory.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/auth/logindialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatdelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatlistmodel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatslistwgt.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatswitcherdialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatwgt.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messagedelegate.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/main/mainwindow.cpp",
+			"MU",
+			null
+		],
+		[
+			"C:/Users/igor/Documents/wch-desktop/src/presentation/sidebar/sidebarwidget.cpp",
+			"MU",
+			null
+		],
+		[ "C:/Users/igor/Documents/wch-desktop/src/utils.cpp", "MU", null ]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

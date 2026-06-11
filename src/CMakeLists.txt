@@ -18,10 +18,13 @@ add_executable(wch-desktop
   core/domain/user.cpp
   core/domain/message.h
   core/domain/chat.h
+  core/domain/sendmessageresult.h
   core/usecases/loginusecase.cpp
+  core/usecases/sendmessageusecase.cpp
   core/ports/authservice.h
-  infrastructure/network/qtauthservice.h
+  core/ports/msgservice.h
   infrastructure/network/qtauthservice.cpp
+  infrastructure/network/qtmessageservice.cpp
   presentation/chat/chatlistmodel.cpp
   presentation/chat/chatdelegate.cpp
   presentation/chat/chatslistwgt.cpp
@@ -34,10 +37,12 @@ add_executable(wch-desktop
   presentation/chatwindow/chatwgt.ui
   presentation/chatwindow/messageitem.h
   mock/mockchatfactory.cpp
+  core/usecases/sendmessageusecase.h
 )
 
 target_include_directories(wch-desktop PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
 
-target_link_libraries(wch-desktop PRIVATE Qt5::Widgets)
+target_link_libraries(wch-desktop PRIVATE Qt6::Widgets Qt6::Network)
+

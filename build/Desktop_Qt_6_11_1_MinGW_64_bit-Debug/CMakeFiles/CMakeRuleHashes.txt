@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+2caa4f9911e55d12e5d019bff5d0353f src/CMakeFiles/wch-desktop_autogen
+2caa4f9911e55d12e5d019bff5d0353f src/CMakeFiles/wch-desktop_autogen_timestamp_deps
+107346549f1056810d79a0158b5a6b6b src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp
+75d413536750382e81f82e6f96fcdfa4 src/wch-desktop_autogen/timestamp
