@@ -254,6 +254,7 @@
 #define __cpp_digit_separators 201309L
 #define __GCC_ASM_FLAG_OUTPUTS__ 1
 #define __UINT32_TYPE__ unsigned int
+#define QT_GRPC_LIB 1
 #define __BFLT16_HAS_QUIET_NAN__ 1
 #define __FLT_RADIX__ 2
 #define __INT_LEAST16_TYPE__ short int
@@ -460,6 +461,7 @@
 #define __PTRDIFF_TYPE__ long long int
 #define __GCC_HAVE_SYNC_COMPARE_AND_SWAP_16 1
 #define __FLT32X_MIN_10_EXP__ (-307)
+#define QT_PROTOBUF_LIB 1
 #define __UINTPTR_TYPE__ long long unsigned int
 #define __DEC64_SUBNORMAL_MIN__ 0.000000000000001E-383DD
 #define __DEC128_MANT_DIG__ 34

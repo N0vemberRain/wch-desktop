@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package msgs.v1;
+
+message Message {
+    string id = 1;
+    string chat_id = 2;
+    string sender_id = 3;
+    string content = 4;
+}
+
+service MessagesService {
+    // Send a message to a chat
+    rpc SendMessage(SendMessageRequest) returns (MessageResponse);
+}
+
+message SendMessageRequest {
+    string chat_id = 1;
+    string sender_id = 2;
+    string content = 3;
+}
+
+message MessageResponse {
+    Message msg = 1;
+}

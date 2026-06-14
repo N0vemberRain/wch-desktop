@@ -68,13 +68,6 @@ include src/CMakeFiles/wch-desktop.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/CMakeFiles/wch-desktop.dir/flags.make
 
-src/wch-desktop_autogen/timestamp: C:/Qt/6.11.1/mingw_64/bin/moc.exe
-src/wch-desktop_autogen/timestamp: C:/Qt/6.11.1/mingw_64/bin/uic.exe
-src/wch-desktop_autogen/timestamp: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic MOC and UIC for target wch-desktop"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_autogen C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/CMakeFiles/wch-desktop_autogen.dir/AutogenInfo.json Debug
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && "C:\Program Files\CMake\bin\cmake.exe" -E touch C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/wch-desktop_autogen/timestamp
-
 src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp: C:/Users/igor/Documents/wch-desktop/test.qrc
 src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp: src/CMakeFiles/wch-desktop_autogen.dir/AutoRcc_test_YCDLW3T4OG_Info.json
 src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp: C:/Users/igor/Documents/wch-desktop/src/mock/data/chat_history2.json
@@ -86,14 +79,14 @@ src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp: C:/Users/igor/Documents/wch-des
 src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp: C:/Users/igor/Documents/wch-desktop/icons/settings.png
 src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp: C:/Users/igor/Documents/wch-desktop/icons/add.png
 src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp: C:/Qt/6.11.1/mingw_64/bin/rcc.exe
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Automatic RCC for ../test.qrc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for ../test.qrc"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && "C:\Program Files\CMake\bin\cmake.exe" -E cmake_autorcc C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/CMakeFiles/wch-desktop_autogen.dir/AutoRcc_test_YCDLW3T4OG_Info.json Debug
 
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj: src/wch-desktop_autogen/mocs_compilation.cpp
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj -MF CMakeFiles\wch-desktop.dir\wch-desktop_autogen\mocs_compilation.cpp.obj.d -o CMakeFiles\wch-desktop.dir\wch-desktop_autogen\mocs_compilation.cpp.obj -c C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src\wch-desktop_autogen\mocs_compilation.cpp
 
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.i: cmake_force
@@ -108,7 +101,7 @@ src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj: src/CMakeFiles/wch-desktop.dir/
 src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/app/main.cpp
 src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj -MF CMakeFiles\wch-desktop.dir\app\main.cpp.obj.d -o CMakeFiles\wch-desktop.dir\app\main.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\app\main.cpp
 
 src/CMakeFiles/wch-desktop.dir/app/main.cpp.i: cmake_force
@@ -123,7 +116,7 @@ src/CMakeFiles/wch-desktop.dir/utils.cpp.obj: src/CMakeFiles/wch-desktop.dir/fla
 src/CMakeFiles/wch-desktop.dir/utils.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/utils.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/utils.cpp
 src/CMakeFiles/wch-desktop.dir/utils.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/wch-desktop.dir/utils.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/wch-desktop.dir/utils.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/utils.cpp.obj -MF CMakeFiles\wch-desktop.dir\utils.cpp.obj.d -o CMakeFiles\wch-desktop.dir\utils.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\utils.cpp
 
 src/CMakeFiles/wch-desktop.dir/utils.cpp.i: cmake_force
@@ -138,7 +131,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj: src/CMakeFi
 src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/main/mainwindow.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\main\mainwindow.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\main\mainwindow.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\main\mainwindow.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.i: cmake_force
@@ -153,7 +146,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj: src/CMakeF
 src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/auth/logindialog.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\auth\logindialog.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\auth\logindialog.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\auth\logindialog.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.i: cmake_force
@@ -164,86 +157,11 @@ src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.s"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\presentation\auth\logindialog.cpp -o CMakeFiles\wch-desktop.dir\presentation\auth\logindialog.cpp.s
 
-src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
-src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
-src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/core/domain/user.cpp
-src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj -MF CMakeFiles\wch-desktop.dir\core\domain\user.cpp.obj.d -o CMakeFiles\wch-desktop.dir\core\domain\user.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\core\domain\user.cpp
-
-src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/core/domain/user.cpp.i"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\core\domain\user.cpp > CMakeFiles\wch-desktop.dir\core\domain\user.cpp.i
-
-src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/core/domain/user.cpp.s"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\core\domain\user.cpp -o CMakeFiles\wch-desktop.dir\core\domain\user.cpp.s
-
-src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
-src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
-src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/core/usecases/loginusecase.cpp
-src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj -MF CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.obj.d -o CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\core\usecases\loginusecase.cpp
-
-src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.i"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\core\usecases\loginusecase.cpp > CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.i
-
-src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.s"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\core\usecases\loginusecase.cpp -o CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.s
-
-src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
-src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
-src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.cpp
-src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj -MF CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.obj.d -o CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\core\usecases\sendmessageusecase.cpp
-
-src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.i"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\core\usecases\sendmessageusecase.cpp > CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.i
-
-src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.s"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\core\usecases\sendmessageusecase.cpp -o CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.s
-
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtauthservice.cpp
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj -MF CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.obj.d -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtauthservice.cpp
-
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.i"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtauthservice.cpp > CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.i
-
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.s"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtauthservice.cpp -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.s
-
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtmessageservice.cpp
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj -MF CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.obj.d -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtmessageservice.cpp
-
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.i"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtmessageservice.cpp > CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.i
-
-src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.s"
-	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtmessageservice.cpp -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.s
-
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatlistmodel.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\chat\chatlistmodel.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\chat\chatlistmodel.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\chat\chatlistmodel.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.i: cmake_force
@@ -258,7 +176,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj: src/CMake
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatdelegate.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\chat\chatdelegate.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\chat\chatdelegate.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\chat\chatdelegate.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.i: cmake_force
@@ -273,7 +191,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj: src/CMake
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatslistwgt.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\chat\chatslistwgt.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\chat\chatslistwgt.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\chat\chatslistwgt.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.i: cmake_force
@@ -288,7 +206,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj: src/C
 src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/sidebar/sidebarwidget.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\sidebar\sidebarwidget.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\sidebar\sidebarwidget.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\sidebar\sidebarwidget.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.i: cmake_force
@@ -303,7 +221,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj:
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\chatwindow\chathistorymodel.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\chatwindow\chathistorymodel.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\chatwindow\chathistorymodel.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.i: cmake_force
@@ -318,7 +236,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj: 
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messagedelegate.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\chatwindow\messagedelegate.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\chatwindow\messagedelegate.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\chatwindow\messagedelegate.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.i: cmake_force
@@ -333,7 +251,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.ob
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatswitcherdialog.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\chatwindow\chatswitcherdialog.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\chatwindow\chatswitcherdialog.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\chatwindow\chatswitcherdialog.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.i: cmake_force
@@ -348,7 +266,7 @@ src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj: src/CMak
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatwgt.cpp
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj -MF CMakeFiles\wch-desktop.dir\presentation\chatwindow\chatwgt.cpp.obj.d -o CMakeFiles\wch-desktop.dir\presentation\chatwindow\chatwgt.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\presentation\chatwindow\chatwgt.cpp
 
 src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.i: cmake_force
@@ -359,11 +277,86 @@ src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.s: cmake_forc
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.s"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\presentation\chatwindow\chatwgt.cpp -o CMakeFiles\wch-desktop.dir\presentation\chatwindow\chatwgt.cpp.s
 
+src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
+src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
+src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/core/domain/user.cpp
+src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj -MF CMakeFiles\wch-desktop.dir\core\domain\user.cpp.obj.d -o CMakeFiles\wch-desktop.dir\core\domain\user.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\core\domain\user.cpp
+
+src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/core/domain/user.cpp.i"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\core\domain\user.cpp > CMakeFiles\wch-desktop.dir\core\domain\user.cpp.i
+
+src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/core/domain/user.cpp.s"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\core\domain\user.cpp -o CMakeFiles\wch-desktop.dir\core\domain\user.cpp.s
+
+src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
+src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
+src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/core/usecases/loginusecase.cpp
+src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj -MF CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.obj.d -o CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\core\usecases\loginusecase.cpp
+
+src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.i"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\core\usecases\loginusecase.cpp > CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.i
+
+src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.s"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\core\usecases\loginusecase.cpp -o CMakeFiles\wch-desktop.dir\core\usecases\loginusecase.cpp.s
+
+src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
+src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
+src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.cpp
+src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj -MF CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.obj.d -o CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\core\usecases\sendmessageusecase.cpp
+
+src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.i"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\core\usecases\sendmessageusecase.cpp > CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.i
+
+src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.s"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\core\usecases\sendmessageusecase.cpp -o CMakeFiles\wch-desktop.dir\core\usecases\sendmessageusecase.cpp.s
+
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtauthservice.cpp
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj -MF CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.obj.d -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtauthservice.cpp
+
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.i"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtauthservice.cpp > CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.i
+
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.s"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtauthservice.cpp -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtauthservice.cpp.s
+
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtmessageservice.cpp
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj -MF CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.obj.d -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtmessageservice.cpp
+
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.i"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtmessageservice.cpp > CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.i
+
+src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.s"
+	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\igor\Documents\wch-desktop\src\infrastructure\network\qtmessageservice.cpp -o CMakeFiles\wch-desktop.dir\infrastructure\network\qtmessageservice.cpp.s
+
 src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj: src/CMakeFiles/wch-desktop.dir/flags.make
 src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj: C:/Users/igor/Documents/wch-desktop/src/mock/mockchatfactory.cpp
 src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj -MF CMakeFiles\wch-desktop.dir\mock\mockchatfactory.cpp.obj.d -o CMakeFiles\wch-desktop.dir\mock\mockchatfactory.cpp.obj -c C:\Users\igor\Documents\wch-desktop\src\mock\mockchatfactory.cpp
 
 src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.i: cmake_force
@@ -378,7 +371,7 @@ src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj: 
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj: src/CMakeFiles/wch-desktop.dir/includes_CXX.rsp
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj: src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj: src/CMakeFiles/wch-desktop.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj -MF CMakeFiles\wch-desktop.dir\wch-desktop_autogen\YCDLW3T4OG\qrc_test.cpp.obj.d -o CMakeFiles\wch-desktop.dir\wch-desktop_autogen\YCDLW3T4OG\qrc_test.cpp.obj -c C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src\wch-desktop_autogen\YCDLW3T4OG\qrc_test.cpp
 
 src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.i: cmake_force
@@ -396,11 +389,6 @@ wch__desktop_OBJECTS = \
 "CMakeFiles/wch-desktop.dir/utils.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj" \
-"CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj" \
-"CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj" \
-"CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj" \
-"CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj" \
-"CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj" \
@@ -409,45 +397,56 @@ wch__desktop_OBJECTS = \
 "CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj" \
+"CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj" \
+"CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj" \
+"CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj" \
+"CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj" \
+"CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj" \
 "CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj"
 
 # External object files for target wch-desktop
 wch__desktop_EXTERNAL_OBJECTS =
 
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/utils.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/build.make
-src/wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Widgets.a
-src/wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Network.a
-src/wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Gui.a
-src/wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Core.a
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/linkLibs.rsp
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/objects1.rsp
-src/wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Linking CXX executable wch-desktop.exe"
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/utils.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/auth/logindialog.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chat/chatlistmodel.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chat/chatdelegate.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chat/chatslistwgt.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/sidebar/sidebarwidget.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chathistorymodel.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/messagedelegate.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatswitcherdialog.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/core/usecases/sendmessageusecase.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtauthservice.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/infrastructure/network/qtmessageservice.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/mock/mockchatfactory.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp.obj
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/build.make
+wch-desktop.exe: CMakeFiles/wch_proto_qtprotoreg.dir/wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.obj
+wch-desktop.exe: CMakeFiles/wch_proto_qtprotoreg.dir/msgs_qtprotoreg.cpp.obj
+wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Widgets.a
+wch-desktop.exe: libwch_grpc.a
+wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Gui.a
+wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Grpc.a
+wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Network.a
+wch-desktop.exe: libwch_proto.a
+wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Protobuf.a
+wch-desktop.exe: C:/Qt/6.11.1/mingw_64/lib/libQt6Core.a
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/linkLibs.rsp
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/objects1.rsp
+wch-desktop.exe: src/CMakeFiles/wch-desktop.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable ..\wch-desktop.exe"
 	cd /d C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\wch-desktop.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-src/CMakeFiles/wch-desktop.dir/build: src/wch-desktop.exe
+src/CMakeFiles/wch-desktop.dir/build: wch-desktop.exe
 .PHONY : src/CMakeFiles/wch-desktop.dir/build
 
 src/CMakeFiles/wch-desktop.dir/clean:
@@ -455,7 +454,6 @@ src/CMakeFiles/wch-desktop.dir/clean:
 .PHONY : src/CMakeFiles/wch-desktop.dir/clean
 
 src/CMakeFiles/wch-desktop.dir/depend: src/wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp
-src/CMakeFiles/wch-desktop.dir/depend: src/wch-desktop_autogen/timestamp
 	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\igor\Documents\wch-desktop C:\Users\igor\Documents\wch-desktop\src C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src\CMakeFiles\wch-desktop.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : src/CMakeFiles/wch-desktop.dir/depend
 

@@ -1,0 +1,214 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				},
+				{
+					"build" : "src",
+					"jsonFile" : "directory-src-Debug-c94b7c2814d5a21df52c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "src",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "wch-desktop",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 1,
+					"id" : "wch-desktop::@145eef247bfb46b6828c",
+					"jsonFile" : "target-wch-desktop-Debug-7395324f528aca1041fd.json",
+					"name" : "wch-desktop",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "wch-desktop_autogen::@145eef247bfb46b6828c",
+					"jsonFile" : "target-wch-desktop_autogen-Debug-9f91804000569e2d571d.json",
+					"name" : "wch-desktop_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "wch-desktop_autogen_timestamp_deps::@145eef247bfb46b6828c",
+					"jsonFile" : "target-wch-desktop_autogen_timestamp_deps-Debug-97272b57a42a13825379.json",
+					"name" : "wch-desktop_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_grpc::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_grpc-Debug-539c40d48c0637061090.json",
+					"name" : "wch_grpc",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_grpc_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_grpc_autogen-Debug-4044e76c31e8f75cd774.json",
+					"name" : "wch_grpc_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_grpc_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_grpc_autogen_timestamp_deps-Debug-f2c7f4474f036dd27d31.json",
+					"name" : "wch_grpc_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_grpc_other_files::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_grpc_other_files-Debug-83cdcc25dc26c8e30800.json",
+					"name" : "wch_grpc_other_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_grpc_qtgrpcgen_deps_0::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_grpc_qtgrpcgen_deps_0-Debug-42a5204e51af46c47e0d.json",
+					"name" : "wch_grpc_qtgrpcgen_deps_0",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto-Debug-0ad0d5e4e950bc1c0a8f.json",
+					"name" : "wch_proto",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto_autogen-Debug-34558cea62c651c42cef.json",
+					"name" : "wch_proto_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto_autogen_timestamp_deps-Debug-cc3414b81966e11a6488.json",
+					"name" : "wch_proto_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto_other_files::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto_other_files-Debug-cc299350abb140bf9c14.json",
+					"name" : "wch_proto_other_files",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto_qtprotobufgen_deps_0::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto_qtprotobufgen_deps_0-Debug-78bd690f447031806f2c.json",
+					"name" : "wch_proto_qtprotobufgen_deps_0",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto_qtprotoreg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto_qtprotoreg-Debug-e452d7c62e2a60d66797.json",
+					"name" : "wch_proto_qtprotoreg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto_qtprotoreg_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto_qtprotoreg_autogen-Debug-b8b32df30b15a7e1f54b.json",
+					"name" : "wch_proto_qtprotoreg_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "wch_proto_qtprotoreg_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-wch_proto_qtprotoreg_autogen_timestamp_deps-Debug-41df20ed531c37abe0ed.json",
+					"name" : "wch_proto_qtprotoreg_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug",
+		"source" : "C:/Users/igor/Documents/wch-desktop"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

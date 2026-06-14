@@ -116,6 +116,175 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named wch_proto
+
+# Build rule for target.
+wch_proto: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto
+.PHONY : wch_proto
+
+# fast build rule for target.
+wch_proto/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/build
+.PHONY : wch_proto/fast
+
+#=============================================================================
+# Target rules for targets named wch_proto_other_files
+
+# Build rule for target.
+wch_proto_other_files: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto_other_files
+.PHONY : wch_proto_other_files
+
+# fast build rule for target.
+wch_proto_other_files/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_other_files.dir\build.make CMakeFiles/wch_proto_other_files.dir/build
+.PHONY : wch_proto_other_files/fast
+
+#=============================================================================
+# Target rules for targets named wch_proto_qtprotobufgen_deps_0
+
+# Build rule for target.
+wch_proto_qtprotobufgen_deps_0: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto_qtprotobufgen_deps_0
+.PHONY : wch_proto_qtprotobufgen_deps_0
+
+# fast build rule for target.
+wch_proto_qtprotobufgen_deps_0/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotobufgen_deps_0.dir\build.make CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/build
+.PHONY : wch_proto_qtprotobufgen_deps_0/fast
+
+#=============================================================================
+# Target rules for targets named wch_proto_qtprotoreg
+
+# Build rule for target.
+wch_proto_qtprotoreg: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto_qtprotoreg
+.PHONY : wch_proto_qtprotoreg
+
+# fast build rule for target.
+wch_proto_qtprotoreg/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/build
+.PHONY : wch_proto_qtprotoreg/fast
+
+#=============================================================================
+# Target rules for targets named wch_grpc
+
+# Build rule for target.
+wch_grpc: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_grpc
+.PHONY : wch_grpc
+
+# fast build rule for target.
+wch_grpc/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/build
+.PHONY : wch_grpc/fast
+
+#=============================================================================
+# Target rules for targets named wch_grpc_other_files
+
+# Build rule for target.
+wch_grpc_other_files: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_grpc_other_files
+.PHONY : wch_grpc_other_files
+
+# fast build rule for target.
+wch_grpc_other_files/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_other_files.dir\build.make CMakeFiles/wch_grpc_other_files.dir/build
+.PHONY : wch_grpc_other_files/fast
+
+#=============================================================================
+# Target rules for targets named wch_grpc_qtgrpcgen_deps_0
+
+# Build rule for target.
+wch_grpc_qtgrpcgen_deps_0: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_grpc_qtgrpcgen_deps_0
+.PHONY : wch_grpc_qtgrpcgen_deps_0
+
+# fast build rule for target.
+wch_grpc_qtgrpcgen_deps_0/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_qtgrpcgen_deps_0.dir\build.make CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/build
+.PHONY : wch_grpc_qtgrpcgen_deps_0/fast
+
+#=============================================================================
+# Target rules for targets named wch_proto_autogen_timestamp_deps
+
+# Build rule for target.
+wch_proto_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto_autogen_timestamp_deps
+.PHONY : wch_proto_autogen_timestamp_deps
+
+# fast build rule for target.
+wch_proto_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_autogen_timestamp_deps.dir/build
+.PHONY : wch_proto_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named wch_proto_autogen
+
+# Build rule for target.
+wch_proto_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto_autogen
+.PHONY : wch_proto_autogen
+
+# fast build rule for target.
+wch_proto_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen.dir\build.make CMakeFiles/wch_proto_autogen.dir/build
+.PHONY : wch_proto_autogen/fast
+
+#=============================================================================
+# Target rules for targets named wch_proto_qtprotoreg_autogen_timestamp_deps
+
+# Build rule for target.
+wch_proto_qtprotoreg_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto_qtprotoreg_autogen_timestamp_deps
+.PHONY : wch_proto_qtprotoreg_autogen_timestamp_deps
+
+# fast build rule for target.
+wch_proto_qtprotoreg_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/build
+.PHONY : wch_proto_qtprotoreg_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named wch_proto_qtprotoreg_autogen
+
+# Build rule for target.
+wch_proto_qtprotoreg_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_proto_qtprotoreg_autogen
+.PHONY : wch_proto_qtprotoreg_autogen
+
+# fast build rule for target.
+wch_proto_qtprotoreg_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen.dir/build
+.PHONY : wch_proto_qtprotoreg_autogen/fast
+
+#=============================================================================
+# Target rules for targets named wch_grpc_autogen_timestamp_deps
+
+# Build rule for target.
+wch_grpc_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_grpc_autogen_timestamp_deps
+.PHONY : wch_grpc_autogen_timestamp_deps
+
+# fast build rule for target.
+wch_grpc_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/build
+.PHONY : wch_grpc_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named wch_grpc_autogen
+
+# Build rule for target.
+wch_grpc_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 wch_grpc_autogen
+.PHONY : wch_grpc_autogen
+
+# fast build rule for target.
+wch_grpc_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen.dir\build.make CMakeFiles/wch_grpc_autogen.dir/build
+.PHONY : wch_grpc_autogen/fast
+
+#=============================================================================
 # Target rules for targets named wch-desktop
 
 # Build rule for target.
@@ -154,6 +323,150 @@ wch-desktop_autogen/fast:
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\wch-desktop_autogen.dir\build.make src/CMakeFiles/wch-desktop_autogen.dir/build
 .PHONY : wch-desktop_autogen/fast
 
+msgs.qpb.obj: msgs.qpb.cpp.obj
+.PHONY : msgs.qpb.obj
+
+# target to build an object file
+msgs.qpb.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/msgs.qpb.cpp.obj
+.PHONY : msgs.qpb.cpp.obj
+
+msgs.qpb.i: msgs.qpb.cpp.i
+.PHONY : msgs.qpb.i
+
+# target to preprocess a source file
+msgs.qpb.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/msgs.qpb.cpp.i
+.PHONY : msgs.qpb.cpp.i
+
+msgs.qpb.s: msgs.qpb.cpp.s
+.PHONY : msgs.qpb.s
+
+# target to generate assembly for a file
+msgs.qpb.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/msgs.qpb.cpp.s
+.PHONY : msgs.qpb.cpp.s
+
+msgs_client.grpc.qpb.obj: msgs_client.grpc.qpb.cpp.obj
+.PHONY : msgs_client.grpc.qpb.obj
+
+# target to build an object file
+msgs_client.grpc.qpb.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/msgs_client.grpc.qpb.cpp.obj
+.PHONY : msgs_client.grpc.qpb.cpp.obj
+
+msgs_client.grpc.qpb.i: msgs_client.grpc.qpb.cpp.i
+.PHONY : msgs_client.grpc.qpb.i
+
+# target to preprocess a source file
+msgs_client.grpc.qpb.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/msgs_client.grpc.qpb.cpp.i
+.PHONY : msgs_client.grpc.qpb.cpp.i
+
+msgs_client.grpc.qpb.s: msgs_client.grpc.qpb.cpp.s
+.PHONY : msgs_client.grpc.qpb.s
+
+# target to generate assembly for a file
+msgs_client.grpc.qpb.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/msgs_client.grpc.qpb.cpp.s
+.PHONY : msgs_client.grpc.qpb.cpp.s
+
+msgs_qtprotoreg.obj: msgs_qtprotoreg.cpp.obj
+.PHONY : msgs_qtprotoreg.obj
+
+# target to build an object file
+msgs_qtprotoreg.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/msgs_qtprotoreg.cpp.obj
+.PHONY : msgs_qtprotoreg.cpp.obj
+
+msgs_qtprotoreg.i: msgs_qtprotoreg.cpp.i
+.PHONY : msgs_qtprotoreg.i
+
+# target to preprocess a source file
+msgs_qtprotoreg.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/msgs_qtprotoreg.cpp.i
+.PHONY : msgs_qtprotoreg.cpp.i
+
+msgs_qtprotoreg.s: msgs_qtprotoreg.cpp.s
+.PHONY : msgs_qtprotoreg.s
+
+# target to generate assembly for a file
+msgs_qtprotoreg.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/msgs_qtprotoreg.cpp.s
+.PHONY : msgs_qtprotoreg.cpp.s
+
+wch_grpc_autogen/mocs_compilation.obj: wch_grpc_autogen/mocs_compilation.cpp.obj
+.PHONY : wch_grpc_autogen/mocs_compilation.obj
+
+# target to build an object file
+wch_grpc_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/wch_grpc_autogen/mocs_compilation.cpp.obj
+.PHONY : wch_grpc_autogen/mocs_compilation.cpp.obj
+
+wch_grpc_autogen/mocs_compilation.i: wch_grpc_autogen/mocs_compilation.cpp.i
+.PHONY : wch_grpc_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+wch_grpc_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/wch_grpc_autogen/mocs_compilation.cpp.i
+.PHONY : wch_grpc_autogen/mocs_compilation.cpp.i
+
+wch_grpc_autogen/mocs_compilation.s: wch_grpc_autogen/mocs_compilation.cpp.s
+.PHONY : wch_grpc_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+wch_grpc_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/wch_grpc_autogen/mocs_compilation.cpp.s
+.PHONY : wch_grpc_autogen/mocs_compilation.cpp.s
+
+wch_proto_autogen/mocs_compilation.obj: wch_proto_autogen/mocs_compilation.cpp.obj
+.PHONY : wch_proto_autogen/mocs_compilation.obj
+
+# target to build an object file
+wch_proto_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/wch_proto_autogen/mocs_compilation.cpp.obj
+.PHONY : wch_proto_autogen/mocs_compilation.cpp.obj
+
+wch_proto_autogen/mocs_compilation.i: wch_proto_autogen/mocs_compilation.cpp.i
+.PHONY : wch_proto_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+wch_proto_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/wch_proto_autogen/mocs_compilation.cpp.i
+.PHONY : wch_proto_autogen/mocs_compilation.cpp.i
+
+wch_proto_autogen/mocs_compilation.s: wch_proto_autogen/mocs_compilation.cpp.s
+.PHONY : wch_proto_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+wch_proto_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/wch_proto_autogen/mocs_compilation.cpp.s
+.PHONY : wch_proto_autogen/mocs_compilation.cpp.s
+
+wch_proto_qtprotoreg_autogen/mocs_compilation.obj: wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.obj
+.PHONY : wch_proto_qtprotoreg_autogen/mocs_compilation.obj
+
+# target to build an object file
+wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.obj
+.PHONY : wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.obj
+
+wch_proto_qtprotoreg_autogen/mocs_compilation.i: wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.i
+.PHONY : wch_proto_qtprotoreg_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.i
+.PHONY : wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.i
+
+wch_proto_qtprotoreg_autogen/mocs_compilation.s: wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.s
+.PHONY : wch_proto_qtprotoreg_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.s
+.PHONY : wch_proto_qtprotoreg_autogen/mocs_compilation.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -164,7 +477,38 @@ help:
 	@echo ... rebuild_cache
 	@echo ... wch-desktop_autogen
 	@echo ... wch-desktop_autogen_timestamp_deps
+	@echo ... wch_grpc_autogen
+	@echo ... wch_grpc_autogen_timestamp_deps
+	@echo ... wch_grpc_other_files
+	@echo ... wch_grpc_qtgrpcgen_deps_0
+	@echo ... wch_proto_autogen
+	@echo ... wch_proto_autogen_timestamp_deps
+	@echo ... wch_proto_other_files
+	@echo ... wch_proto_qtprotobufgen_deps_0
+	@echo ... wch_proto_qtprotoreg_autogen
+	@echo ... wch_proto_qtprotoreg_autogen_timestamp_deps
 	@echo ... wch-desktop
+	@echo ... wch_grpc
+	@echo ... wch_proto
+	@echo ... wch_proto_qtprotoreg
+	@echo ... msgs.qpb.obj
+	@echo ... msgs.qpb.i
+	@echo ... msgs.qpb.s
+	@echo ... msgs_client.grpc.qpb.obj
+	@echo ... msgs_client.grpc.qpb.i
+	@echo ... msgs_client.grpc.qpb.s
+	@echo ... msgs_qtprotoreg.obj
+	@echo ... msgs_qtprotoreg.i
+	@echo ... msgs_qtprotoreg.s
+	@echo ... wch_grpc_autogen/mocs_compilation.obj
+	@echo ... wch_grpc_autogen/mocs_compilation.i
+	@echo ... wch_grpc_autogen/mocs_compilation.s
+	@echo ... wch_proto_autogen/mocs_compilation.obj
+	@echo ... wch_proto_autogen/mocs_compilation.i
+	@echo ... wch_proto_autogen/mocs_compilation.s
+	@echo ... wch_proto_qtprotoreg_autogen/mocs_compilation.obj
+	@echo ... wch_proto_qtprotoreg_autogen/mocs_compilation.i
+	@echo ... wch_proto_qtprotoreg_autogen/mocs_compilation.s
 .PHONY : help
 
 

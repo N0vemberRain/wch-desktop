@@ -62,6 +62,9 @@ CMAKE_BINARY_DIR = C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_M
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/wch_proto.dir/all
+all: CMakeFiles/wch_proto_qtprotoreg.dir/all
+all: CMakeFiles/wch_grpc.dir/all
 all: src/all
 .PHONY : all
 
@@ -70,6 +73,19 @@ preinstall: src/preinstall
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/wch_proto.dir/clean
+clean: CMakeFiles/wch_proto_other_files.dir/clean
+clean: CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/clean
+clean: CMakeFiles/wch_proto_qtprotoreg.dir/clean
+clean: CMakeFiles/wch_grpc.dir/clean
+clean: CMakeFiles/wch_grpc_other_files.dir/clean
+clean: CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/clean
+clean: CMakeFiles/wch_proto_autogen_timestamp_deps.dir/clean
+clean: CMakeFiles/wch_proto_autogen.dir/clean
+clean: CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/clean
+clean: CMakeFiles/wch_proto_qtprotoreg_autogen.dir/clean
+clean: CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/clean
+clean: CMakeFiles/wch_grpc_autogen.dir/clean
 clean: src/clean
 .PHONY : clean
 
@@ -91,19 +107,369 @@ src/clean: src/CMakeFiles/wch-desktop_autogen.dir/clean
 .PHONY : src/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/wch_proto.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto.dir/all: CMakeFiles/wch_proto_autogen_timestamp_deps.dir/all
+CMakeFiles/wch_proto.dir/all: CMakeFiles/wch_proto_autogen.dir/all
+CMakeFiles/wch_proto.dir/all: CMakeFiles/wch_proto_qtprotoreg.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=29,30,31 "Built target wch_proto"
+.PHONY : CMakeFiles/wch_proto.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto.dir/rule
+
+# Convenience name for target.
+wch_proto: CMakeFiles/wch_proto.dir/rule
+.PHONY : wch_proto
+
+# clean rule for target.
+CMakeFiles/wch_proto.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto.dir\build.make CMakeFiles/wch_proto.dir/clean
+.PHONY : CMakeFiles/wch_proto.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_proto_other_files.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto_other_files.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_other_files.dir\build.make CMakeFiles/wch_proto_other_files.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_other_files.dir\build.make CMakeFiles/wch_proto_other_files.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num= "Built target wch_proto_other_files"
+.PHONY : CMakeFiles/wch_proto_other_files.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto_other_files.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto_other_files.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto_other_files.dir/rule
+
+# Convenience name for target.
+wch_proto_other_files: CMakeFiles/wch_proto_other_files.dir/rule
+.PHONY : wch_proto_other_files
+
+# clean rule for target.
+CMakeFiles/wch_proto_other_files.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_other_files.dir\build.make CMakeFiles/wch_proto_other_files.dir/clean
+.PHONY : CMakeFiles/wch_proto_other_files.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotobufgen_deps_0.dir\build.make CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotobufgen_deps_0.dir\build.make CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=33 "Built target wch_proto_qtprotobufgen_deps_0"
+.PHONY : CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/rule
+
+# Convenience name for target.
+wch_proto_qtprotobufgen_deps_0: CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/rule
+.PHONY : wch_proto_qtprotobufgen_deps_0
+
+# clean rule for target.
+CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotobufgen_deps_0.dir\build.make CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/clean
+.PHONY : CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_proto_qtprotoreg.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto_qtprotoreg.dir/all: CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/all
+CMakeFiles/wch_proto_qtprotoreg.dir/all: CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/all
+CMakeFiles/wch_proto_qtprotoreg.dir/all: CMakeFiles/wch_proto_qtprotoreg_autogen.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=34,35 "Built target wch_proto_qtprotoreg"
+.PHONY : CMakeFiles/wch_proto_qtprotoreg.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto_qtprotoreg.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto_qtprotoreg.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto_qtprotoreg.dir/rule
+
+# Convenience name for target.
+wch_proto_qtprotoreg: CMakeFiles/wch_proto_qtprotoreg.dir/rule
+.PHONY : wch_proto_qtprotoreg
+
+# clean rule for target.
+CMakeFiles/wch_proto_qtprotoreg.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg.dir\build.make CMakeFiles/wch_proto_qtprotoreg.dir/clean
+.PHONY : CMakeFiles/wch_proto_qtprotoreg.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_grpc.dir
+
+# All Build rule for target.
+CMakeFiles/wch_grpc.dir/all: CMakeFiles/wch_proto.dir/all
+CMakeFiles/wch_grpc.dir/all: CMakeFiles/wch_proto_qtprotoreg.dir/all
+CMakeFiles/wch_grpc.dir/all: CMakeFiles/wch_grpc_autogen.dir/all
+CMakeFiles/wch_grpc.dir/all: CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=24,25,26 "Built target wch_grpc"
+.PHONY : CMakeFiles/wch_grpc.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_grpc.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 14
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_grpc.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_grpc.dir/rule
+
+# Convenience name for target.
+wch_grpc: CMakeFiles/wch_grpc.dir/rule
+.PHONY : wch_grpc
+
+# clean rule for target.
+CMakeFiles/wch_grpc.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc.dir\build.make CMakeFiles/wch_grpc.dir/clean
+.PHONY : CMakeFiles/wch_grpc.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_grpc_other_files.dir
+
+# All Build rule for target.
+CMakeFiles/wch_grpc_other_files.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_other_files.dir\build.make CMakeFiles/wch_grpc_other_files.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_other_files.dir\build.make CMakeFiles/wch_grpc_other_files.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num= "Built target wch_grpc_other_files"
+.PHONY : CMakeFiles/wch_grpc_other_files.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_grpc_other_files.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_grpc_other_files.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_grpc_other_files.dir/rule
+
+# Convenience name for target.
+wch_grpc_other_files: CMakeFiles/wch_grpc_other_files.dir/rule
+.PHONY : wch_grpc_other_files
+
+# clean rule for target.
+CMakeFiles/wch_grpc_other_files.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_other_files.dir\build.make CMakeFiles/wch_grpc_other_files.dir/clean
+.PHONY : CMakeFiles/wch_grpc_other_files.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir
+
+# All Build rule for target.
+CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_qtgrpcgen_deps_0.dir\build.make CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_qtgrpcgen_deps_0.dir\build.make CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=28 "Built target wch_grpc_qtgrpcgen_deps_0"
+.PHONY : CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/rule
+
+# Convenience name for target.
+wch_grpc_qtgrpcgen_deps_0: CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/rule
+.PHONY : wch_grpc_qtgrpcgen_deps_0
+
+# clean rule for target.
+CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_qtgrpcgen_deps_0.dir\build.make CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/clean
+.PHONY : CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_proto_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto_autogen_timestamp_deps.dir/all: CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_autogen_timestamp_deps.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_autogen_timestamp_deps.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num= "Built target wch_proto_autogen_timestamp_deps"
+.PHONY : CMakeFiles/wch_proto_autogen_timestamp_deps.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto_autogen_timestamp_deps.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto_autogen_timestamp_deps.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+wch_proto_autogen_timestamp_deps: CMakeFiles/wch_proto_autogen_timestamp_deps.dir/rule
+.PHONY : wch_proto_autogen_timestamp_deps
+
+# clean rule for target.
+CMakeFiles/wch_proto_autogen_timestamp_deps.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_autogen_timestamp_deps.dir/clean
+.PHONY : CMakeFiles/wch_proto_autogen_timestamp_deps.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_proto_autogen.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto_autogen.dir/all: CMakeFiles/wch_proto_autogen_timestamp_deps.dir/all
+CMakeFiles/wch_proto_autogen.dir/all: CMakeFiles/wch_proto_qtprotoreg.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen.dir\build.make CMakeFiles/wch_proto_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen.dir\build.make CMakeFiles/wch_proto_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=32 "Built target wch_proto_autogen"
+.PHONY : CMakeFiles/wch_proto_autogen.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto_autogen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto_autogen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto_autogen.dir/rule
+
+# Convenience name for target.
+wch_proto_autogen: CMakeFiles/wch_proto_autogen.dir/rule
+.PHONY : wch_proto_autogen
+
+# clean rule for target.
+CMakeFiles/wch_proto_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_autogen.dir\build.make CMakeFiles/wch_proto_autogen.dir/clean
+.PHONY : CMakeFiles/wch_proto_autogen.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=37 "Built target wch_proto_qtprotoreg_autogen_timestamp_deps"
+.PHONY : CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 1
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+wch_proto_qtprotoreg_autogen_timestamp_deps: CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/rule
+.PHONY : wch_proto_qtprotoreg_autogen_timestamp_deps
+
+# clean rule for target.
+CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/clean
+.PHONY : CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_proto_qtprotoreg_autogen.dir
+
+# All Build rule for target.
+CMakeFiles/wch_proto_qtprotoreg_autogen.dir/all: CMakeFiles/wch_proto_qtprotobufgen_deps_0.dir/all
+CMakeFiles/wch_proto_qtprotoreg_autogen.dir/all: CMakeFiles/wch_proto_qtprotoreg_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=36 "Built target wch_proto_qtprotoreg_autogen"
+.PHONY : CMakeFiles/wch_proto_qtprotoreg_autogen.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_proto_qtprotoreg_autogen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_proto_qtprotoreg_autogen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_proto_qtprotoreg_autogen.dir/rule
+
+# Convenience name for target.
+wch_proto_qtprotoreg_autogen: CMakeFiles/wch_proto_qtprotoreg_autogen.dir/rule
+.PHONY : wch_proto_qtprotoreg_autogen
+
+# clean rule for target.
+CMakeFiles/wch_proto_qtprotoreg_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_proto_qtprotoreg_autogen.dir\build.make CMakeFiles/wch_proto_qtprotoreg_autogen.dir/clean
+.PHONY : CMakeFiles/wch_proto_qtprotoreg_autogen.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_grpc_autogen_timestamp_deps.dir
+
+# All Build rule for target.
+CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/all: CMakeFiles/wch_proto.dir/all
+CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/all: CMakeFiles/wch_grpc_qtgrpcgen_deps_0.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num= "Built target wch_grpc_autogen_timestamp_deps"
+.PHONY : CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 10
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/rule
+
+# Convenience name for target.
+wch_grpc_autogen_timestamp_deps: CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/rule
+.PHONY : wch_grpc_autogen_timestamp_deps
+
+# clean rule for target.
+CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen_timestamp_deps.dir\build.make CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/clean
+.PHONY : CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/wch_grpc_autogen.dir
+
+# All Build rule for target.
+CMakeFiles/wch_grpc_autogen.dir/all: CMakeFiles/wch_grpc_autogen_timestamp_deps.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen.dir\build.make CMakeFiles/wch_grpc_autogen.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen.dir\build.make CMakeFiles/wch_grpc_autogen.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=27 "Built target wch_grpc_autogen"
+.PHONY : CMakeFiles/wch_grpc_autogen.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/wch_grpc_autogen.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 11
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/wch_grpc_autogen.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+.PHONY : CMakeFiles/wch_grpc_autogen.dir/rule
+
+# Convenience name for target.
+wch_grpc_autogen: CMakeFiles/wch_grpc_autogen.dir/rule
+.PHONY : wch_grpc_autogen
+
+# clean rule for target.
+CMakeFiles/wch_grpc_autogen.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\wch_grpc_autogen.dir\build.make CMakeFiles/wch_grpc_autogen.dir/clean
+.PHONY : CMakeFiles/wch_grpc_autogen.dir/clean
+
+#=============================================================================
 # Target rules for target src/CMakeFiles/wch-desktop.dir
 
 # All Build rule for target.
-src/CMakeFiles/wch-desktop.dir/all: src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all
+src/CMakeFiles/wch-desktop.dir/all: CMakeFiles/wch_proto.dir/all
+src/CMakeFiles/wch-desktop.dir/all: CMakeFiles/wch_grpc.dir/all
 src/CMakeFiles/wch-desktop.dir/all: src/CMakeFiles/wch-desktop_autogen.dir/all
+src/CMakeFiles/wch-desktop.dir/all: src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\wch-desktop.dir\build.make src/CMakeFiles/wch-desktop.dir/depend
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\wch-desktop.dir\build.make src/CMakeFiles/wch-desktop.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 "Built target wch-desktop"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 "Built target wch-desktop"
 .PHONY : src/CMakeFiles/wch-desktop.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/wch-desktop.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 24
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 37
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/CMakeFiles/wch-desktop.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
 .PHONY : src/CMakeFiles/wch-desktop.dir/rule
@@ -121,7 +487,8 @@ src/CMakeFiles/wch-desktop.dir/clean:
 # Target rules for target src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir
 
 # All Build rule for target.
-src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all:
+src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all: CMakeFiles/wch_proto.dir/all
+src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all: CMakeFiles/wch_grpc.dir/all
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\wch-desktop_autogen_timestamp_deps.dir\build.make src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/depend
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\wch-desktop_autogen_timestamp_deps.dir\build.make src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num= "Built target wch-desktop_autogen_timestamp_deps"
@@ -129,7 +496,7 @@ src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all:
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
 .PHONY : src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/rule
@@ -150,12 +517,12 @@ src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/clean:
 src/CMakeFiles/wch-desktop_autogen.dir/all: src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/all
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\wch-desktop_autogen.dir\build.make src/CMakeFiles/wch-desktop_autogen.dir/depend
 	$(MAKE) $(MAKESILENT) -f src\CMakeFiles\wch-desktop_autogen.dir\build.make src/CMakeFiles/wch-desktop_autogen.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=24 "Built target wch-desktop_autogen"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles --progress-num=23 "Built target wch-desktop_autogen"
 .PHONY : src/CMakeFiles/wch-desktop_autogen.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/wch-desktop_autogen.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 15
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 src/CMakeFiles/wch-desktop_autogen.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\CMakeFiles 0
 .PHONY : src/CMakeFiles/wch-desktop_autogen.dir/rule

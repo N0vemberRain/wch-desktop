@@ -1,6 +1,7 @@
 #include "chatwgt.h"
 #include "ui_chatwgt.h"
 
+#include "core/domain/message.h"
 #include "presentation/chatwindow/messagedelegate.h"
 #include "mock/mockchatfactory.h"
 
@@ -8,8 +9,9 @@
 #include <QScrollBar>
 #include <QDebug>
 
-ChatWgt::ChatWgt(QWidget *parent) :
+ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
     QWidget(parent),
+    send_msgs_uc_(send_msgs_uc),
     ui(new Ui::ChatWgt)
 {
     ui->setupUi(this);
@@ -55,6 +57,7 @@ ChatWgt::ChatWgt(QWidget *parent) :
     setContentsMargins(0,0,0,0);
 
     connect(ui->view->verticalScrollBar(), &QScrollBar::valueChanged, this, &ChatWgt::isScrollBarInEnd);
+    connect(ui->sendButton, &QPushButton::clicked, this, &ChatWgt::sendButtonClicked);
 }
 
 ChatWgt::~ChatWgt()
@@ -107,4 +110,11 @@ void ChatWgt::isScrollBarInEnd(int value) {
         qDebug() << "void ChatWgt::isScrollBarInEnd: value == max";
 //        emit updateUnreadMessagesCount(0);
     }
+}
+
+void ChatWgt::sendButtonClicked() {
+    Message msg;
+    msg.content = ui->msgEdit->toPlainText().toStdString();
+
+    send_msgs_uc_->execute(msg);
 }

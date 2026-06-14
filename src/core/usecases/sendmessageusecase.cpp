@@ -1,6 +1,6 @@
 #include "sendmessageusecase.h"
 
-SendMessageUseCase::SendMessageUseCase(MessageService& srv)
+SendMessageUseCase::SendMessageUseCase(MessageService* srv)
     : srv_{srv}
 {
 
@@ -11,5 +11,5 @@ SendMessageResult SendMessageUseCase::execute(const Message &msg) {
         return {false, "empty message", {}};
     }
 
-    return srv_.sendMessage(msg);
+    return srv_->sendMessage(msg);
 }

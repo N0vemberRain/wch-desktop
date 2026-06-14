@@ -38,9 +38,8 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
+  # Include the install script for the subdirectory.
   include("C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/cmake_install.cmake")
-
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

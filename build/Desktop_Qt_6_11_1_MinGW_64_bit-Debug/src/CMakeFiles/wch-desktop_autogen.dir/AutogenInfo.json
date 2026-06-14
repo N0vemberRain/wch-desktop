@@ -160,8 +160,10 @@
 	[
 		"MINGW_HAS_SECURE_API=1",
 		"QT_CORE_LIB",
+		"QT_GRPC_LIB",
 		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
+		"QT_PROTOBUF_LIB",
 		"QT_QML_DEBUG",
 		"QT_WIDGETS_LIB",
 		"UNICODE",
@@ -180,14 +182,16 @@
 	],
 	"MOC_INCLUDES" : 
 	[
-		"C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src",
 		"C:/Users/igor/Documents/wch-desktop/src",
+		"C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug",
 		"C:/Qt/6.11.1/mingw_64/include/QtWidgets",
 		"C:/Qt/6.11.1/mingw_64/include",
 		"C:/Qt/6.11.1/mingw_64/include/QtCore",
 		"C:/Qt/6.11.1/mingw_64/mkspecs/win32-g++",
 		"C:/Qt/6.11.1/mingw_64/include/QtGui",
 		"C:/VulkanSDK/1.2.198.1/Include",
+		"C:/Qt/6.11.1/mingw_64/include/QtProtobuf",
+		"C:/Qt/6.11.1/mingw_64/include/QtGrpc",
 		"C:/Qt/6.11.1/mingw_64/include/QtNetwork",
 		"C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++",
 		"C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32",
@@ -203,7 +207,8 @@
 		"Q_NAMESPACE",
 		"Q_NAMESPACE_EXPORT",
 		"Q_GADGET_EXPORT",
-		"Q_ENUM_NS"
+		"Q_ENUM_NS",
+		"Q_PROTOBUF_OBJECT"
 	],
 	"MOC_OPTIONS" : [],
 	"MOC_PATH_PREFIX" : false,

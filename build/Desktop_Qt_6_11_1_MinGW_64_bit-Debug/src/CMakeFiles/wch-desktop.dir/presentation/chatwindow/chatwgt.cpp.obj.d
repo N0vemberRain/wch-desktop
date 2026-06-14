@@ -406,10 +406,14 @@ src/CMakeFiles/wch-desktop.dir/presentation/chatwindow/chatwgt.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtabwidget.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qrubberband.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QModelIndex \
+ C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/sendmessageresult.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/ports/msgservice.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QAbstractListModel \
  C:/Users/igor/Documents/wch-desktop/src/core/domain/chat.h \
- C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messageitem.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QString \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QDateTime \

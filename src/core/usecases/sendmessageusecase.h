@@ -8,12 +8,12 @@
 class SendMessageUseCase
 {
 public:
-    explicit SendMessageUseCase(MessageService& srv);
+    explicit SendMessageUseCase(MessageService* srv);
 
     SendMessageResult execute(const Message& msg);
 
 private:
-    MessageService& srv_;
+    MessageService* srv_;
 };
 
 #endif // SENDMESSAGEUSECASE_H

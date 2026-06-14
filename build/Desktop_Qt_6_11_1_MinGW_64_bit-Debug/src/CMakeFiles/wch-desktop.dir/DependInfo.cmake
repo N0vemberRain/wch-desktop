@@ -8,7 +8,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "" "src/wch-desktop_autogen/timestamp" "custom" "src/wch-desktop_autogen/deps"
   "C:/Users/igor/Documents/wch-desktop/src/app/main.cpp" "src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj" "gcc" "src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj.d"
   "C:/Users/igor/Documents/wch-desktop/src/core/domain/user.cpp" "src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj" "gcc" "src/CMakeFiles/wch-desktop.dir/core/domain/user.cpp.obj.d"
   "C:/Users/igor/Documents/wch-desktop/src/core/usecases/loginusecase.cpp" "src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj" "gcc" "src/CMakeFiles/wch-desktop.dir/core/usecases/loginusecase.cpp.obj.d"

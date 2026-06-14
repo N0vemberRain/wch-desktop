@@ -407,17 +407,12 @@ src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtabbar.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qrubberband.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QString \
- C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatlistmodel.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QAbstractListModel \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/QPixmap \
- C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatdelegate.h \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/QStyledItemDelegate \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/qstyleditemdelegate.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/sidebar/sidebarwidget.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QWidget \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QAbstractListModel \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
  C:/Users/igor/Documents/wch-desktop/src/core/domain/chat.h \
  C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messageitem.h \
@@ -425,9 +420,17 @@ src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qdatetime.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qcalendar.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messagedelegate.h \
+ C:/Qt/6.11.1/mingw_64/include/QtWidgets/QStyledItemDelegate \
+ C:/Qt/6.11.1/mingw_64/include/QtWidgets/qstyleditemdelegate.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatwgt.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QModelIndex \
+ C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/sendmessageresult.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/ports/msgservice.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatslistwgt.h \
+ C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatlistmodel.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/QPixmap \
  C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/src/wch-desktop_autogen/include/ui_mainwindow.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QVariant \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QApplication \
@@ -475,20 +478,4 @@ src/CMakeFiles/wch-desktop.dir/presentation/main/mainwindow.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtGui/QShortcut \
  C:/Qt/6.11.1/mingw_64/include/QtGui/qshortcut.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QSplitter \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/qsplitter.h \
- C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatswitcherdialog.h \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/QDialog \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/qdialog.h \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/QLineEdit \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/qlineedit.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qtextcursor.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qtextdocument.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qtextformat.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qpen.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/qtextoption.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QSortFilterProxyModel \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qsortfilterproxymodel.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qabstractproxymodel.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QAbstractItemModel \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QEvent \
- C:/Users/igor/Documents/wch-desktop/src/mock/mockchatfactory.h
+ C:/Qt/6.11.1/mingw_64/include/QtWidgets/qsplitter.h

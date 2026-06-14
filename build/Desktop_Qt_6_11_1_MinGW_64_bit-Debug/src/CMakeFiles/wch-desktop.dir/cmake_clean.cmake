@@ -1,4 +1,7 @@
 file(REMOVE_RECURSE
+  "../wch-desktop.exe"
+  "../wch-desktop.exe.manifest"
+  "../wch-desktop.pdb"
   "CMakeFiles/wch-desktop_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/wch-desktop_autogen.dir/ParseCache.txt"
   "wch-desktop_autogen"
@@ -43,12 +46,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj.d"
   "libwch-desktop.dll.a"
-  "wch-desktop.exe"
-  "wch-desktop.exe.manifest"
-  "wch-desktop.pdb"
   "wch-desktop_autogen/YCDLW3T4OG/qrc_test.cpp"
-  "wch-desktop_autogen/mocs_compilation.cpp"
-  "wch-desktop_autogen/timestamp"
 )
 
 # Per-language clean rules from dependency scanning.

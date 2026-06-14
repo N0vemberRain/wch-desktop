@@ -6,6 +6,7 @@
 #include <QListView>
 #include <QModelIndex>
 
+#include "core/usecases/sendmessageusecase.h"
 #include "presentation/chatwindow/chathistorymodel.h"
 
 namespace Ui {
@@ -17,7 +18,7 @@ class ChatWgt : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChatWgt(QWidget *parent = nullptr);
+    explicit ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent = nullptr);
     ~ChatWgt();
 
 public slots:
@@ -28,6 +29,7 @@ signals:
 
 private slots:
     void isScrollBarInEnd(int value);
+    void sendButtonClicked();
 private:
     ChatHistoryModel* loadChatData(const QString& id, const QString& name);
 
@@ -35,6 +37,8 @@ private:
 
     QHash<QString, ChatHistoryModel*> chat_models_;
     QListView view_;
+
+    SendMessageUseCase* send_msgs_uc_;
 };
 
 #endif // CHATWGT_H

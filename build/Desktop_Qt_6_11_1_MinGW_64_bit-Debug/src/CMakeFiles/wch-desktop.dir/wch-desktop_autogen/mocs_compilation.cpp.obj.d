@@ -457,6 +457,10 @@ src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qdeadlinetimer.h \
  C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src\wch-desktop_autogen\GPIG63K7QR/moc_chatwgt.cpp \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatwgt.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/sendmessageresult.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/ports/msgservice.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.h \
  C:\Users\igor\Documents\wch-desktop\build\Desktop_Qt_6_11_1_MinGW_64_bit-Debug\src\wch-desktop_autogen\GPIG63K7QR/moc_messagedelegate.cpp \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messagedelegate.h \
@@ -466,7 +470,6 @@ src/CMakeFiles/wch-desktop.dir/wch-desktop_autogen/mocs_compilation.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qmainwindow.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QDockWidget \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qdockwidget.h \
- C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatdelegate.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/sidebar/sidebarwidget.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messagedelegate.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatwgt.h \

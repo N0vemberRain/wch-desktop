@@ -8,10 +8,7 @@
 #include <QShortcut>
 #include <QSplitter>
 
-#include "presentation/chatwindow/chatswitcherdialog.h"
-#include "mock/mockchatfactory.h"
-
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(SendMessageUseCase* send_msgs_uc, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
@@ -29,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent)
 //    chat_delegate_ = new ChatDelegate(list_view_);
     sidebar_ = new SidebarWidget(this);
 
-    chat_wgt_ = new ChatWgt{this};
+    chat_wgt_ = new ChatWgt{send_msgs_uc, this};
 
 //    list_view_->setModel(chats_model_);
 //    list_view_->setItemDelegate(chat_delegate_);

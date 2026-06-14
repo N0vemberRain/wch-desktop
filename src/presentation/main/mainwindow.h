@@ -6,13 +6,13 @@
 #include <QListView>
 #include <QString>
 
-#include "presentation/chat/chatlistmodel.h"
-#include "presentation/chat/chatdelegate.h"
 #include "presentation/sidebar/sidebarwidget.h"
 #include "presentation/chatwindow/chathistorymodel.h"
 #include "presentation/chatwindow/messagedelegate.h"
 #include "presentation/chatwindow/chatwgt.h"
 #include "presentation/chat/chatslistwgt.h"
+
+#include "core/usecases/sendmessageusecase.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,7 +23,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(SendMessageUseCase* send_msgs_uc, QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:

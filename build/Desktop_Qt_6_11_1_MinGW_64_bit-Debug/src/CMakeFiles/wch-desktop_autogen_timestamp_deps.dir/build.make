@@ -67,8 +67,11 @@ include src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/progress.make
 
 src/CMakeFiles/wch-desktop_autogen_timestamp_deps: C:/Qt/6.11.1/mingw_64/bin/moc.exe
 src/CMakeFiles/wch-desktop_autogen_timestamp_deps: C:/Qt/6.11.1/mingw_64/bin/uic.exe
-src/CMakeFiles/wch-desktop_autogen_timestamp_deps: C:/Qt/6.11.1/mingw_64/lib/libQt6Network.a
+src/CMakeFiles/wch-desktop_autogen_timestamp_deps: C:/Qt/6.11.1/mingw_64/lib/libQt6Grpc.a
+src/CMakeFiles/wch-desktop_autogen_timestamp_deps: C:/Qt/6.11.1/mingw_64/lib/libQt6Protobuf.a
 src/CMakeFiles/wch-desktop_autogen_timestamp_deps: C:/Qt/6.11.1/mingw_64/lib/libQt6Widgets.a
+src/CMakeFiles/wch-desktop_autogen_timestamp_deps: wch_proto.dll
+src/CMakeFiles/wch-desktop_autogen_timestamp_deps: wch_grpc.dll
 
 wch-desktop_autogen_timestamp_deps: src/CMakeFiles/wch-desktop_autogen_timestamp_deps
 wch-desktop_autogen_timestamp_deps: src/CMakeFiles/wch-desktop_autogen_timestamp_deps.dir/build.make

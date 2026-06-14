@@ -1,19 +1,40 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.21)
 
 project(wch-desktop LANGUAGES CXX)
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+find_package(Qt6 REQUIRED COMPONENTS
+    Widgets
+    Protobuf
+    Grpc
+)
 
+qt_standard_project_setup()
 
-find_package(Qt6 COMPONENTS Widgets Network REQUIRED)
+set(BUILD_SHARED_LIBS OFF)
 
-qt6_add_resources(PROJECT_SOURCES test.qrc)
+qt_add_protobuf(wch_proto
+    PROTO_FILES
+        api/msgs/v1/msgs.proto
+)
+
+qt_add_grpc(wch_grpc CLIENT
+    PROTO_FILES
+        api/msgs/v1/msgs.proto
+)
+
+get_target_property(TYPE1 wch_proto TYPE)
+message(STATUS "wch_proto type=${TYPE1}")
+
+get_target_property(TYPE2 wch_grpc TYPE)
+message(STATUS "wch_grpc type=${TYPE2}")
+
+target_link_libraries(wch_grpc PUBLIC wch_proto)
 
 add_subdirectory(src)

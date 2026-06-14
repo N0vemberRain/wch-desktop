@@ -407,17 +407,12 @@ src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qtabbar.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qrubberband.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QString \
- C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatlistmodel.h \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QAbstractListModel \
- C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
- C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
- C:/Qt/6.11.1/mingw_64/include/QtGui/QPixmap \
- C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatdelegate.h \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/QStyledItemDelegate \
- C:/Qt/6.11.1/mingw_64/include/QtWidgets/qstyleditemdelegate.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/sidebar/sidebarwidget.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QWidget \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QAbstractListModel \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QVector \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qvector.h \
  C:/Users/igor/Documents/wch-desktop/src/core/domain/chat.h \
  C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messageitem.h \
@@ -425,9 +420,17 @@ src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj: \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qdatetime.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qcalendar.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messagedelegate.h \
+ C:/Qt/6.11.1/mingw_64/include/QtWidgets/QStyledItemDelegate \
+ C:/Qt/6.11.1/mingw_64/include/QtWidgets/qstyleditemdelegate.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chatwgt.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/QModelIndex \
+ C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/sendmessageresult.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
+ C:/Users/igor/Documents/wch-desktop/src/core/ports/msgservice.h \
  C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatslistwgt.h \
+ C:/Users/igor/Documents/wch-desktop/src/presentation/chat/chatlistmodel.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGui/QPixmap \
  C:/Users/igor/Documents/wch-desktop/src/presentation/auth/logindialog.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qdialog.h \
@@ -435,6 +438,50 @@ src/CMakeFiles/wch-desktop.dir/app/main.cpp.obj: \
  C:/Users/igor/Documents/wch-desktop/src/core/domain/user.h \
  C:/Users/igor/Documents/wch-desktop/src/core/ports/authservice.h \
  C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtauthservice.h \
+ C:/Users/igor/Documents/wch-desktop/src/infrastructure/network/qtmessageservice.h \
+ C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/msgs_client.grpc.qpb.h \
+ C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/msgs.qpb.h \
+ C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/wch_proto_exports.qpb.h \
+ C:/Qt/6.11.1/mingw_64/include/QtProtobuf/qprotobuflazymessagepointer.h \
+ C:/Qt/6.11.1/mingw_64/include/QtProtobuf/qtprotobufexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtProtobuf/qprotobufmessage.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qmetaobject.h \
+ C:/Qt/6.11.1/mingw_64/include/QtProtobuf/qtprotobuftypes.h \
+ C:/Qt/6.11.1/mingw_64/include/QtProtobuf/qprotobufobject.h \
+ C:/Qt/6.11.1/mingw_64/include/QtProtobuf/qprotobufpropertyordering.h \
+ C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/wch_grpc_exports.qpb.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpccallreply.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpcoperation.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpcstatus.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qtgrpcglobal.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qtgrpc-config.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qtgrpcexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qtnetwork-config.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qtgrpcnamespace.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpcoperationcontext.h \
+ C:/Qt/6.11.1/mingw_64/include/QtProtobuf/qabstractprotobufserializer.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpcclientbase.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qabstractgrpcchannel.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpccalloptions.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpcstream.h \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/QGrpcChannelOptions \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpcchanneloptions.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qsslconfiguration.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qtnetworkexports.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qsslsocket.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qtcpsocket.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qabstractsocket.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qhostaddress.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qsslerror.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qsslcertificate.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qcryptographichash.h \
+ C:/Qt/6.11.1/mingw_64/include/QtNetwork/qssl.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/QFlags \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/QGrpcHttp2Channel \
+ C:/Qt/6.11.1/mingw_64/include/QtGrpc/qgrpchttp2channel.h \
+ C:/Qt/6.11.1/mingw_64/include/QtCore/qurl.h \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/QApplication \
  C:/Qt/6.11.1/mingw_64/include/QtWidgets/qapplication.h \
  C:/Qt/6.11.1/mingw_64/include/QtCore/qcoreapplication.h \

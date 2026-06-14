@@ -402,5 +402,8 @@ C:/Users/igor/Documents/wch-desktop/build/Desktop_Qt_6_11_1_MinGW_64_bit-Debug/s
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Users/igor/Documents/wch-desktop/src/core/domain/chat.h \
   C:/Users/igor/Documents/wch-desktop/src/core/domain/message.h \
+  C:/Users/igor/Documents/wch-desktop/src/core/domain/sendmessageresult.h \
+  C:/Users/igor/Documents/wch-desktop/src/core/ports/msgservice.h \
+  C:/Users/igor/Documents/wch-desktop/src/core/usecases/sendmessageusecase.h \
   C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/chathistorymodel.h \
   C:/Users/igor/Documents/wch-desktop/src/presentation/chatwindow/messageitem.h
