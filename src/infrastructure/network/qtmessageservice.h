@@ -18,6 +18,8 @@ public:
 
     virtual SendMessageResult sendMessage(const Message& msg) override;
 
+signals:
+
 private:
     using Client = msgs::v1::MessagesService::Client;
 

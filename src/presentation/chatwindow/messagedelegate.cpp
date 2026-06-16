@@ -7,6 +7,8 @@
 
 #include <QDebug>
 
+#include "messageitem.h"
+
 MessageDelegate::MessageDelegate(QObject* parent)
     : QStyledItemDelegate(parent)
 {
@@ -87,6 +89,8 @@ void MessageDelegate::paint(QPainter *painter,
         QString sender = index.data(Qt::UserRole + 4).toString();
         bool isGroup = !sender.isEmpty() && !outgoing;
 
+        const auto status = static_cast<MessageStatus>(index.data(Qt::UserRole + 5).toInt());
+
         QRect rect = option.rect;
         int maxWidth = static_cast<int>(rect.width() * 0.6);
 
@@ -160,6 +164,34 @@ void MessageDelegate::paint(QPainter *painter,
         painter->drawText(bubbleRect.left() + 10,
                           contentTop + fm.ascent(),
                           timeStr);
+
+        if (status != MessageStatus::Sent) {
+        // Message status
+            QColor statusColor;
+
+            switch (status)
+            {
+            case MessageStatus::Pending:
+                statusColor = QColor(255, 220, 0); // yellow
+                break;
+
+            case MessageStatus::Failed:
+                statusColor = QColor(220, 0, 0);   // red
+                break;
+            default: break;
+            }
+
+            painter->setBrush(statusColor);
+            painter->setPen(Qt::NoPen);
+
+            painter->drawEllipse(
+                bubbleRect.right() - 14,
+                bubbleRect.bottom() - 14,
+                8,
+                8
+                );
+
+        }
 
         painter->restore();
 }

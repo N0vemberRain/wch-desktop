@@ -31,6 +31,7 @@ QVariant ChatHistoryModel::data(const QModelIndex &index, int role) const {
     case Roles::TimestampRole: return msg.timestamp;
     case Roles::IsOutgoingRole: return msg.is_outgoing;
     case Roles::SenderRole: return msg.sender;
+    case Roles::StatusRole: return static_cast<int>(msg.status);
     }
 
     return {};
@@ -41,7 +42,8 @@ QHash<int, QByteArray> ChatHistoryModel::roleNames() const {
         {Roles::ContentRole, "content"},
         {Roles::TimestampRole, "timestamp"},
         {Roles::IsOutgoingRole, "is_outgoing"},
-        {Roles::SenderRole, "sender"}
+        {Roles::SenderRole, "sender"},
+        {Roles::StatusRole, "status"},
     };
 }
 

@@ -4,6 +4,8 @@
 #include <string>
 #include <chrono>
 
+#include "messagestatus.h"
+
 using TimePoint = std::chrono::system_clock::time_point;
 
 struct Message {
@@ -14,6 +16,8 @@ struct Message {
     std::string content;
     TimePoint created_at;
     bool is_outgoing;
+
+    MessageStatus status = MessageStatus::Sent;
 };
 
 #endif // MESSAGE_H

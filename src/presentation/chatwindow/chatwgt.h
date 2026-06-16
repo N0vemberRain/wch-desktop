@@ -21,6 +21,7 @@ public:
     explicit ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent = nullptr);
     ~ChatWgt();
 
+    QString getCurrentChatID() const noexcept;
 public slots:
     void switchChat(const QString& id, const QString& name);
 
@@ -30,7 +31,10 @@ signals:
 private slots:
     void isScrollBarInEnd(int value);
     void sendButtonClicked();
+    void requestFinished(SendMessageResult res);
 private:
+    void addMessage(const Message& msg);
+
     ChatHistoryModel* loadChatData(const QString& id, const QString& name);
 
     Ui::ChatWgt *ui;

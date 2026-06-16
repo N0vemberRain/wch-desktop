@@ -20,6 +20,7 @@ public:
         TimestampRole,
         IsOutgoingRole,
         SenderRole,
+        StatusRole,
     };
 
     explicit ChatHistoryModel(QObject *parent = nullptr);

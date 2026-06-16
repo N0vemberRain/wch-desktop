@@ -21,7 +21,7 @@ void LoginDialog::accept() {
     const auto username = ui->loginLineEdit->text().toStdString();
     const auto password = ui->passwordLineEdit->text().toStdString();
 
-    const auto [p_user, err] = login_use_case_.execute(username, password);
+    auto [p_user, err] = login_use_case_.execute(username, password);
     if (!err.empty()) {
         ui->errorLabel->setText(QString::fromStdString(err));
         return;
@@ -32,5 +32,6 @@ void LoginDialog::accept() {
         return;
     }
 
+    user_.reset(p_user.release());
     QDialog::accept();
 }

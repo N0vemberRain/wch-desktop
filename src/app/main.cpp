@@ -4,6 +4,8 @@
 
 #include "core/usecases/loginusecase.h"
 #include "core/usecases/sendmessageusecase.h"
+#include "core/domain/session.h"
+#include "core/domain/user.h"
 
 #include "infrastructure/network/qtmessageservice.h"
 
@@ -18,11 +20,14 @@ int main(int argc, char *argv[])
 
     LoginDialog dialog(login_use_case);
 
+    auto session = std::make_unique<Session>();
+
     auto msgs_srv = std::make_unique<QtMessageService>();
-    auto send_msgs_uc = std::make_unique<SendMessageUseCase>(msgs_srv.get());
+    auto send_msgs_uc = std::make_unique<SendMessageUseCase>(msgs_srv.get(), session.get());
 
     MainWindow w{send_msgs_uc.get()};
     if (dialog.exec() == QDialog::Accepted) {
+        session->setCurrentUser(dialog.getLoggedUser());
         w.show();
     }
     return a.exec();

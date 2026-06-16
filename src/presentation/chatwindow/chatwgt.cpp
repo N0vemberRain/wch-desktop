@@ -4,10 +4,12 @@
 #include "core/domain/message.h"
 #include "presentation/chatwindow/messagedelegate.h"
 #include "mock/mockchatfactory.h"
+#include "utils.h"
 
 #include <QMessageBox>
 #include <QScrollBar>
 #include <QDebug>
+#include <QUuid>
 
 ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
     QWidget(parent),
@@ -58,6 +60,7 @@ ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
 
     connect(ui->view->verticalScrollBar(), &QScrollBar::valueChanged, this, &ChatWgt::isScrollBarInEnd);
     connect(ui->sendButton, &QPushButton::clicked, this, &ChatWgt::sendButtonClicked);
+    connect(send_msgs_uc_, &SendMessageUseCase::requestFinished, this, &ChatWgt::requestFinished);
 }
 
 ChatWgt::~ChatWgt()
@@ -115,6 +118,46 @@ void ChatWgt::isScrollBarInEnd(int value) {
 void ChatWgt::sendButtonClicked() {
     Message msg;
     msg.content = ui->msgEdit->toPlainText().toStdString();
+    msg.id = QUuid::createUuid().toString().toStdString();
+    msg.chat_id = getCurrentChatID().toStdString();
+    msg.is_outgoing = true;
+    msg.status = MessageStatus::Pending;
 
     send_msgs_uc_->execute(msg);
+
+    addMessage(msg);
+}
+
+void ChatWgt::requestFinished(SendMessageResult res) {
+    if (res.ok) {
+        auto msg = res.message.value();
+        auto chat = chat_models_.find(QString::fromStdString(res.message.value().chat_id));
+        chat.value()->addMessage({"aaaaa", QString::fromStdString(msg.content), toQDateTime(msg.created_at), false});
+    } else {
+        QMessageBox::critical(this, "requestedFinished", QString::fromStdString(res.error));
+    }
+}
+
+void ChatWgt::addMessage(const Message& msg) {
+    chat_models_.value(QString::fromStdString(msg.chat_id))->addMessage(
+        {QString::fromStdString(msg.sender_name),
+        QString::fromStdString(msg.content),
+        toQDateTime(msg.created_at),
+        true,
+        msg.status
+    });
+}
+
+QString ChatWgt::getCurrentChatID() const noexcept {
+    auto model = ui->view->model();
+    if (!model) {
+        return {};
+    }
+
+    auto chat_model = qobject_cast<ChatHistoryModel*>(model);
+    if (!chat_model) {
+        return {};
+    }
+
+    return chat_model->getID();
 }

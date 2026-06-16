@@ -45,6 +45,8 @@ add_executable(wch-desktop
     mock/mockchatfactory.cpp
 
     ../test.qrc
+    core/domain/session.h core/domain/session.cpp
+    core/domain/messagestatus.h
 )
 
 target_include_directories(wch-desktop PRIVATE

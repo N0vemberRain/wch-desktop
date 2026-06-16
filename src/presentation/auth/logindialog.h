@@ -4,6 +4,7 @@
 #include <QDialog>
 
 #include "core/usecases/loginusecase.h"
+#include "core/domain/user.h"
 
 namespace Ui {
 class LoginDialog;
@@ -17,6 +18,9 @@ public:
     explicit LoginDialog(LoginUseCase& use_case, QWidget *parent = nullptr);
     ~LoginDialog() override;
 
+    auto getLoggedUser() noexcept {
+        return std::move(user_);
+    }
 public slots:
     void accept() override;
 
@@ -27,6 +31,7 @@ private:
     Ui::LoginDialog *ui;
 
     LoginUseCase& login_use_case_;
+    std::unique_ptr<User> user_;
 };
 
 #endif // LOGINDIALOG_H
