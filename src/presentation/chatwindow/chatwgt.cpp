@@ -10,6 +10,7 @@
 #include <QScrollBar>
 #include <QDebug>
 #include <QUuid>
+#include <QKeyEvent>
 
 ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
     QWidget(parent),
@@ -61,6 +62,9 @@ ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
     connect(ui->view->verticalScrollBar(), &QScrollBar::valueChanged, this, &ChatWgt::isScrollBarInEnd);
     connect(ui->sendButton, &QPushButton::clicked, this, &ChatWgt::sendButtonClicked);
     connect(send_msgs_uc_, &SendMessageUseCase::requestFinished, this, &ChatWgt::requestFinished);
+
+    ui->msgEdit->installEventFilter(this);
+    ui->msgEdit->setFocus();
 }
 
 ChatWgt::~ChatWgt()
@@ -99,6 +103,9 @@ void ChatWgt::switchChat(const QString& id, const QString& name) {
     auto message_delegate = new MessageDelegate{ui->view};
     ui->view->setItemDelegate(message_delegate);
 
+    ui->msgEdit->clear();
+    ui->msgEdit->setFocus();
+
     emit updateUnreadMessagesCount(model->getID(), 0);
 //    if (model->getUnreadCount() != 0) {
 //        model->setUnreadCount(0);
@@ -117,15 +124,22 @@ void ChatWgt::isScrollBarInEnd(int value) {
 
 void ChatWgt::sendButtonClicked() {
     Message msg;
-    msg.content = ui->msgEdit->toPlainText().toStdString();
+    msg.content = ui->msgEdit->toPlainText().trimmed().toStdString();
+    if (msg.content.empty()) {
+        return;
+    }
     msg.id = QUuid::createUuid().toString().toStdString();
     msg.chat_id = getCurrentChatID().toStdString();
     msg.is_outgoing = true;
     msg.status = MessageStatus::Pending;
+    msg.created_at = fromQDateTime(QDateTime::currentDateTime());
 
     send_msgs_uc_->execute(msg);
 
     addMessage(msg);
+
+    ui->msgEdit->clear();
+    ui->msgEdit->setFocus();
 }
 
 void ChatWgt::requestFinished(SendMessageResult res) {
@@ -160,4 +174,18 @@ QString ChatWgt::getCurrentChatID() const noexcept {
     }
 
     return chat_model->getID();
+}
+
+bool ChatWgt::eventFilter(QObject* obj, QEvent* e) {
+    if (obj == ui->msgEdit && e->type() == QEvent::KeyPress) {
+        const auto key_event = static_cast<QKeyEvent*>(e);
+        if (key_event->key() == Qt::Key_Return || key_event->key() == Qt::Key_Enter) {
+            if (!(key_event->modifiers() & Qt::ShiftModifier)) {
+                sendButtonClicked();
+                return true;
+            }
+        }
+    }
+
+    return QWidget::eventFilter(obj, e);
 }

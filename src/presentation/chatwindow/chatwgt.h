@@ -5,6 +5,7 @@
 #include <QVector>
 #include <QListView>
 #include <QModelIndex>
+#include <QEvent>
 
 #include "core/usecases/sendmessageusecase.h"
 #include "presentation/chatwindow/chathistorymodel.h"
@@ -32,6 +33,8 @@ private slots:
     void isScrollBarInEnd(int value);
     void sendButtonClicked();
     void requestFinished(SendMessageResult res);
+protected:
+    bool eventFilter(QObject* obj, QEvent* event) override;
 private:
     void addMessage(const Message& msg);
 
