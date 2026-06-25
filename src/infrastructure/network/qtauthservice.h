@@ -1,7 +1,5 @@
-#ifndef QTAUTHSERVICE_H
-#define QTAUTHSERVICE_H
+#pragma once
 
-#include <memory>
 #include <string>
 
 #include "core/ports/authservice.h"
@@ -14,5 +12,3 @@ public:
     LoginResult login(const std::string& name,
                       const std::string& password) override;
 };
-
-#endif // QTAUTHSERVICE_H

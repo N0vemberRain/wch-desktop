@@ -1,5 +1,8 @@
 #include "sendmessageusecase.h"
 
+#include "core/ports/msgservice.h"
+#include "core/domain/session.h"
+
 SendMessageUseCase::SendMessageUseCase(MessageService* srv, Session* s)
     : srv_{srv},
     session_{s}
@@ -9,13 +12,9 @@ SendMessageUseCase::SendMessageUseCase(MessageService* srv, Session* s)
     });
 }
 
-SendMessageResult SendMessageUseCase::execute(Message msg) {
-    if (msg.content.empty()) {
-        return {false, "empty message", {}};
-    }
-
+void SendMessageUseCase::execute(Message msg) {
     msg.sender_id = session_->getCurrentUserID();
     msg.sender_name = session_->getCurrentUser().name;
 
-    return srv_->sendMessage(msg);
+    srv_->sendMessage(msg);
 }

@@ -1,9 +1,9 @@
 #pragma once
 
+#include "core/domain/messagestatus.h"
+
 #include <QString>
 #include <QDateTime>
-
-#include "core/domain/messagestatus.h"
 
 struct MessageItem {
     QString sender;

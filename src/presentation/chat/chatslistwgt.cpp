@@ -4,6 +4,12 @@
 #include "presentation/chat/chatdelegate.h"
 #include "mock/mockchatfactory.h"
 
+#include "chatlistmodel.h"
+
+#include <QString>
+#include <QModelIndex>
+
+
 ChatsListWgt::ChatsListWgt(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::ChatsListWgt)

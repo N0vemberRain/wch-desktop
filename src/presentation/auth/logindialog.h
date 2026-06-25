@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+#include <memory>
+
 #include "core/usecases/loginusecase.h"
 #include "core/domain/user.h"
 

@@ -1,5 +1,4 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#pragma once
 
 #include <string>
 #include <chrono>
@@ -19,5 +18,3 @@ struct Message {
 
     MessageStatus status = MessageStatus::Sent;
 };
-
-#endif // MESSAGE_H

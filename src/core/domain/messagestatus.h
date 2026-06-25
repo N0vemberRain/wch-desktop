@@ -1,10 +1,7 @@
-#ifndef MESSAGESTATUS_H
-#define MESSAGESTATUS_H
+#pragma once
 
 enum class MessageStatus {
     Pending,
     Sent,
     Failed,
 };
-
-#endif // MESSAGESTATUS_H

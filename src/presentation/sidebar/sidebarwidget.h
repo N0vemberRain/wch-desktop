@@ -1,5 +1,4 @@
-#ifndef SIDEBARWIDGET_H
-#define SIDEBARWIDGET_H
+#pragma once
 
 #include <QWidget>
 
@@ -23,4 +22,3 @@ private:
     Ui::SidebarWidget *ui;
 };
 
-#endif // SIDEBARWIDGET_H

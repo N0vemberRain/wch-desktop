@@ -2,6 +2,8 @@
 #include "ui_chatwgt.h"
 
 #include "core/domain/message.h"
+#include "core/usecases/sendmessageusecase.h"
+#include "presentation/chatwindow/chathistorymodel.h"
 #include "presentation/chatwindow/messagedelegate.h"
 #include "mock/mockchatfactory.h"
 #include "utils.h"
@@ -20,39 +22,8 @@ ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
     ui->setupUi(this);
     auto timestamp = QDateTime::currentDateTime();
 
-//    auto chat_data = MockChatFactory::create(":/mock_data/src/mock/data/chat_history1.json");
-
-//    auto chat_1 = new ChatHistoryModel{ui->view};
-//    chat_1->setChatData(std::move(chat_data));
-//    chat_1->addMessage({"Igor", "Hello, World!", timestamp, true});
-//    chat_1->addMessage({"Maria", "Hello, World!slslslsslslslsllsslawnfwnwjanlfnwalnwfalnwfalnfwalnwfalnfwalnwfalnwafllnawflnawflnawflnafwlnwf", timestamp, false});
-//    chat_1->addMessage({"Igor", "Hi! Who are you?knsdjnsjnsgns", timestamp, true});
-//    chat_1->addMessage({"Igor", "Hi! Who are you?", timestamp, false});
-//    chat_1->addMessage({"Lexa", "Hi! elfmwlmfw", timestamp, true});
-//    chat_1->addMessage({"Igor", "Hi! ,aldwdl,l,wdlwd?", timestamp, false});
-//    chat_1->addMessage({"Diana", "Hi! Wh    jnsjnsgns", timestamp, false});
-//    chat_1->addMessage({"Igor", "Hi! Who are you?", timestamp, false});
-
-//    auto chat_2 = new ChatHistoryModel{ui->view};
-//    auto chat_data2 = MockChatFactory::create(":/mock_data/src/mock/data/chat_history2.json");
-//    chat_2->setChatData(std::move(chat_data2));
-//    chat_2->addMessage({"Igor", "Hello, World!", timestamp, true});
-//    chat_2->addMessage({"Maria", "Hello, World!slslslsslslslsllsslawnfwnwjanlfnwalnwfalnwfalnfwalnwfalnfwalnwfalnwafllnawflnawflnawflnafwlnwf", timestamp, false});
-//    chat_2->addMessage({"Igor", "Hi! Who are you?knsdjnsjnsgns", timestamp, true});
-//    chat_2->addMessage({"Igor", "Hi! Who are you?", timestamp, false});
-//    chat_2->addMessage({"Lexa", "Hi! elfmwlmfw", timestamp, true});
-//    chat_2->addMessage({"Igor", "Hi! ,aldwdl,l,wdlwd?", timestamp, false});
-//    chat_2->addMessage({"Diana", "Hi! Wh    jnsjnsgns", timestamp, false});
-//    chat_2->addMessage({"Igor", "Hi! Who are you?", timestamp, false});
-
-//    chat_models_.append(chat_1);
-//    chat_models_.insert(chat_1->getID(), chat_1);
-////    chat_models_.append(chat_2);
-//    chat_models_.insert(chat_2->getID(), chat_2);
-
     auto message_delegate = new MessageDelegate{ui->view};
 
-//    ui->view->setModel(chat_1);
     ui->view->setItemDelegate(message_delegate);
     ui->view->setSelectionMode(QAbstractItemView::NoSelection);
     ui->view->setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
@@ -69,6 +40,7 @@ ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
 
 ChatWgt::~ChatWgt()
 {
+    qDeleteAll(chat_models_);
     delete ui;
 }
 
@@ -100,17 +72,11 @@ void ChatWgt::switchChat(const QString& id, const QString& name) {
     } else {
         ui->view->setModel(model);
     }
-    auto message_delegate = new MessageDelegate{ui->view};
-    ui->view->setItemDelegate(message_delegate);
 
     ui->msgEdit->clear();
     ui->msgEdit->setFocus();
 
     emit updateUnreadMessagesCount(model->getID(), 0);
-//    if (model->getUnreadCount() != 0) {
-//        model->setUnreadCount(0);
-//        emit updateUnreadMessagesCount(model->getID(), 0);
-//    }
 }
 
 void ChatWgt::isScrollBarInEnd(int value) {
@@ -118,7 +84,6 @@ void ChatWgt::isScrollBarInEnd(int value) {
     const auto bar = ui->view->verticalScrollBar();
     if (value == bar->maximum()) {
         qDebug() << "void ChatWgt::isScrollBarInEnd: value == max";
-//        emit updateUnreadMessagesCount(0);
     }
 }
 

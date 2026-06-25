@@ -1,7 +1,9 @@
-#ifndef CHATDELEGATE_H
-#define CHATDELEGATE_H
+#pragma once
 
 #include <QStyledItemDelegate>
+
+class QModelIndex;
+class QPainter;
 
 class ChatDelegate : public QStyledItemDelegate
 {
@@ -16,5 +18,3 @@ public:
     QSize sizeHint(const QStyleOptionViewItem &option,
                    const QModelIndex &index) const override;
 };
-
-#endif // CHATDELEGATE_H

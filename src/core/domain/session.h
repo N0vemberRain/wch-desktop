@@ -1,7 +1,7 @@
-#ifndef SESSION_H
-#define SESSION_H
+#pragma once
 
 #include <memory>
+#include <cassert>
 
 #include "user.h"
 
@@ -14,13 +14,13 @@ public:
         current_user_.reset(u.release());
     }
     const User& getCurrentUser() const noexcept {
+        assert(current_user_);
         return *current_user_;
     }
     const std::string& getCurrentUserID() const noexcept {
+        assert(current_user_);
         return current_user_->id;
     }
 private:
     std::unique_ptr<User> current_user_;
 };
-
-#endif // SESSION_H

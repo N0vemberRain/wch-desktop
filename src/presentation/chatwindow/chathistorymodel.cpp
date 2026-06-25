@@ -1,8 +1,10 @@
 #include "chathistorymodel.h"
 
-#include <QDebug>
-
 #include "utils.h"
+
+#include <QDebug>
+#include <QModelIndex>
+#include <QVariant>
 
 ChatHistoryModel::ChatHistoryModel(QObject *parent)
     : QAbstractListModel(parent)

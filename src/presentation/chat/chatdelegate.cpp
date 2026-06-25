@@ -1,4 +1,6 @@
 #include "chatdelegate.h"
+
+#include <QModelIndex>
 #include <QPainter>
 #include <QPainterPath>
 #include <QApplication>

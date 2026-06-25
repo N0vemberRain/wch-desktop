@@ -1,10 +1,10 @@
-#ifndef CHATSLISTWGT_H
-#define CHATSLISTWGT_H
+#pragma once
 
 #include <QWidget>
 
-#include "presentation/chat/chatlistmodel.h"
-#include "core/domain/chat.h"
+class QString;
+class QModelIndex;
+class ChatListModel;
 
 namespace Ui {
 class ChatsListWgt;
@@ -30,5 +30,3 @@ private:
 
     ChatListModel* model_;
 };
-
-#endif // CHATSLISTWGT_H

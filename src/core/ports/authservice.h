@@ -1,5 +1,4 @@
-#ifndef AUTHSERVICE_H
-#define AUTHSERVICE_H
+#pragma once
 
 #include <memory>
 #include <tuple>
@@ -16,5 +15,3 @@ public:
     virtual LoginResult login(const std::string& name,
                               const std::string& password) = 0;
 };
-
-#endif // AUTHSERVICE_H

@@ -1,10 +1,7 @@
-#ifndef LOGINUSECASE_H
-#define LOGINUSECASE_H
+#pragma once
 
 #include <string>
-#include <memory>
 
-#include "core/domain/user.h"
 #include "core/ports/authservice.h"
 
 class LoginUseCase
@@ -18,5 +15,3 @@ public:
 private:
     AuthService& auth_service_;
 };
-
-#endif // LOGINUSECASE_H

@@ -1,5 +1,4 @@
-#ifndef MESSAGEDELEGATE_H
-#define MESSAGEDELEGATE_H
+#pragma once
 
 #include <QStyledItemDelegate>
 
@@ -16,5 +15,3 @@ public:
     QSize sizeHint(const QStyleOptionViewItem &option,
                    const QModelIndex &index) const override;
 };
-
-#endif // MESSAGEDELEGATE_H

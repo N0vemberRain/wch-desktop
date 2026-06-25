@@ -1,13 +1,13 @@
-#ifndef CHATSWITCHERDIALOG_H
-#define CHATSWITCHERDIALOG_H
+#pragma once
 
 #include <QDialog>
-#include <QLineEdit>
-#include <QListView>
-#include <QSortFilterProxyModel>
-#include <QAbstractItemModel>
-#include <QModelIndex>
-#include <QEvent>
+
+class QAbstractItemModel;
+class QModelIndex;
+class QLineEdit;
+class QListView;
+class QSortFilterProxyModel;
+class QEvent;
 
 class ChatSwitcherDialog : public QDialog
 {
@@ -30,4 +30,3 @@ private:
     QSortFilterProxyModel* proxy_;
 };
 
-#endif // CHATSWITCHERDIALOG_H

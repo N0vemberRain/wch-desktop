@@ -1,14 +1,17 @@
-#ifndef CHATHISTORYMODEL_H
-#define CHATHISTORYMODEL_H
-
-#include <QAbstractListModel>
-#include <QVector>
+#pragma once
 
 #include <memory>
 
-#include "core/domain/chat.h"
-#include "core/domain/message.h"
+#include <QAbstractListModel>
+#include <QVector>
+#include <QHash>
+#include <QByteArray>
+
 #include "messageitem.h"
+#include "core/domain/chat.h"
+
+class QModelIndex;
+class QVariant;
 
 class ChatHistoryModel : public QAbstractListModel
 {
@@ -24,6 +27,7 @@ public:
     };
 
     explicit ChatHistoryModel(QObject *parent = nullptr);
+    ~ChatHistoryModel() = default;
 
     // Basic functionality:
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
@@ -52,5 +56,3 @@ private:
 
     std::unique_ptr<Chat> chat_;
 };
-
-#endif // CHATHISTORYMODEL_H

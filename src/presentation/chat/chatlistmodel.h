@@ -1,5 +1,4 @@
-#ifndef CHATLISTMODEL_H
-#define CHATLISTMODEL_H
+#pragma once
 
 #include <QAbstractListModel>
 #include <QString>
@@ -43,5 +42,3 @@ protected:
 private:
     QVector<ChatItem> items_;
 };
-
-#endif // CHATLISTMODEL_H

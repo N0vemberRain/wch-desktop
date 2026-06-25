@@ -1,5 +1,4 @@
-#ifndef USER_H
-#define USER_H
+#pragma once
 
 #include <string>
 
@@ -12,5 +11,3 @@ struct User
     std::string email;
 
 };
-
-#endif // USER_H

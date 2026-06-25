@@ -1,5 +1,4 @@
-#ifndef MSGSERVICE_H
-#define MSGSERVICE_H
+#pragma once
 
 #include <QObject>
 
@@ -11,11 +10,8 @@ class MessageService : public QObject {
 public:
     virtual ~MessageService() = default;
 
-    virtual SendMessageResult sendMessage(const Message& msg) = 0;
+    virtual void sendMessage(const Message& msg) = 0;
 
 signals:
     void requestFinished(SendMessageResult res);
 };
-
-
-#endif // MSGSERVICE_H

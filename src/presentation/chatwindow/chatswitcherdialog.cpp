@@ -1,5 +1,9 @@
 #include "chatswitcherdialog.h"
 
+#include <QLineEdit>
+#include <QListView>
+#include <QSortFilterProxyModel>
+#include <QModelIndex>
 #include <QVBoxLayout>
 #include <QKeyEvent>
 #include <QCoreApplication>

@@ -1,5 +1,4 @@
-#ifndef SENDMESSAGERESULT_H
-#define SENDMESSAGERESULT_H
+#pragma once
 
 #include <string>
 #include <optional>
@@ -12,5 +11,3 @@ struct SendMessageResult {
 
     std::optional<Message> message;
 };
-
-#endif // SENDMESSAGERESULT_H

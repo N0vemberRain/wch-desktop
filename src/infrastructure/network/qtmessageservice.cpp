@@ -1,7 +1,8 @@
 #include "qtmessageservice.h"
 
-#include <QMessageBox>
+#include <QUrl>
 
+#include <QMessageBox>
 
 QtMessageService::QtMessageService()
 {
@@ -13,15 +14,22 @@ QtMessageService::QtMessageService()
     }
 }
 
-SendMessageResult QtMessageService::sendMessage(const Message& msg) {
+void QtMessageService::sendMessage(const Message& msg) {
     msgs::v1::SendMessageRequest request;
     request.setSenderId(QString::fromStdString(msg.sender_id));
     request.setChatId(QString::fromStdString(msg.chat_id));
     request.setContent(QString::fromStdString(msg.content));
 
     auto reply = client_->SendMessage(request);
-    connect(reply.get(), &QGrpcCallReply::finished, this, [&reply, this]() {
-        auto data = reply->read<msgs::v1::MessageResponse>();
+    auto raw_reply = reply.get();
+    replies_.push_back(std::move(reply));
+    connect(raw_reply, &QGrpcCallReply::finished, this, [raw_reply, this](const QGrpcStatus& status) {
+        if (!status.isOk()) {
+            QMessageBox::warning(nullptr, "QtMessageService", status.message());
+            removeReply(raw_reply);
+            return;
+        }
+        auto data = raw_reply->read<msgs::v1::MessageResponse>();
         if (data.has_value()) {
             SendMessageResult res;
             Message msg;
@@ -29,10 +37,21 @@ SendMessageResult QtMessageService::sendMessage(const Message& msg) {
             msg.content = in_msg.content().toStdString();
             msg.chat_id = in_msg.chatId().toStdString();
             res.message = msg;
+
+            removeReply(raw_reply);
             emit requestFinished(res);
         } else {
             QMessageBox::warning(nullptr, "QtMessageService", "data is empty");
         }
+    }, Qt::SingleShotConnection);
+}
+
+void QtMessageService::removeReply(QGrpcCallReply* reply) {
+    std::erase_if(replies_, [reply](const std::unique_ptr<QGrpcCallReply>& r) {
+        if (r.get() == reply) {
+            return true;
+        }
+
+        return false;
     });
-    return {};
 }

@@ -1,14 +1,15 @@
-#ifndef CHATWGT_H
-#define CHATWGT_H
+#pragma once
 
 #include <QWidget>
-#include <QVector>
-#include <QListView>
-#include <QModelIndex>
-#include <QEvent>
+#include <QString>
+#include <QHash>
 
-#include "core/usecases/sendmessageusecase.h"
-#include "presentation/chatwindow/chathistorymodel.h"
+struct Message;
+struct SendMessageResult;
+class SendMessageUseCase;
+class ChatHistoryModel;
+
+class QEvent;
 
 namespace Ui {
 class ChatWgt;
@@ -43,9 +44,5 @@ private:
     Ui::ChatWgt *ui;
 
     QHash<QString, ChatHistoryModel*> chat_models_;
-    QListView view_;
-
     SendMessageUseCase* send_msgs_uc_;
 };
-
-#endif // CHATWGT_H

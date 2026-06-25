@@ -1,5 +1,4 @@
-#ifndef CHAT_H
-#define CHAT_H
+#pragma once
 
 #include <string>
 #include <chrono>
@@ -26,5 +25,3 @@ struct Chat {
     std::string avatar;
     std::string last_message;
 };
-
-#endif // CHAT_H
