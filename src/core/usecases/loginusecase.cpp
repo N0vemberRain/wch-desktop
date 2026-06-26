@@ -7,9 +7,20 @@ LoginUseCase::LoginUseCase(AuthService& s)
 }
 
 LoginResult LoginUseCase::execute(const std::string &name, const std::string &password) {
-    if (name.empty() || password.empty()) {
-        return {nullptr, "Empty credentials"};
+    if (name.empty()) {
+        return std::unexpected(
+            ValidationError{ValidationError::Type::EmptyLogin}
+        );
     }
 
-    return auth_service_.login(name, password);
+    if (password.empty()) {
+        return std::unexpected(
+            ValidationError{ValidationError::Type::EmptyPassword}
+        );
+    }
+
+    return auth_service_.login(name, password)
+        .transform_error([](AuthError e) {
+            return LoginError{e};
+        });
 }

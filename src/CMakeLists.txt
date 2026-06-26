@@ -47,6 +47,10 @@ add_executable(wch-desktop
     ../test.qrc
     core/domain/session.h core/domain/session.cpp
     core/domain/messagestatus.h
+    core/ports/auth_error.h
+    core/usecases/login_error.h
+    presentation/auth/login_error_text.h
+
 )
 
 target_include_directories(wch-desktop PRIVATE

@@ -5,7 +5,6 @@
 #include "core/usecases/loginusecase.h"
 #include "core/usecases/sendmessageusecase.h"
 #include "core/domain/session.h"
-#include "core/domain/user.h"
 
 #include "infrastructure/network/qtmessageservice.h"
 

@@ -1,14 +1,15 @@
 #pragma once
 
-#include <memory>
-#include <tuple>
 #include <string>
+#include <expected>
 
 #include "core/domain/user.h"
+#include "auth_error.h"
 
-using LoginResult = std::tuple<std::unique_ptr<User>, std::string>;
 
 class AuthService {
+protected:
+    using LoginResult = std::expected<User, AuthError>;
 public:
     virtual ~AuthService() = default;
 

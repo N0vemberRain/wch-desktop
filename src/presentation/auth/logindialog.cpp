@@ -1,6 +1,8 @@
 #include "logindialog.h"
 #include "ui_logindialog.h"
 
+#include "login_error_text.h"
+
 LoginDialog::LoginDialog(LoginUseCase& use_case, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginDialog),
@@ -21,17 +23,12 @@ void LoginDialog::accept() {
     const auto username = ui->loginLineEdit->text().toStdString();
     const auto password = ui->passwordLineEdit->text().toStdString();
 
-    auto [p_user, err] = login_use_case_.execute(username, password);
-    if (!err.empty()) {
-        ui->errorLabel->setText(QString::fromStdString(err));
+    auto res = login_use_case_.execute(username, password);
+    if (!res) {
+        ui->errorLabel->setText(toQString(res.error()));
         return;
     }
 
-    if (!p_user) {
-        ui->errorLabel->setText("user pointer is null");
-        return;
-    }
-
-    user_.reset(p_user.release());
+    user_= res.value();
     QDialog::accept();
 }

@@ -1,8 +1,12 @@
 #pragma once
 
 #include <string>
+#include <expected>
 
 #include "core/ports/authservice.h"
+#include "login_error.h"
+
+using LoginResult = std::expected<User, LoginError>;
 
 class LoginUseCase
 {

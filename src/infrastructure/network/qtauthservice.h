@@ -9,6 +9,6 @@ class QtAuthService : public AuthService
 public:
     QtAuthService();
 
-    LoginResult login(const std::string& name,
+    AuthService::LoginResult login(const std::string& name,
                       const std::string& password) override;
 };

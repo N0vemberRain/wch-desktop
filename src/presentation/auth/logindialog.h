@@ -3,8 +3,6 @@
 
 #include <QDialog>
 
-#include <memory>
-
 #include "core/usecases/loginusecase.h"
 #include "core/domain/user.h"
 
@@ -21,7 +19,7 @@ public:
     ~LoginDialog() override;
 
     auto getLoggedUser() noexcept {
-        return std::move(user_);
+        return user_;
     }
 public slots:
     void accept() override;
@@ -33,7 +31,7 @@ private:
     Ui::LoginDialog *ui;
 
     LoginUseCase& login_use_case_;
-    std::unique_ptr<User> user_;
+    User user_;
 };
 
 #endif // LOGINDIALOG_H
