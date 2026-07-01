@@ -21,13 +21,16 @@ set(BUILD_SHARED_LIBS OFF)
 
 qt_add_protobuf(wch_proto
     PROTO_FILES
+        api/auth/v1/auth.proto
         api/msgs/v1/msgs.proto
 )
 
 qt_add_grpc(wch_grpc CLIENT
     PROTO_FILES
+        api/auth/v1/auth.proto
         api/msgs/v1/msgs.proto
 )
+
 
 get_target_property(TYPE1 wch_proto TYPE)
 message(STATUS "wch_proto type=${TYPE1}")

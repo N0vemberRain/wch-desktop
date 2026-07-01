@@ -11,6 +11,8 @@ struct ValidationError {
     };
 
     Type type;
+
+    bool operator<=>(const ValidationError&) const = default;
 };
 
 using LoginError = std::variant<ValidationError, AuthError>;

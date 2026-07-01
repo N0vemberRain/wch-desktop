@@ -1,21 +1,25 @@
 #pragma once
 
+#include <QObject>
+
 #include <string>
 #include <expected>
 
 #include "core/ports/authservice.h"
 #include "login_error.h"
 
-using LoginResult = std::expected<User, LoginError>;
 
-class LoginUseCase
+class LoginUseCase : public QObject
 {
+    Q_OBJECT
 public:
+    using LoginResult = std::expected<Token, LoginError>;
+
     explicit LoginUseCase(AuthService& s);
 
-    LoginResult execute(const std::string& name,
-                                  const std::string& password);
-
+    void execute(const std::string& name, const std::string& password);
+signals:
+    void loginFinished(LoginUseCase::LoginResult);
 private:
     AuthService& auth_service_;
 };

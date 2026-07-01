@@ -1,6 +1,7 @@
 #pragma once
 
 #include "user.h"
+#include "token.h"
 
 class Session
 {
@@ -16,6 +17,11 @@ public:
     const std::string& getCurrentUserID() const noexcept {
         return current_user_.id;
     }
+
+    void setToken(Token t) noexcept {
+        token_ = t;
+    }
 private:
     User current_user_;
+    Token token_;
 };

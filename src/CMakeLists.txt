@@ -50,6 +50,7 @@ add_executable(wch-desktop
     core/ports/auth_error.h
     core/usecases/login_error.h
     presentation/auth/login_error_text.h
+    core/domain/token.h
 
 )
 

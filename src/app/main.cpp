@@ -28,6 +28,8 @@ int main(int argc, char *argv[])
     if (dialog.exec() == QDialog::Accepted) {
         session->setCurrentUser(dialog.getLoggedUser());
         w.show();
+    } else {
+        return 0;
     }
     return a.exec();
 }
