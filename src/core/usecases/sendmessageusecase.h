@@ -11,7 +11,7 @@ class Session;
 class SendMessageUseCase : public QObject {
     Q_OBJECT
 public:
-    explicit SendMessageUseCase(MessageService* srv, Session* s);
+    explicit SendMessageUseCase(MessageService* srv, const Session& s);
 
     void execute(Message msg);
 
@@ -20,5 +20,5 @@ signals:
 
 private:
     MessageService* srv_;
-    Session* session_;
+    const Session& session_;
 };

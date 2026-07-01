@@ -21,6 +21,9 @@ public:
     void setToken(Token t) noexcept {
         token_ = t;
     }
+    const Token& getToken() const noexcept {
+        return token_;
+    }
 private:
     User current_user_;
     Token token_;

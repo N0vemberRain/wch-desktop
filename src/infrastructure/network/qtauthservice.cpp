@@ -11,7 +11,7 @@
 QtAuthService::QtAuthService()
 {
     channel_ = std::make_shared<QGrpcHttp2Channel>(
-        QUrl{}
+        QUrl{"http://localhost:8087"}
     );
 
     client_ = std::make_unique<Client>();

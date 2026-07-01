@@ -51,6 +51,9 @@ add_executable(wch-desktop
     core/usecases/login_error.h
     presentation/auth/login_error_text.h
     core/domain/token.h
+    core/ports/session_storage.h
+    app/sessionmanager.h app/sessionmanager.cpp
+    infrastructure/utils/qtsessionstorage.h infrastructure/utils/qtsessionstorage.cpp
 
 )
 
