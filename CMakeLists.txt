@@ -23,12 +23,19 @@ qt_add_protobuf(wch_proto
     PROTO_FILES
         api/auth/v1/auth.proto
         api/msgs/v1/msgs.proto
+        api/users/v1/users.proto
 )
 
 qt_add_grpc(wch_grpc CLIENT
     PROTO_FILES
         api/auth/v1/auth.proto
         api/msgs/v1/msgs.proto
+        api/users/v1/users.proto
+)
+
+target_sources(wch_grpc
+  PRIVATE
+    api/users/v1/users.proto
 )
 
 

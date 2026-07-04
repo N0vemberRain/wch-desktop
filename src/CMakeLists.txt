@@ -54,6 +54,11 @@ add_executable(wch-desktop
     core/ports/session_storage.h
     app/sessionmanager.h app/sessionmanager.cpp
     infrastructure/utils/qtsessionstorage.h infrastructure/utils/qtsessionstorage.cpp
+    core/usecases/loadcurrentuserusecase.h core/usecases/loadcurrentuserusecase.cpp
+    core/domain/types.h
+    core/ports/users_service.h
+    core/domain/errors.h
+    infrastructure/network/qtusersservice.h infrastructure/network/qtusersservice.cpp
 
 )
 
