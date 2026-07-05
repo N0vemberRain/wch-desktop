@@ -14,6 +14,8 @@
 
 #include "core/usecases/sendmessageusecase.h"
 
+#include "app/appcontext.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -24,6 +26,7 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(SendMessageUseCase* send_msgs_uc, QWidget *parent = nullptr);
+    explicit MainWindow(AppContext& ctx, QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
@@ -44,5 +47,7 @@ private:
     MessageDelegate* message_delegate_;
 
     ChatWgt* chat_wgt_;
+
+    AppContext& ctx_;
 };
 #endif // MAINWINDOW_H

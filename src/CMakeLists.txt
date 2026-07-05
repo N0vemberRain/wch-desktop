@@ -59,6 +59,7 @@ add_executable(wch-desktop
     core/ports/users_service.h
     core/domain/errors.h
     infrastructure/network/qtusersservice.h infrastructure/network/qtusersservice.cpp
+    app/appcontext.h app/appcontext.cpp
 
 )
 

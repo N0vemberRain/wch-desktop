@@ -8,9 +8,10 @@
 #include <QShortcut>
 #include <QSplitter>
 
-MainWindow::MainWindow(SendMessageUseCase* send_msgs_uc, QWidget *parent)
+MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/AppContext& ctx, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , ctx_(ctx)
 {
     ui->setupUi(this);
 
@@ -26,7 +27,7 @@ MainWindow::MainWindow(SendMessageUseCase* send_msgs_uc, QWidget *parent)
 //    chat_delegate_ = new ChatDelegate(list_view_);
     sidebar_ = new SidebarWidget(this);
 
-    chat_wgt_ = new ChatWgt{send_msgs_uc, this};
+    chat_wgt_ = new ChatWgt{&ctx_.send_msgs_use_case, this};
 
 //    list_view_->setModel(chats_model_);
 //    list_view_->setItemDelegate(chat_delegate_);

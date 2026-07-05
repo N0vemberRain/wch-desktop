@@ -14,10 +14,10 @@ public:
 
     void execute();
 signals:
-    void loadCurrentUserFinished(UsersService::CurrentUserResult);
+    void loadCurrentUserFinished(std::expected<User, Error>);
 
 private:
-    void onLoadCurrentUserFinished(UsersService::CurrentUserResult);
+    void onLoadCurrentUserFinished(std::expected<User, Error> res);
 private:
     UsersService* srv_;
     const Session& session_;

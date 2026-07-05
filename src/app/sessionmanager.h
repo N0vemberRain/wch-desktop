@@ -17,8 +17,12 @@ public:
         assert(session_.has_value());
         return session_.value();
     }
+    Session& getSession() noexcept {
+        assert(session_.has_value());
+        return session_.value();
+    }
 
-    void setSession(Session s) noexcept {
+    void setSession(Session&& s) noexcept {
         session_ = std::move(s);
     }
 
