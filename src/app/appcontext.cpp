@@ -10,13 +10,13 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
                        std::unique_ptr<MessageService> ms,
                        std::unique_ptr<SessionStorage> ses_storage,
                        std::unique_ptr<LoginUseCase> login_use_case,
-                       SessionManager&& session_manager)
+                       SessionManager&& sm)
     :
     auth_service{std::move(as)},
     users_service{std::move(us)},
     msgs_service{std::move(ms)},
     session_storage{std::move(ses_storage)},
-    session_manager{std::move(session_manager)},
+    session_manager{std::move(sm)},
     login_use_case{std::move(login_use_case)},
     load_current_user_use_case{users_service.get(), session_manager.getSession()},
     send_msgs_use_case{msgs_service.get(), session_manager.getSession()}

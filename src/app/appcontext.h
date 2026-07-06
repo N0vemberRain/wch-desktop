@@ -32,6 +32,9 @@ public:
 
     void setupCurrentUserProfile();
 
+    SessionManager session_manager;
+    std::unique_ptr<SessionStorage> session_storage;
+
     std::unique_ptr<AuthService> auth_service;
     std::unique_ptr<UsersService> users_service;
     std::unique_ptr<MessageService> msgs_service;
@@ -40,8 +43,6 @@ public:
     LoadCurrentUserUseCase load_current_user_use_case;
     SendMessageUseCase send_msgs_use_case;
 
-    SessionManager session_manager;
-    std::unique_ptr<SessionStorage> session_storage;
 
 private slots:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
