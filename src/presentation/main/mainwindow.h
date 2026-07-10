@@ -5,12 +5,16 @@
 #include <QDockWidget>
 #include <QListView>
 #include <QString>
+#include <QResizeEvent>
+
+#include <memory>
 
 #include "presentation/sidebar/sidebarwidget.h"
 #include "presentation/chatwindow/chathistorymodel.h"
 #include "presentation/chatwindow/messagedelegate.h"
 #include "presentation/chatwindow/chatwgt.h"
 #include "presentation/chat/chatslistwgt.h"
+#include "presentation/navigation/navigationwgt.h"
 
 #include "core/usecases/sendmessageusecase.h"
 
@@ -26,14 +30,21 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(SendMessageUseCase* send_msgs_uc, QWidget *parent = nullptr);
-    explicit MainWindow(AppContext& ctx, QWidget *parent = nullptr);
+    explicit MainWindow(std::unique_ptr<AppContext> ctx, QWidget *parent = nullptr);
     ~MainWindow();
 
+    void resizeEvent(QResizeEvent* e) override;
 private slots:
     void switchToChat(const QModelIndex& index);
     void showChat(const QString& id, const QString& name);
+
+    void showNavigation();
+    void hideNavigation();
+
+    void settingsCalled();
 private:
     Ui::MainWindow *ui;
+    std::unique_ptr<AppContext> ctx_;
 
     ChatsListWgt *chats_wgt_;
 
@@ -48,6 +59,10 @@ private:
 
     ChatWgt* chat_wgt_;
 
-    AppContext& ctx_;
+
+    NavigationWgt* nav_wgt_;
+
+    int sidebar_width;
+    int navigation_width;
 };
 #endif // MAINWINDOW_H

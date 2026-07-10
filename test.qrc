@@ -8,6 +8,9 @@
         <file>icons/add.png</file>
         <file>icons/settings.png</file>
         <file>icons/load_spin.gif</file>
+        <file>icons/green_c.png</file>
+        <file>icons/red_c.png</file>
+        <file>icons/yellow_c.png</file>
     </qresource>
     <qresource prefix="/mock_data">
         <file>src/mock/data/chat_history1.json</file>

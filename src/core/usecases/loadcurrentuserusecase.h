@@ -12,7 +12,14 @@ class LoadCurrentUserUseCase : public QObject
 public:
     explicit LoadCurrentUserUseCase(UsersService* srv, const Session& s);
 
+    LoadCurrentUserUseCase(const LoadCurrentUserUseCase&) = delete;
+    LoadCurrentUserUseCase& operator=(const LoadCurrentUserUseCase&) = delete;
+
     void execute();
+
+    inline bool isRunning() const noexcept {
+        return is_running_;
+    }
 signals:
     void loadCurrentUserFinished(std::expected<User, Error>);
 
@@ -21,5 +28,7 @@ private:
 private:
     UsersService* srv_;
     const Session& session_;
+
+    bool is_running_ {false};
 };
 

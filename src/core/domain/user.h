@@ -11,5 +11,6 @@ struct User
     std::string id;
     std::string name;
     std::string email;
-
+    std::string avatar_url;
+    std::string status;
 };

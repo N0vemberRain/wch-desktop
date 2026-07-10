@@ -24,7 +24,7 @@ public:
                std::unique_ptr<SessionStorage> ses_storage,
                 std::unique_ptr<LoginUseCase> login_use_case,
                SessionManager&& session_manager);
-    ~AppContext() = default;
+    ~AppContext();
 
     bool hasSession() const noexcept {
         return session_manager.hasSession();
@@ -44,7 +44,16 @@ public:
     SendMessageUseCase send_msgs_use_case;
 
 
+    inline bool isLoading() const noexcept {
+        return is_loading_;
+    }
+
+signals:
+    void loadingFinished();
 private slots:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
+
+private:
+    bool is_loading_ {false};
 };
 

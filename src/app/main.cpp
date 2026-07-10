@@ -42,16 +42,16 @@ int main(int argc, char *argv[])
         }
     }
 
-    AppContext ctx(std::move(auth_service),
+    auto ctx = std::make_unique<AppContext>(std::move(auth_service),
                     std::make_unique<QtUsersService>(),
                     std::make_unique<QtMessageService>(),
                     std::move(session_storage),
                    std::move(login_use_case),
                    std::move(session_manager));
 
-    ctx.setupCurrentUserProfile();
+    ctx->setupCurrentUserProfile();
 
-    MainWindow w{ctx};
+    MainWindow w{std::move(ctx)};
     w.show();
 
     return a.exec();

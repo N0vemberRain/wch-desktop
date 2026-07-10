@@ -14,9 +14,14 @@ public:
     explicit SidebarWidget(QWidget *parent = nullptr);
     ~SidebarWidget();
 
+    void startLoadingIcon() noexcept;
+    void stopLoadingIcon() noexcept;
 private slots:
     void onAddGroupAction();
     void onSettingsAction();
+
+signals:
+    void settingsOpen();
 
 private:
     Ui::SidebarWidget *ui;

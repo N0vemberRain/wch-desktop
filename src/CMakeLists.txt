@@ -60,6 +60,8 @@ add_executable(wch-desktop
     core/domain/errors.h
     infrastructure/network/qtusersservice.h infrastructure/network/qtusersservice.cpp
     app/appcontext.h app/appcontext.cpp
+    presentation/navigation/navigationwgt.h presentation/navigation/navigationwgt.cpp
+    presentation/navigation/userheaderwgt.h presentation/navigation/userheaderwgt.cpp presentation/navigation/userheaderwgt.ui
 
 )
 

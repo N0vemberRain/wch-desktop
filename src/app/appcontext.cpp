@@ -29,7 +29,10 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
         this, &AppContext::onLoadCurrentUserFinished);
 }
 
+AppContext::~AppContext() = default;
+
 void AppContext::setupCurrentUserProfile() {
+    is_loading_ = true;
     load_current_user_use_case.execute();
 }
 
@@ -37,6 +40,14 @@ void AppContext::onLoadCurrentUserFinished(std::expected<User, Error> res) {
     if (res.has_value()) {
         session_manager.getSession().setCurrentUser(res.value());
     } else {
-        throw std::runtime_error{res.error().msg};
+        User u;
+        u.name = "Igor";
+        u.status = "Online";
+
+        session_manager.getSession().setCurrentUser(u);
+        // throw std::runtime_error{res.error().msg};
     }
+
+    is_loading_ = false;
+    emit loadingFinished();
 }

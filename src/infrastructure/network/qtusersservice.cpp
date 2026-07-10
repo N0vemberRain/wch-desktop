@@ -52,6 +52,7 @@ void QtUsersService::onGetUserFinished(const QGrpcStatus& status) {
         }
 
         emit loadCurrentUserFinished(std::unexpected(error));
+        return;
     }
 
     // const auto data = reply_->read<users::v1::GetUserResponse>();

@@ -4,6 +4,7 @@
 #include <QAction>
 #include <QPushButton>
 #include <QDebug>
+#include <QMovie>
 
 SidebarWidget::SidebarWidget(QWidget *parent) :
     QWidget(parent),
@@ -18,6 +19,10 @@ SidebarWidget::SidebarWidget(QWidget *parent) :
     auto open_settings_action = new QAction{QIcon{":/icons/icons/settings.png"}, "settings", this};
     connect(open_settings_action, &QAction::triggered, this, &SidebarWidget::onSettingsAction);
     ui->settingButton->setDefaultAction(open_settings_action);
+
+    auto gif = new QMovie{":/icons/icons/load_spin.gif", QByteArray{}, this};
+    ui->loadingWgt->setMovie(gif);
+    ui->loadingWgt->setScaledContents(true);
 }
 
 SidebarWidget::~SidebarWidget()
@@ -36,6 +41,15 @@ void SidebarWidget::onAddGroupAction() {
 
 void SidebarWidget::onSettingsAction() {
     qDebug() << "open settings...";
+    emit settingsOpen();
 }
 
+void SidebarWidget::startLoadingIcon() noexcept {
+    ui->loadingWgt->show();
+    ui->loadingWgt->movie()->start();
+}
 
+void SidebarWidget::stopLoadingIcon() noexcept {
+    ui->loadingWgt->movie()->stop();
+    ui->loadingWgt->hide();
+}
