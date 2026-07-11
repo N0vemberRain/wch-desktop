@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+#include "presentation/profile/profiledialog.h"
+
 #include <QPixmap>
 #include <QImageReader>
 #include <QDebug>
@@ -88,6 +90,7 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     nav_wgt_->setGeometry(-280, 0, 280, height());
     nav_wgt_->move(sidebar_->width(), 0);
     nav_wgt_->hide();
+    connect(nav_wgt_, &NavigationWgt::profileClicked, this, &MainWindow::currentUserProfileClicked);
 
     sidebar_width = sidebar_->width();
     navigation_width = nav_wgt_->width();
@@ -179,4 +182,12 @@ void MainWindow::resizeEvent(QResizeEvent* e) {
     QMainWindow::resizeEvent(e);
 
     nav_wgt_->setFixedHeight(height());
+}
+
+void MainWindow::currentUserProfileClicked() {
+    ProfileDialog dialog;
+    dialog.setUser(ctx_->session_manager.getSession().getCurrentUser());
+    if (dialog.exec() == QDialog::Accepted) {
+
+    }
 }

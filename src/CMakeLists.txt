@@ -62,6 +62,8 @@ add_executable(wch-desktop
     app/appcontext.h app/appcontext.cpp
     presentation/navigation/navigationwgt.h presentation/navigation/navigationwgt.cpp
     presentation/navigation/userheaderwgt.h presentation/navigation/userheaderwgt.cpp presentation/navigation/userheaderwgt.ui
+    presentation/profile/profiledialog.h presentation/profile/profiledialog.cpp presentation/profile/profiledialog.ui
+    presentation/profile/avatarwgt.h presentation/profile/avatarwgt.cpp
 
 )
 

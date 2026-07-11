@@ -42,6 +42,7 @@ private slots:
     void hideNavigation();
 
     void settingsCalled();
+    void currentUserProfileClicked();
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<AppContext> ctx_;
