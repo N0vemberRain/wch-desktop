@@ -4,6 +4,7 @@
 #include "infrastructure/utils/avatarprovider.h"
 
 #include <QPainter>
+#include <QPainterPath>
 #include <QStyleOptionViewItem>
 #include <QModelIndex>
 #include <QDateTime>
@@ -46,7 +47,7 @@ void MessageDelegate::paint(QPainter *painter,
     QRect textRect = fm.boundingRect(0, 0, maxWidth, 0,
                      Qt::TextWordWrap, text);
 
-    int bubbleWidth = textRect.width() + 20;
+    int bubbleWidth = avatar_size_ + textRect.width() + 20;
     int bubbleHeight = textRect.height() + 10;
 
     int yOffset = rect.top() + 5;
@@ -74,31 +75,6 @@ void MessageDelegate::paint(QPainter *painter,
     }
 
     QColor bubbleColor = outgoing ? QColor("#4287f5") : QColor("#c1e3cc");
-
-    ////////////////////////////////
-    QRect avatarRect(
-        rect.left() + 5,
-        bubbleRect.bottom() - avatar_size_,
-        avatar_size_,
-        avatar_size_);
-
-    QPixmap pix;
-    if (const auto avatar_opt = av_provider_->getImage(sender_id);
-        avatar_opt.has_value()) {
-        pix = avatar_opt.value();
-    } else {
-        pix.load(":/avatars/icons/empty_av.png");
-    }
-
-    painter->drawPixmap(
-        avatarRect,
-        pix.scaled(
-            avatar_size_,
-            avatar_size_,
-            Qt::KeepAspectRatioByExpanding,
-            Qt::SmoothTransformation));
-///////////////////////////////////////////////
-///
     // 🔹 Draw bubble
     painter->setBrush(bubbleColor);
     painter->setPen(Qt::NoPen);
@@ -106,24 +82,77 @@ void MessageDelegate::paint(QPainter *painter,
 
     int contentTop = bubbleRect.top() + 5;
 
+    ////////////////////////////////
+
+    if (!outgoing) {
+        QRect avatarRect(
+        rect.left() + 5,
+        bubbleRect.top(),
+        avatar_size_,
+        avatar_size_);
+
+        QPixmap pix;
+        if (const auto avatar_opt = av_provider_->getImage(sender_id);
+            avatar_opt.has_value()) {
+            pix = avatar_opt.value();
+        } else {
+            // pix.load(":/avatars/650957adb31f5abf7c4abccd00e2a471-153063036.jpg");
+            pix.load(":/avatars/1763883703395.jpg");
+        }
+
+        painter->save();
+
+        QPainterPath path;
+        path.addEllipse(avatarRect);
+        painter->setClipPath(path);
+
+        painter->drawPixmap(
+            avatarRect,
+            pix.scaled(
+                avatar_size_,
+                avatar_size_,
+                Qt::KeepAspectRatioByExpanding,
+                Qt::SmoothTransformation));
+        painter->restore();
+    }
+///////////////////////////////////////////////
+///
+
     // 🔹 Sender name (group chat)
     if (isGroup) {
         painter->setPen(Qt::blue);
-        painter->drawText(bubbleRect.left() + 10,
+        if (outgoing) {
+            painter->drawText(bubbleRect.left() + 5,
                   contentTop + fm.ascent(),
                   sender);
+
+        } else {
+            painter->drawText(avatar_size_ + bubbleRect.left() + 5,
+                  contentTop + fm.ascent(),
+                  sender);
+
+        }
 
         contentTop += fm.height() + 5;
     }
 
     // 🔹 Message text
     painter->setPen(Qt::black);
-    QRect messageRect(bubbleRect.left() + 10,
+    if (outgoing) {
+        QRect messageRect(bubbleRect.left() + 5,
               contentTop,
               bubbleRect.width() - 20,
               textRect.height());
 
-    painter->drawText(messageRect, Qt::TextWordWrap, text);
+        painter->drawText(messageRect, Qt::TextWordWrap, text);
+    } else {
+        QRect messageRect(avatar_size_ + bubbleRect.left() + 5,
+              contentTop,
+              bubbleRect.width() - 20,
+              textRect.height());
+
+        painter->drawText(messageRect, Qt::TextWordWrap, text);
+    }
 
     contentTop += textRect.height() + 1;
 
