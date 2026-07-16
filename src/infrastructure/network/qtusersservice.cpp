@@ -1,5 +1,6 @@
 #include "qtusersservice.h"
 
+#include "core/domain/types.h"
 #include "core/domain/errors.h"
 #include "utils.h"
 
@@ -31,34 +32,12 @@ void QtUsersService::getUser(const UserID& id) {
 }
 
 
-void QtUsersService::onGetUserFinished(const QGrpcStatus& status) {
-    Error error;
-
-    if (!status.isOk()) {
-        switch (status.code()) {
-        case QtGrpc::StatusCode::NotFound:
-            error = Error{ErrorCode::NotFound, status.message().toStdString()};
-            break;
-        case QtGrpc::StatusCode::Unauthenticated:
-            error = Error{ErrorCode::Unauthorized, status.message().toStdString()};
-            break;
-        case QtGrpc::StatusCode::PermissionDenied:
-            error = Error{ErrorCode::Forbidden, status.message().toStdString()};
-            break;
-        case QtGrpc::StatusCode::Internal:
-            error = Error{ErrorCode::ServerError, status.message().toStdString()};
-        default:
-            error = Error{ErrorCode::Unknown, status.message().toStdString()};
-        }
-
-        emit loadCurrentUserFinished(std::unexpected(error));
+void QtUsersService::onGetUserFinished(const QGrpcStatus& s) {
+    if (!s.isOk()) {
+        emit loadCurrentUserFinished(std::unexpected(errorHandle(s)));
         return;
     }
 
-    // const auto data = reply_->read<users::v1::GetUserResponse>();
-    // if (data.has_value()) {
-
-    // }
     emit loadCurrentUserFinished(to_expected(reply_->read<Response>()
         .and_then([](Response&& resp) {
             User u;
@@ -80,5 +59,82 @@ void QtUsersService::addOption(const std::string& key, const std::string& value,
     options_.addMetadata(QByteArray::fromStdString(key), bytes);
 }
 
+void QtUsersService::updateUser(const User& u) {
+    users::v1::UpdateUserRequest request;
+    users::v1::User dto;
+    dto.setUsername(QString::fromStdString(u.name));
+    dto.setAvatarUrl(QString::fromStdString(u.avatar_url));
+    dto.setEmail(QString::fromStdString(u.email));
+    dto.setId_proto(QString::fromStdString(u.id));
 
+    request.setUser(dto);
 
+    reply_ = std::move(client_->UpdateUser(request));
+
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtUsersService::onUpdateUserFinished);
+}
+
+void QtUsersService::onUpdateUserFinished(const QGrpcStatus& s) {
+    if (!s.isOk()) {
+        emit currentUserChanged(std::unexpected(errorHandle(s)));
+        return;
+    }
+
+    emit currentUserChanged(to_expected(reply_->read<Response>()
+        .and_then([](Response&& resp) {
+            User u;
+            u.id = resp.user().id_proto().toStdString();
+            u.name = resp.user().username().toStdString();
+            u.email = resp.user().email().toStdString();
+
+            return std::optional<User>(u);
+    }), Error{ErrorCode::Unknown, "Unknown Error"}));
+}
+
+Error QtUsersService::errorHandle(const QGrpcStatus& s) {
+    Error error;
+    switch (s.code()) {
+    case QtGrpc::StatusCode::NotFound:
+        error = Error{ErrorCode::NotFound, s.message().toStdString()};
+        break;
+    case QtGrpc::StatusCode::Unauthenticated:
+        error = Error{ErrorCode::Unauthorized, s.message().toStdString()};
+        break;
+    case QtGrpc::StatusCode::PermissionDenied:
+        error = Error{ErrorCode::Forbidden, s.message().toStdString()};
+        break;
+    case QtGrpc::StatusCode::Internal:
+        error = Error{ErrorCode::ServerError, s.message().toStdString()};
+    default:
+        error = Error{ErrorCode::Unknown, s.message().toStdString()};
+    }
+
+    return error;
+}
+
+void QtUsersService::requestAvatar(const UserID& user_id) {
+    users::v1::GetAvatarRequest request;
+    request.setUserId(QString::fromStdString(user_id));
+
+    reply_ = std::move(client_->GetAvatarByUserID(request));
+
+    connect(reply_.get(), &QGrpcCallReply::finished,
+            this, &QtUsersService::onGetAvatarFinished);
+}
+
+void QtUsersService::onGetAvatarFinished(const QGrpcStatus& status) {
+    if (!status.isOk()) {
+        emit getAvatarFinished(std::unexpected(errorHandle(status)));
+        return;
+    }
+
+    emit getAvatarFinished(to_expected(reply_->read<GetAvatarResponse>()
+        .and_then([](GetAvatarResponse&& resp) {
+            AvatarData data;
+            data.user_id = resp.userId().toStdString();
+            data.img_data = toBytes(resp.avatar().data());
+            data.mime_type = resp.avatar().mimeType().toStdString();
+            return std::optional<AvatarData>(data);
+    }), Error{ErrorCode::Unknown, "Unknown Error"}));
+}

@@ -34,6 +34,7 @@ QVariant ChatHistoryModel::data(const QModelIndex &index, int role) const {
     case Roles::IsOutgoingRole: return msg.is_outgoing;
     case Roles::SenderRole: return msg.sender;
     case Roles::StatusRole: return static_cast<int>(msg.status);
+    case Roles::SenderIDRole: return msg.sender_id;
     }
 
     return {};
@@ -46,6 +47,7 @@ QHash<int, QByteArray> ChatHistoryModel::roleNames() const {
         {Roles::IsOutgoingRole, "is_outgoing"},
         {Roles::SenderRole, "sender"},
         {Roles::StatusRole, "status"},
+        {Roles::SenderIDRole, "sender_id"},
     };
 }
 
@@ -91,6 +93,7 @@ void ChatHistoryModel::setChatData(std::unique_ptr<Chat> data) {
     for (const auto& msg : chat_->messages) {
         auto time = toQDateTime(msg.created_at);
         auto msg_item = MessageItem{
+            QString::fromStdString(msg.sender_id),
             QString::fromStdString(msg.sender_name),
             QString::fromStdString(msg.content),
             time,

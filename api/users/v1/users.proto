@@ -17,6 +17,11 @@ message User {
     string updated_at = 13;
 }
 
+message Avatar {
+    bytes data = 1;
+    string mime_type = 2;
+}
+
 service UsersService {
     rpc CreateUser(CreateUserRequest) returns (UserResponse);
 
@@ -29,6 +34,8 @@ service UsersService {
     rpc UpdateUser(UpdateUserRequest) returns (UserResponse);
     rpc DeleteUser(DeleteUserRequest) returns (UserResponse);
     rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
+
+    rpc GetAvatarByUserID(GetAvatarRequest) returns (GetAvatarResponse);
 }
 
 message CreateUserRequest {
@@ -82,4 +89,13 @@ message SearchUsersRequest {
 
 message SearchUsersResponse {
     repeated User users = 1;
+}
+
+message GetAvatarRequest {
+    string user_id = 1;
+}
+
+message GetAvatarResponse {
+    string user_id = 1;
+    Avatar avatar = 2;
 }

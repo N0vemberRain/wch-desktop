@@ -35,7 +35,9 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
         sidebar_->startLoadingIcon();
     }
 
-    chat_wgt_ = new ChatWgt{&ctx_->send_msgs_use_case, this};
+    chat_wgt_ = new ChatWgt{&ctx_->av_provider, &ctx_->send_msgs_use_case, this};
+    connect(ctx_.get(), &AppContext::currentUserChanged,
+            this, &MainWindow::onCurrentUserChanged);
 
 //    list_view_->setModel(chats_model_);
 //    list_view_->setItemDelegate(chat_delegate_);
@@ -117,16 +119,6 @@ void MainWindow::showChat(const QString& id, const QString& name) {
 }
 
 void MainWindow::showNavigation() {
-    // auto *animation = new QPropertyAnimation(nav_wgt_, "pos", this);
-
-    // animation->setDuration(200);
-    // nav_wgt_->move(sidebar_->width(), 0);
-    // animation->setStartValue(QPoint(-nav_wgt_->width(), 0));
-    // animation->setEndValue(QPoint(0, 0));
-
-    // nav_wgt_->show();
-    // animation->start(QAbstractAnimation::DeleteWhenStopped);
-
     auto *animation = new QPropertyAnimation(nav_wgt_, "pos", this);
 
     animation->setDuration(200);
@@ -144,18 +136,6 @@ void MainWindow::showNavigation() {
 }
 
 void MainWindow::hideNavigation() {
-    // auto *animation = new QPropertyAnimation(nav_wgt_, "pos", this);
-
-    // animation->setDuration(200);
-    // nav_wgt_->move(sidebar_->width() - nav_wgt_->width(), 0);
-    // animation->setStartValue(nav_wgt_->pos());
-    // animation->setEndValue(QPoint(-nav_wgt_->width(), 0));
-
-    // connect(animation, &QPropertyAnimation::finished,
-    //         nav_wgt_, &QWidget::hide);
-
-    // animation->start(QAbstractAnimation::DeleteWhenStopped);
-
     auto *animation = new QPropertyAnimation(nav_wgt_, "pos", this);
 
     animation->setDuration(200);
@@ -185,9 +165,14 @@ void MainWindow::resizeEvent(QResizeEvent* e) {
 }
 
 void MainWindow::currentUserProfileClicked() {
-    ProfileDialog dialog;
+    ProfileDialog dialog{ctx_->update_profile_uc};
     dialog.setUser(ctx_->session_manager.getSession().getCurrentUser());
     if (dialog.exec() == QDialog::Accepted) {
-
+        qDebug() << "ProfileDialog accepted";
     }
+}
+
+void MainWindow::onCurrentUserChanged(const User& u) {
+    chat_wgt_->onCurrentUserChanged(u);
+    nav_wgt_->setUser(u);
 }

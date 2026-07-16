@@ -7,8 +7,10 @@
 #include "core/usecases/loginusecase.h"
 #include "core/usecases/loadcurrentuserusecase.h"
 #include "core/usecases/sendmessageusecase.h"
+#include "core/usecases/updateprofileusecase.h"
 #include "app/sessionmanager.h"
 #include "core/ports/session_storage.h"
+#include "infrastructure/utils/avatarprovider.h"
 
 class AuthService;
 class UsersService;
@@ -42,6 +44,8 @@ public:
     std::unique_ptr<LoginUseCase> login_use_case;
     LoadCurrentUserUseCase load_current_user_use_case;
     SendMessageUseCase send_msgs_use_case;
+    UpdateProfileUseCase update_profile_uc;
+    AvatarProvider av_provider;
 
 
     inline bool isLoading() const noexcept {
@@ -50,6 +54,7 @@ public:
 
 signals:
     void loadingFinished();
+    void currentUserChanged(const User& u);
 private slots:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
 

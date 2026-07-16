@@ -19,7 +19,9 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     session_manager{std::move(sm)},
     login_use_case{std::move(login_use_case)},
     load_current_user_use_case{users_service.get(), session_manager.getSession()},
-    send_msgs_use_case{msgs_service.get(), session_manager.getSession()}
+    send_msgs_use_case{msgs_service.get(), session_manager.getSession()},
+    update_profile_uc{users_service.get()},
+    av_provider{*users_service.get()}
 {
     if (!session_manager.hasSession()) {
         throw std::runtime_error{"session has to be initialized before AppContext"};
@@ -27,6 +29,12 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
 
     connect(&load_current_user_use_case, &LoadCurrentUserUseCase::loadCurrentUserFinished,
         this, &AppContext::onLoadCurrentUserFinished);
+
+    connect(us.get(), &UsersService::loadCurrentUserFinished,
+            this, [this](std::expected<User, Error> res) {
+        if (res.has_value())
+            emit currentUserChanged(res.value());
+    });
 }
 
 AppContext::~AppContext() = default;

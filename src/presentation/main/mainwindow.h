@@ -43,6 +43,8 @@ private slots:
 
     void settingsCalled();
     void currentUserProfileClicked();
+
+    void onCurrentUserChanged(const User& u);
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<AppContext> ctx_;

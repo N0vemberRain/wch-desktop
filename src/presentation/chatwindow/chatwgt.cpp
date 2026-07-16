@@ -14,7 +14,7 @@
 #include <QUuid>
 #include <QKeyEvent>
 
-ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
+ChatWgt::ChatWgt(AvatarProvider* av_provider, SendMessageUseCase* send_msgs_uc, QWidget *parent) :
     QWidget(parent),
     send_msgs_uc_(send_msgs_uc),
     ui(new Ui::ChatWgt)
@@ -22,7 +22,7 @@ ChatWgt::ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent) :
     ui->setupUi(this);
     auto timestamp = QDateTime::currentDateTime();
 
-    auto message_delegate = new MessageDelegate{ui->view};
+    auto message_delegate = new MessageDelegate{av_provider, ui->view};
 
     ui->view->setItemDelegate(message_delegate);
     ui->view->setSelectionMode(QAbstractItemView::NoSelection);
@@ -111,15 +111,16 @@ void ChatWgt::requestFinished(SendMessageResult res) {
     if (res.ok) {
         auto msg = res.message.value();
         auto chat = chat_models_.find(QString::fromStdString(res.message.value().chat_id));
-        chat.value()->addMessage({"aaaaa", QString::fromStdString(msg.content), toQDateTime(msg.created_at), false});
+        // chat.value()->addMessage({"aaaaa", QString::fromStdString(msg.content), toQDateTime(msg.created_at), false});
     } else {
         QMessageBox::critical(this, "requestedFinished", QString::fromStdString(res.error));
     }
 }
 
 void ChatWgt::addMessage(const Message& msg) {
-    chat_models_.value(QString::fromStdString(msg.chat_id))->addMessage(
-        {QString::fromStdString(msg.sender_name),
+    chat_models_.value(QString::fromStdString(msg.chat_id))->addMessage({
+        QString::fromStdString(msg.sender_id),
+        QString::fromStdString(msg.sender_name),
         QString::fromStdString(msg.content),
         toQDateTime(msg.created_at),
         true,
@@ -153,4 +154,8 @@ bool ChatWgt::eventFilter(QObject* obj, QEvent* e) {
     }
 
     return QWidget::eventFilter(obj, e);
+}
+
+void ChatWgt::onCurrentUserChanged(const User& u) {
+
 }

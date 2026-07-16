@@ -1,6 +1,7 @@
 #include "messagedelegate.h"
 
 #include "core/domain/messagestatus.h"
+#include "infrastructure/utils/avatarprovider.h"
 
 #include <QPainter>
 #include <QStyleOptionViewItem>
@@ -9,8 +10,10 @@
 
 #include <QDebug>
 
-MessageDelegate::MessageDelegate(QObject* parent)
+
+MessageDelegate::MessageDelegate(AvatarProvider* provider, QObject* parent)
     : QStyledItemDelegate(parent)
+    , av_provider_(provider)
 {
 
 }
@@ -33,11 +36,12 @@ void MessageDelegate::paint(QPainter *painter,
 
     const auto status = static_cast<MessageStatus>(index.data(Qt::UserRole + 5).toInt());
 
+    const auto sender_id = index.data(Qt::UserRole + 6).toString();
+
     QRect rect = option.rect;
     int maxWidth = static_cast<int>(rect.width() * 0.6);
 
     QFontMetrics fm(option.font);
-
     // 🔹 Text rect
     QRect textRect = fm.boundingRect(0, 0, maxWidth, 0,
                      Qt::TextWordWrap, text);
@@ -71,6 +75,30 @@ void MessageDelegate::paint(QPainter *painter,
 
     QColor bubbleColor = outgoing ? QColor("#4287f5") : QColor("#c1e3cc");
 
+    ////////////////////////////////
+    QRect avatarRect(
+        rect.left() + 5,
+        bubbleRect.bottom() - avatar_size_,
+        avatar_size_,
+        avatar_size_);
+
+    QPixmap pix;
+    if (const auto avatar_opt = av_provider_->getImage(sender_id);
+        avatar_opt.has_value()) {
+        pix = avatar_opt.value();
+    } else {
+        pix.load(":/avatars/icons/empty_av.png");
+    }
+
+    painter->drawPixmap(
+        avatarRect,
+        pix.scaled(
+            avatar_size_,
+            avatar_size_,
+            Qt::KeepAspectRatioByExpanding,
+            Qt::SmoothTransformation));
+///////////////////////////////////////////////
+///
     // 🔹 Draw bubble
     painter->setBrush(bubbleColor);
     painter->setPen(Qt::NoPen);
@@ -132,8 +160,51 @@ void MessageDelegate::paint(QPainter *painter,
     painter->restore();
 }
 
+// QSize MessageDelegate::sizeHint(const QStyleOptionViewItem& option,
+//                              const QModelIndex& index) const
+// {
+//     QString text = index.data(Qt::DisplayRole).toString();
+//     bool outgoing = index.data(Qt::UserRole + 3).toBool();
+//     QString sender = index.data(Qt::UserRole + 4).toString();
+
+//     bool isGroup = !sender.isEmpty() && !outgoing;
+
+//     int maxWidth = option.rect.width() > 0
+//         ? static_cast<int>(option.rect.width() * 0.6)
+//         : 300; // fallback (important!)
+
+//     QFont font = option.font;
+//     QFontMetrics fm(font);
+
+//     // 🔹 Text height
+//     QRect textRect = fm.boundingRect(0, 0, maxWidth, 0,
+//                      Qt::TextWordWrap, text);
+
+//     int height = 10; // top padding
+
+//     // 🔹 Sender (group chat)
+//     if (isGroup) {
+//         height += fm.height() + 5;
+//     }
+
+//     // 🔹 Message text
+//     height += textRect.height();
+
+//     // 🔹 Space between text and timestamp
+//     height += 5;
+
+//     // 🔹 Timestamp
+//     height += fm.height();
+
+//     // 🔹 Bottom padding
+//     height += 10;
+
+//     return QSize(option.rect.width(), height);
+// }
+
+
 QSize MessageDelegate::sizeHint(const QStyleOptionViewItem& option,
-                             const QModelIndex& index) const
+                                const QModelIndex& index) const
 {
     QString text = index.data(Qt::DisplayRole).toString();
     bool outgoing = index.data(Qt::UserRole + 3).toBool();
@@ -142,34 +213,40 @@ QSize MessageDelegate::sizeHint(const QStyleOptionViewItem& option,
     bool isGroup = !sender.isEmpty() && !outgoing;
 
     int maxWidth = option.rect.width() > 0
-        ? static_cast<int>(option.rect.width() * 0.6)
-        : 300; // fallback (important!)
+                       ? static_cast<int>(option.rect.width() * 0.6)
+                       : 300;
 
-    QFont font = option.font;
-    QFontMetrics fm(font);
+    constexpr int TopPadding = 10;
+    constexpr int BottomPadding = 10;
+    constexpr int Spacing = 5;
+    constexpr int AvatarSize = 40;
 
-    // 🔹 Text height
-    QRect textRect = fm.boundingRect(0, 0, maxWidth, 0,
-                     Qt::TextWordWrap, text);
+    QFontMetrics fm(option.font);
 
-    int height = 10; // top padding
+    QRect textRect = fm.boundingRect(
+        0, 0,
+        maxWidth, 0,
+        Qt::TextWordWrap,
+        text);
 
-    // 🔹 Sender (group chat)
-    if (isGroup) {
-        height += fm.height() + 5;
-    }
+    // Bubble height
+    int bubbleHeight = TopPadding;
 
-    // 🔹 Message text
-    height += textRect.height();
+    if (isGroup)
+        bubbleHeight += fm.height() + Spacing;      // sender name
 
-    // 🔹 Space between text and timestamp
-    height += 5;
+    bubbleHeight += textRect.height();              // message text
+    bubbleHeight += Spacing;
+    bubbleHeight += fm.height();                    // timestamp
+    bubbleHeight += BottomPadding;
 
-    // 🔹 Timestamp
-    height += fm.height();
+    // Row height
+    int height = bubbleHeight;
 
-    // 🔹 Bottom padding
-    height += 10;
+    // Incoming messages in group chat show avatar.
+    // Ensure the row is at least as high as the avatar.
+    if (isGroup)
+        height = std::max(height, AvatarSize + TopPadding + BottomPadding);
 
     return QSize(option.rect.width(), height);
 }

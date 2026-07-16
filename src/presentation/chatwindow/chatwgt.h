@@ -6,8 +6,10 @@
 
 struct Message;
 struct SendMessageResult;
+class User;
 class SendMessageUseCase;
 class ChatHistoryModel;
+class AvatarProvider;
 
 class QEvent;
 
@@ -20,13 +22,15 @@ class ChatWgt : public QWidget
     Q_OBJECT
 
 public:
-    explicit ChatWgt(SendMessageUseCase* send_msgs_uc, QWidget *parent = nullptr);
+    explicit ChatWgt(AvatarProvider* av_provider,
+                    SendMessageUseCase* send_msgs_uc,
+                    QWidget *parent = nullptr);
     ~ChatWgt();
 
     QString getCurrentChatID() const noexcept;
 public slots:
     void switchChat(const QString& id, const QString& name);
-
+    void onCurrentUserChanged(const User& u);
 signals:
     void updateUnreadMessagesCount(const QString& chat_id, int unread);
 

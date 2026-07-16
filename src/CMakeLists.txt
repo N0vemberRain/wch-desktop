@@ -64,6 +64,8 @@ add_executable(wch-desktop
     presentation/navigation/userheaderwgt.h presentation/navigation/userheaderwgt.cpp presentation/navigation/userheaderwgt.ui
     presentation/profile/profiledialog.h presentation/profile/profiledialog.cpp presentation/profile/profiledialog.ui
     presentation/profile/avatarwgt.h presentation/profile/avatarwgt.cpp
+    core/usecases/updateprofileusecase.h core/usecases/updateprofileusecase.cpp
+    infrastructure/utils/avatarprovider.h infrastructure/utils/avatarprovider.cpp
 
 )
 
