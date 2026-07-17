@@ -36,5 +36,8 @@ private:
     Ui::ProfileDialog *ui;
 
     UpdateProfileUseCase& uc_;
+
+
+    QString new_avatar_path_;
 };
 

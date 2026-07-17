@@ -11,7 +11,7 @@ NavigationWgt::NavigationWgt(QWidget *parent)
     : QFrame(parent)
     , user_wgt_(new UserHeaderWgt(this))
 {
-    setFixedWidth(280);
+    setFixedWidth(200);
 
     // Telegram-like white panel
     setStyleSheet(R"(

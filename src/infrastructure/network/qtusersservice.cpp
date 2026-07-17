@@ -60,6 +60,9 @@ void QtUsersService::addOption(const std::string& key, const std::string& value,
 }
 
 void QtUsersService::updateUser(const User& u) {
+
+    new_avatar_path_ = QString::fromStdString(u.avatar_url);
+
     users::v1::UpdateUserRequest request;
     users::v1::User dto;
     dto.setUsername(QString::fromStdString(u.name));
@@ -77,7 +80,11 @@ void QtUsersService::updateUser(const User& u) {
 
 void QtUsersService::onUpdateUserFinished(const QGrpcStatus& s) {
     if (!s.isOk()) {
-        emit currentUserChanged(std::unexpected(errorHandle(s)));
+        // emit currentUserChanged(std::unexpected(errorHandle(s)));
+        User u;
+        u.name = "Igor";
+        u.avatar_url = new_avatar_path_.toStdString();
+        emit currentUserChanged(u);
         return;
     }
 

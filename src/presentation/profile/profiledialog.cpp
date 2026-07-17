@@ -66,6 +66,7 @@ void ProfileDialog::onAvatarClicked() {
     }
 
     ui->avatarWgt->setImage(avatar);
+    new_avatar_path_ = filename;
     emit avatarChanged(filename);
 }
 
@@ -73,6 +74,7 @@ void ProfileDialog::onSaveClicked() {
     User u;
     u.name = ui->userNameEdit->text().toStdString();
     u.email = ui->emailEdit->text().toStdString();
+    u.avatar_url = new_avatar_path_.toStdString();
 
     uc_.execute(u);
 
@@ -84,6 +86,10 @@ void ProfileDialog::onProfileChanged(std::expected<User, Error> res) {
     if (res.has_value()) {
         setUser(*res);
     } else {
+        // User u;
+        // u.name = "Igor";
+        // u.avatar_url = new_avatar_path_.toStdString();
+        // setUser(u);
         ui->errLabel->setText(QString::fromStdString(res.error().msg));
     }
 }

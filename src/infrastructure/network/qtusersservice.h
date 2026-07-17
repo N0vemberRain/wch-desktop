@@ -39,5 +39,7 @@ private:
     std::unique_ptr<QGrpcCallReply> reply_;
 
     QGrpcCallOptions options_;
+
+    QString new_avatar_path_;
 };
 

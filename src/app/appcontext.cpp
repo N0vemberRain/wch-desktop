@@ -30,7 +30,7 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     connect(&load_current_user_use_case, &LoadCurrentUserUseCase::loadCurrentUserFinished,
         this, &AppContext::onLoadCurrentUserFinished);
 
-    connect(us.get(), &UsersService::loadCurrentUserFinished,
+    connect(users_service.get(), &UsersService::currentUserChanged,
             this, [this](std::expected<User, Error> res) {
         if (res.has_value())
             emit currentUserChanged(res.value());

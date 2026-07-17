@@ -21,7 +21,18 @@ void UserHeaderWgt::setUser(const User& u) noexcept {
     ui->nameLabel->setText(QString::fromStdString(u.name));
     ui->nameLabel->setFixedHeight(50);
 
-    ui->avatarLable->setText("👤");
+    if (u.avatar_url.empty()) {
+        ui->avatarLable->setText("👤");
+    } else {
+        auto av = QPixmap{QString::fromStdString(u.avatar_url)};
+        ui->avatarLable->setPixmap(av.scaled(
+            100, 100,
+            Qt::AspectRatioMode::KeepAspectRatio,
+            Qt::TransformationMode::SmoothTransformation));
+        ui->avatarLable->setFixedSize(100, 100);
+        ui->avatarLable->setAlignment(Qt::AlignCenter | Qt::AlignRight);
+    }
+
 
     auto status_pix = QPixmap{":/icons/icons/green_c.png"};
     status_pix = status_pix.scaled(16, 16,
