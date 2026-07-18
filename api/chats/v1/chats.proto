@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package chats.v1;
+
+message Chat {
+    string id = 1;
+    string type = 2;
+    string name = 3;
+
+    string created_at = 4;
+    string updated_at = 5;
+}
+
+message ChatUser {
+    string id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+}
+
+enum ChatParticipantRole {
+    CHAT_PARTICIPANT_ROLE_UNSPECIFIED = 0;
+    CHAT_PARTICIPANT_ROLE_MEMBER = 1;
+    CHAT_PARTICIPANT_ROLE_ADMIN = 2;
+    CHAT_PARTICIPANT_ROLE_OWNER = 3;
+}
+
+message ChatParticipant {
+    string user_id = 1;
+    ChatParticipantRole role = 2;
+}
+
+service ChatsService {
+    rpc CreateChat(CreateChatRequest) returns (ChatResponse);
+    rpc GetChatByID(GetChatByIDRequest) returns (GetChatResponse);
+    rpc GetChatByName(GetChatByNameRequest) returns (GetChatResponse);
+    rpc UpdateChat(UpdateChatRequest) returns (ChatResponse);
+    rpc DeleteChat(DeleteChatRequest) returns (ChatResponse);
+    rpc GetChatsByUserID(GetChatsByUserIDRequest) returns (GetChatsResponse);
+
+    rpc AddParticipant(AddParticipantRequest) returns (ParticipantResponse);
+    rpc RemoveParticipant(RemoveParticipantRequest) returns (ParticipantResponse);
+    rpc ListParticipants(ListParticipantsRequest) returns (ListParticipantsResponse);
+    rpc CheckParticipant(CheckParticipantRequest) returns (CheckParticipantResponse);
+}
+
+message CreateChatRequest {
+    Chat chat = 1;
+}
+
+message UpdateChatRequest {
+    Chat chat = 1;
+}
+
+message DeleteChatRequest {
+    string chat_id = 1;
+}
+
+message GetChatByIDRequest {
+    string chat_id = 1;
+}
+
+message GetChatByNameRequest {
+    string name = 1;
+}
+
+message GetChatResponse {
+    Chat chat = 1;
+}
+
+message ChatResponse {
+}
+
+message GetChatsByUserIDRequest {
+    string user_id = 1;
+}
+
+message GetChatsResponse {
+    repeated Chat chats = 1;
+}
+
+message AddParticipantRequest {
+    string chat_id = 1;
+    ChatParticipant participant = 2;
+}
+
+message RemoveParticipantRequest {
+    string user_id = 1;
+    string chat_id = 2;
+}
+
+message ParticipantResponse {
+    bool ok = 1;
+}
+
+message ListParticipantsRequest {
+    string chat_id = 1;
+}
+
+message ListParticipantsResponse {
+    repeated ChatUser users = 1;
+}
+
+message CheckParticipantRequest {
+    string chat_id = 1;
+    string user_id = 2;
+}
+
+message CheckParticipantResponse {
+    bool is_participant = 1;
+    ChatParticipantRole role = 2;
+}

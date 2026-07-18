@@ -3,11 +3,12 @@
 #include "core/ports/authservice.h"
 #include "core/ports/users_service.h"
 #include "core/ports/msgservice.h"
-
+#include "core/ports/chats_service.h"
 
 AppContext::AppContext(std::unique_ptr<AuthService> as,
                        std::unique_ptr<UsersService> us,
                        std::unique_ptr<MessageService> ms,
+                       std::unique_ptr<ChatsService> cs,
                        std::unique_ptr<SessionStorage> ses_storage,
                        std::unique_ptr<LoginUseCase> login_use_case,
                        SessionManager&& sm)
@@ -15,12 +16,14 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     auth_service{std::move(as)},
     users_service{std::move(us)},
     msgs_service{std::move(ms)},
+    chats_service{std::move(cs)},
     session_storage{std::move(ses_storage)},
     session_manager{std::move(sm)},
     login_use_case{std::move(login_use_case)},
     load_current_user_use_case{users_service.get(), session_manager.getSession()},
     send_msgs_use_case{msgs_service.get(), session_manager.getSession()},
     update_profile_uc{users_service.get()},
+    load_chats_uc{chats_service.get()},
     av_provider{*users_service.get()}
 {
     if (!session_manager.hasSession()) {
@@ -35,6 +38,11 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
         if (res.has_value())
             emit currentUserChanged(res.value());
     });
+
+    connect(&load_chats_uc, &LoadChatsForCurrentUserUseCase::requestFinished,
+            this, [this](auto res) {
+        emit loadingChatsFinished(res);
+    });
 }
 
 AppContext::~AppContext() = default;
@@ -42,6 +50,7 @@ AppContext::~AppContext() = default;
 void AppContext::setupCurrentUserProfile() {
     is_loading_ = true;
     load_current_user_use_case.execute();
+    load_chats_uc.execute(session_manager.getSession().getToken().user_id);
 }
 
 void AppContext::onLoadCurrentUserFinished(std::expected<User, Error> res) {
@@ -57,5 +66,5 @@ void AppContext::onLoadCurrentUserFinished(std::expected<User, Error> res) {
     }
 
     is_loading_ = false;
-    emit loadingFinished();
+    emit loadingProfileFinished();
 }

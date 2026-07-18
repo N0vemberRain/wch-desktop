@@ -141,7 +141,7 @@ void MessageDelegate::paint(QPainter *painter,
     if (outgoing) {
         QRect messageRect(bubbleRect.left() + 5,
               contentTop,
-              bubbleRect.width() - 20,
+              bubbleRect.width()/* - 20*/,
               textRect.height());
 
         painter->drawText(messageRect, Qt::TextWordWrap, text);

@@ -45,6 +45,8 @@ private slots:
     void currentUserProfileClicked();
 
     void onCurrentUserChanged(const User& u);
+
+    void onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res);
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<AppContext> ctx_;
@@ -67,5 +69,8 @@ private:
 
     int sidebar_width;
     int navigation_width;
+
+    bool is_profile_loaded_ {false};
+    bool is_chats_loaded_ {false};
 };
 #endif // MAINWINDOW_H

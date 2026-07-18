@@ -11,6 +11,7 @@
 #include <QSplitter>
 #include <QAbstractAnimation>
 #include <QPropertyAnimation>
+#include <QMessageBox>
 
 MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppContext> ctx, QWidget *parent)
     : QMainWindow(parent)
@@ -53,17 +54,6 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     QPixmap p2(":/avatars/b9cb7bcf741565f868e468fcfcfcf3dd.jpg");
     qDebug() << "p2: " << (p2.isNull() ? "null" : "not null");
 
-//    const auto chats = MockChatFactory::getChatList(":/mock_data/src/mock/data/chats_list.json");
-//    chats_model_->addChat({"Igor", "Hello!", 1, p1});
-//    chats_model_->addChat({"Lisa", "Hi!", 3, p2});
-//    for (const auto& chat : chats) {
-//        chats_model_->addChat({QString::fromStdString(chat.name),
-//                               QString::fromStdString(chat.last_message),
-//                               chat.unread_count,
-//                               QString::fromStdString(chat.avatar),
-//                               QString::fromStdString(chat.id)});
-//    }
-
     splitter->addWidget(chat_wgt_);
     splitter->setStretchFactor(0, 0);
     splitter->setStretchFactor(1, 1);
@@ -73,15 +63,6 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     layout->setContentsMargins(3,3,3,3);
     layout->addWidget(splitter);
 
-
-//    auto chat_switcher_shortcut = new QShortcut{QKeySequence{"Ctrl+K"}, this};
-//    connect(chat_switcher_shortcut, &QShortcut::activated, this, [this]() {
-//        ChatSwitcherDialog dialog{chats_model_, this};
-
-//        connect(&dialog, &ChatSwitcherDialog::chatSelected, this, &MainWindow::switchToChat);
-
-//        dialog.exec();
-//    });
 
     connect(chats_wgt_, &ChatsListWgt::showChat, this, &MainWindow::showChat);
     connect(chat_wgt_, &ChatWgt::updateUnreadMessagesCount,
@@ -98,10 +79,16 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     navigation_width = nav_wgt_->width();
     connect(sidebar_, &SidebarWidget::settingsOpen, this, &MainWindow::settingsCalled);
 
-    connect(ctx_.get(), &AppContext::loadingFinished, this, [this](){
-        sidebar_->stopLoadingIcon();
+    connect(ctx_.get(), &AppContext::loadingProfileFinished, this, [this](){
+        // sidebar_->stopLoadingIcon();
         nav_wgt_->setUser(ctx_->session_manager.getSession().getCurrentUser());
+        is_profile_loaded_ = true;
+        if (is_chats_loaded_) {
+            sidebar_->stopLoadingIcon();
+        }
     });
+    connect(ctx_.get(), &AppContext::loadingChatsFinished, this,
+            &MainWindow::onLoadingChatsFinished);
 }
 
 MainWindow::~MainWindow()
@@ -175,4 +162,19 @@ void MainWindow::currentUserProfileClicked() {
 void MainWindow::onCurrentUserChanged(const User& u) {
     chat_wgt_->onCurrentUserChanged(u);
     nav_wgt_->setUser(u);
+}
+
+void MainWindow::onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res) {
+    if (!res.has_value()) {
+        QMessageBox::critical(nullptr, "Load chats",
+            QString::fromStdString(res.error().msg));
+
+        return;
+    }
+
+    chats_wgt_->addChats(res.value());
+    is_chats_loaded_ = true;
+    if (is_profile_loaded_) {
+        sidebar_->stopLoadingIcon();
+    }
 }

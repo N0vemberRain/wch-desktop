@@ -14,6 +14,16 @@ struct Chat {
         Group,
     };
 
+    Chat() = default;
+    Chat(Chat&&) noexcept = default;
+    Chat& operator=(Chat&&) noexcept = default;
+
+    Chat(const Chat&) = default;
+    Chat& operator=(const Chat&) = default;
+
+    bool operator==(const Chat&) const = default;
+
+
     std::string id;
     std::string name;
     int unread_count;

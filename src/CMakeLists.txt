@@ -66,6 +66,9 @@ add_executable(wch-desktop
     presentation/profile/avatarwgt.h presentation/profile/avatarwgt.cpp
     core/usecases/updateprofileusecase.h core/usecases/updateprofileusecase.cpp
     infrastructure/utils/avatarprovider.h infrastructure/utils/avatarprovider.cpp
+    core/ports/chats_service.h
+    infrastructure/network/qtchatsservice.h infrastructure/network/qtchatsservice.cpp
+    core/usecases/loadchatsforcurrentuserusecase.h core/usecases/loadchatsforcurrentuserusecase.cpp
 
 )
 

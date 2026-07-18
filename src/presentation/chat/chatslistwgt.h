@@ -2,6 +2,10 @@
 
 #include <QWidget>
 
+#include <list>
+
+#include "core/domain/chat.h"
+
 class QString;
 class QModelIndex;
 class ChatListModel;
@@ -18,6 +22,7 @@ public:
     explicit ChatsListWgt(QWidget *parent = nullptr);
     ~ChatsListWgt();
 
+    void addChats(std::list<Chat> chats);
 public slots:
     void updateUnreadMessagesCount(const QString& chat_id, int unread);
 private slots:

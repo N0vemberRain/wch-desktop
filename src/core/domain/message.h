@@ -8,6 +8,15 @@
 using TimePoint = std::chrono::system_clock::time_point;
 
 struct Message {
+    Message() = default;
+    Message(Message&&) noexcept = default;
+    Message& operator=(Message&&) noexcept = default;
+
+    Message(const Message&) = default;
+    Message& operator=(const Message&) = default;
+
+    bool operator==(const Message&) const = default;
+
     std::string id;
     std::string chat_id;
     std::string sender_id;

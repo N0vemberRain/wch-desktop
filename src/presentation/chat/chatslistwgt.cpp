@@ -2,7 +2,7 @@
 #include "ui_chatslistwgt.h"
 
 #include "presentation/chat/chatdelegate.h"
-#include "mock/mockchatfactory.h"
+// #include "mock/mockchatfactory.h"
 
 #include "chatlistmodel.h"
 
@@ -20,14 +20,14 @@ ChatsListWgt::ChatsListWgt(QWidget *parent) :
     auto delegate = new ChatDelegate{ui->listView};
 
 
-    const auto chats = MockChatFactory::getChatList(":/mock_data/src/mock/data/chats_list.json");
-    for (const auto& chat : chats) {
-        model_->addChat({QString::fromStdString(chat.name),
-                               QString::fromStdString(chat.last_message),
-                               chat.unread_count,
-                               QString::fromStdString(chat.avatar),
-                               QString::fromStdString(chat.id)});
-    }
+    // const auto chats = MockChatFactory::getChatList(":/mock_data/src/mock/data/chats_list.json");
+    // for (const auto& chat : chats) {
+    //     model_->addChat({QString::fromStdString(chat.name),
+    //                            QString::fromStdString(chat.last_message),
+    //                            chat.unread_count,
+    //                            QString::fromStdString(chat.avatar),
+    //                            QString::fromStdString(chat.id)});
+    // }
 
     ui->listView->setModel(model_);
     ui->listView->setItemDelegate(delegate);
@@ -50,4 +50,16 @@ void ChatsListWgt::onItemClicked(const QModelIndex& index) {
 
 void ChatsListWgt::updateUnreadMessagesCount(const QString& chat_id, int unread) {
     model_->setUnreadMessagesCount(chat_id, unread);
+}
+
+void ChatsListWgt::addChats(std::list<Chat> chats) {
+    for (auto&& c : chats) {
+        model_->addChat({
+            QString::fromStdString(c.name),
+            QString::fromStdString(c.last_message),
+            c.unread_count,
+            QString::fromStdString(c.avatar),
+            QString::fromStdString(c.id)
+        });
+    }
 }

@@ -12,6 +12,7 @@
 
 #include "infrastructure/network/qtmessageservice.h"
 #include "infrastructure/network/qtusersservice.h"
+#include "infrastructure/network/qtchatsservice.h"
 #include "infrastructure/utils/qtsessionstorage.h"
 
 #include <QApplication>
@@ -43,11 +44,12 @@ int main(int argc, char *argv[])
     }
 
     auto ctx = std::make_unique<AppContext>(std::move(auth_service),
-                    std::make_unique<QtUsersService>(),
-                    std::make_unique<QtMessageService>(),
-                    std::move(session_storage),
-                   std::move(login_use_case),
-                   std::move(session_manager));
+                                            std::make_unique<QtUsersService>(),
+                                            std::make_unique<QtMessageService>(),
+                                            std::make_unique<QtChatsService>(),
+                                            std::move(session_storage),
+                                            std::move(login_use_case),
+                                            std::move(session_manager));
 
     ctx->setupCurrentUserProfile();
 
