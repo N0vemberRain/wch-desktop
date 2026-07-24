@@ -5,6 +5,7 @@
 class QPushButton;
 class UserHeaderWgt;
 class User;
+class AvatarData;
 
 class NavigationWgt : public QFrame
 {
@@ -13,6 +14,9 @@ public:
     explicit NavigationWgt(QWidget* parent = nullptr);
 
     void setUser(const User& u) noexcept;
+
+public slots:
+    void setAvatar(QPixmap img) noexcept;
 signals:
     void profileClicked();
     void settingsClicked();

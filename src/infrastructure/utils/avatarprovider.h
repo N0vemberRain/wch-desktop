@@ -5,7 +5,6 @@
 #include <QHash>
 #include <QSet>
 
-#include <string>
 #include <expected>
 
 #include "core/domain/types.h"
@@ -19,9 +18,11 @@ class AvatarProvider : public QObject
 public:
     explicit AvatarProvider(UsersService& srv, QObject* parent = nullptr);
 
-    const QPixmap& getImage(const std::string& user_id) const;
+    // const QPixmap& getImage(const std::string& user_id) const;
     std::optional<QPixmap> getImage(const QString& user_id);
 
+    void updateImage(const QString& user_id, const QString& av_url);
+    QPixmap addImage(const QString& user_id, const QByteArray& img_data);
 private slots:
     void onGetAvatarFinished(std::expected<AvatarData, Error> res);
 
@@ -29,6 +30,8 @@ signals:
     void getAvatarFinished(const AvatarData& data);
 
 private:
+    void save(const QString& user_id, QPixmap pix);
+
     UsersService& srv_;
 
     QHash<QString, QPixmap> memory_cache_;

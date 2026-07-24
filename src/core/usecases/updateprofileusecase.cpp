@@ -14,3 +14,10 @@ UpdateProfileUseCase::UpdateProfileUseCase(UsersService* srv)
 void UpdateProfileUseCase::execute(const User& u) {
     srv_->updateUser(u);
 }
+
+void UpdateProfileUseCase::execute(
+    const User& u,
+    const std::vector<std::byte>& av_data)
+{
+    srv_->updateUser(u, av_data);
+}

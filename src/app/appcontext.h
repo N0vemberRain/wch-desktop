@@ -60,11 +60,12 @@ public:
 
 signals:
     void loadingProfileFinished();
+    void loadingAvatarFinished(QPixmap img);
     void loadingChatsFinished(std::expected<std::list<Chat>, Error>);
     void currentUserChanged(const User& u);
 private slots:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
-
+    void onLoadAvatarFinished(std::expected<AvatarData, Error> res);
 private:
     bool is_loading_ {false};
 };

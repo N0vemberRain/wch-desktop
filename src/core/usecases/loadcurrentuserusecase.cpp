@@ -12,14 +12,23 @@ LoadCurrentUserUseCase::LoadCurrentUserUseCase(UsersService* srv, const Session&
     srv_->addOption("authorization", session_.getToken().value, "Bearer");
     connect(srv_, &UsersService::loadCurrentUserFinished, this,
             &LoadCurrentUserUseCase::onLoadCurrentUserFinished);
+    connect(srv_, &UsersService::getAvatarFinished, this,
+            &LoadCurrentUserUseCase::onGetAvatarFinished);
 }
 
 void LoadCurrentUserUseCase::execute() {
     assert(srv_);
     assert(!session_.getToken().user_id.empty());
     srv_->getUser(session_.getToken().user_id);
+    // srv_->requestAvatar(session_.getToken().user_id);
 }
 
 void LoadCurrentUserUseCase::onLoadCurrentUserFinished(UsersService::CurrentUserResult res) {
     emit loadCurrentUserFinished(res);
+
+    srv_->requestAvatar(session_.getToken().user_id);
+}
+
+void LoadCurrentUserUseCase::onGetAvatarFinished(std::expected<AvatarData, Error> res) {
+    emit loadAvatarFinished(res);
 }

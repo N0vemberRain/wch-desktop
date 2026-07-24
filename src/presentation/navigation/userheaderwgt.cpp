@@ -25,12 +25,7 @@ void UserHeaderWgt::setUser(const User& u) noexcept {
         ui->avatarLable->setText("👤");
     } else {
         auto av = QPixmap{QString::fromStdString(u.avatar_url)};
-        ui->avatarLable->setPixmap(av.scaled(
-            100, 100,
-            Qt::AspectRatioMode::KeepAspectRatio,
-            Qt::TransformationMode::SmoothTransformation));
-        ui->avatarLable->setFixedSize(100, 100);
-        ui->avatarLable->setAlignment(Qt::AlignCenter | Qt::AlignRight);
+        setAvatar(av);
     }
 
 
@@ -44,4 +39,13 @@ void UserHeaderWgt::setUser(const User& u) noexcept {
     // );
     ui->statusLabel->setFixedWidth(30);
     ui->statusLabel->setAlignment(Qt::AlignCenter | Qt::AlignRight);
+}
+
+void UserHeaderWgt::setAvatar(QPixmap img) {
+    ui->avatarLable->setPixmap(img.scaled(
+        100, 100,
+        Qt::AspectRatioMode::KeepAspectRatio,
+        Qt::TransformationMode::SmoothTransformation));
+    ui->avatarLable->setFixedSize(100, 100);
+    ui->avatarLable->setAlignment(Qt::AlignCenter | Qt::AlignRight);
 }

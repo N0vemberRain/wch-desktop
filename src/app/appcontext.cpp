@@ -4,6 +4,7 @@
 #include "core/ports/users_service.h"
 #include "core/ports/msgservice.h"
 #include "core/ports/chats_service.h"
+#include "utils.h"
 
 AppContext::AppContext(std::unique_ptr<AuthService> as,
                        std::unique_ptr<UsersService> us,
@@ -32,6 +33,8 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
 
     connect(&load_current_user_use_case, &LoadCurrentUserUseCase::loadCurrentUserFinished,
         this, &AppContext::onLoadCurrentUserFinished);
+    connect(&load_current_user_use_case, &LoadCurrentUserUseCase::loadAvatarFinished,
+            this, &AppContext::onLoadAvatarFinished);
 
     connect(users_service.get(), &UsersService::currentUserChanged,
             this, [this](std::expected<User, Error> res) {
@@ -67,4 +70,13 @@ void AppContext::onLoadCurrentUserFinished(std::expected<User, Error> res) {
 
     is_loading_ = false;
     emit loadingProfileFinished();
+}
+
+void AppContext::onLoadAvatarFinished(std::expected<AvatarData, Error> res) {
+    if (!res.has_value())
+        return;
+
+    auto new_av = av_provider.addImage(QString::fromStdString(res.value().user_id),
+                            toQByteArray(res.value().img_data));
+    emit loadingAvatarFinished(new_av);
 }

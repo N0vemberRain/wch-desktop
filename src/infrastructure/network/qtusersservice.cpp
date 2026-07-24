@@ -72,7 +72,29 @@ void QtUsersService::updateUser(const User& u) {
 
     request.setUser(dto);
 
-    reply_ = std::move(client_->UpdateUser(request));
+    reply_ = std::move(client_->UpdateUser(request, options_));
+
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtUsersService::onUpdateUserFinished);
+}
+
+void QtUsersService::updateUser(const User& u, const std::vector<std::byte>& av_data) {
+    new_avatar_path_ = QString::fromStdString(u.avatar_url);
+
+    users::v1::UpdateUserRequest request;
+    users::v1::User dto;
+    dto.setUsername(QString::fromStdString(u.name));
+    dto.setAvatarUrl(QString::fromStdString(u.avatar_url));
+    dto.setEmail(QString::fromStdString(u.email));
+    dto.setId_proto(QString::fromStdString(u.id));
+    request.setUser(dto);
+
+    users::v1::Avatar av_dto;
+    av_dto.setData(toQByteArray(av_data));
+    av_dto.setMimeType("PNG");
+    request.setAvatar(av_dto);
+
+    reply_ = std::move(client_->UpdateUser(request, options_));
 
     connect(reply_.get(), &QGrpcCallReply::finished, this,
             &QtUsersService::onUpdateUserFinished);
@@ -80,11 +102,11 @@ void QtUsersService::updateUser(const User& u) {
 
 void QtUsersService::onUpdateUserFinished(const QGrpcStatus& s) {
     if (!s.isOk()) {
-        // emit currentUserChanged(std::unexpected(errorHandle(s)));
-        User u;
-        u.name = "Igor";
-        u.avatar_url = new_avatar_path_.toStdString();
-        emit currentUserChanged(u);
+        emit currentUserChanged(std::unexpected(errorHandle(s)));
+        // User u;
+        // u.name = "Igor";
+        // u.avatar_url = new_avatar_path_.toStdString();
+        // emit currentUserChanged(u);
         return;
     }
 
@@ -124,7 +146,7 @@ void QtUsersService::requestAvatar(const UserID& user_id) {
     users::v1::GetAvatarRequest request;
     request.setUserId(QString::fromStdString(user_id));
 
-    reply_ = std::move(client_->GetAvatarByUserID(request));
+    reply_ = std::move(client_->GetAvatarForUser(request, options_));
 
     connect(reply_.get(), &QGrpcCallReply::finished,
             this, &QtUsersService::onGetAvatarFinished);

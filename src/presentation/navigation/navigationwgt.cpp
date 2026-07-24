@@ -1,6 +1,7 @@
 #include "navigationwgt.h"
 
 #include "core/domain/user.h"
+#include "core/domain/types.h"
 #include "presentation/navigation/userheaderwgt.h"
 
 #include <QLabel>
@@ -62,4 +63,8 @@ NavigationWgt::NavigationWgt(QWidget *parent)
 
 void NavigationWgt::setUser(const User& u) noexcept {
     user_wgt_->setUser(u);
+}
+
+void NavigationWgt::setAvatar(QPixmap img) noexcept {
+    user_wgt_->setAvatar(img);
 }

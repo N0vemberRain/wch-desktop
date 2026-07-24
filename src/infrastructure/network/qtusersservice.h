@@ -21,6 +21,7 @@ public:
 
     void getUser(const UserID& user_id) override;
     void updateUser(const User& u) override;
+    void updateUser(const User& u, const std::vector<std::byte>& avatar_bytes) override;
     void addOption(const std::string& key, const std::string& value, const std::string& key_param="") override;
     void requestAvatar(const UserID& user_id) override;
 private slots:

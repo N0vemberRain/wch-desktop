@@ -10,7 +10,7 @@ public:
     explicit AvatarWgt(QWidget *parent = nullptr);
 
     void setImage(const QPixmap& img) noexcept;
-    const QPixmap& image() const noexcept {
+    QPixmap image() const noexcept {
         return img_;
     }
 

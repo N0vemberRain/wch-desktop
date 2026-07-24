@@ -87,6 +87,7 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
             sidebar_->stopLoadingIcon();
         }
     });
+    connect(ctx_.get(), &AppContext::loadingAvatarFinished, nav_wgt_, &NavigationWgt::setAvatar);
     connect(ctx_.get(), &AppContext::loadingChatsFinished, this,
             &MainWindow::onLoadingChatsFinished);
 }
@@ -154,6 +155,12 @@ void MainWindow::resizeEvent(QResizeEvent* e) {
 void MainWindow::currentUserProfileClicked() {
     ProfileDialog dialog{ctx_->update_profile_uc};
     dialog.setUser(ctx_->session_manager.getSession().getCurrentUser());
+    auto img_opt = ctx_->av_provider.getImage(
+        QString::fromStdString(ctx_->session_manager.getSession().getCurrentUserID()));
+    if (img_opt.has_value()) {
+        dialog.setAvatar(img_opt.value());
+    }
+
     if (dialog.exec() == QDialog::Accepted) {
         qDebug() << "ProfileDialog accepted";
     }
@@ -162,6 +169,8 @@ void MainWindow::currentUserProfileClicked() {
 void MainWindow::onCurrentUserChanged(const User& u) {
     chat_wgt_->onCurrentUserChanged(u);
     nav_wgt_->setUser(u);
+
+    ctx_->av_provider.updateImage(QString::fromStdString(u.id), QString::fromStdString(u.avatar_url));
 }
 
 void MainWindow::onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res) {

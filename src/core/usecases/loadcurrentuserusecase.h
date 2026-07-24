@@ -22,9 +22,10 @@ public:
     }
 signals:
     void loadCurrentUserFinished(std::expected<User, Error>);
-
+    void loadAvatarFinished(std::expected<AvatarData, Error>);
 private:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
+    void onGetAvatarFinished(std::expected<AvatarData, Error> res);
 private:
     UsersService* srv_;
     const Session& session_;

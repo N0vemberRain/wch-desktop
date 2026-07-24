@@ -4,12 +4,14 @@
 #include "core/domain/user.h"
 #include "core/usecases/updateprofileusecase.h"
 #include "presentation/profile/avatarwgt.h"
+#include "utils.h"
 
 #include <QPixmap>
 #include <QFileDialog>
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QMovie>
+#include <QBuffer>
 
 ProfileDialog::ProfileDialog(UpdateProfileUseCase& uc, QWidget *parent)
     : QDialog(parent)
@@ -43,9 +45,10 @@ void ProfileDialog::setUser(const User& u) noexcept {
     ui->displayNameEdit->setText(QString::fromStdString(u.name));
     ui->emailEdit->setText(QString::fromStdString(u.email));
     ui->userNameEdit->setText(QString::fromStdString(u.name));
+}
 
-    QPixmap avatar{QString::fromStdString(u.avatar_url)};
-    ui->avatarWgt->setImage(avatar);
+void ProfileDialog::setAvatar(QPixmap img) noexcept {
+    ui->avatarWgt->setImage(img);
 }
 
 void ProfileDialog::onAvatarClicked() {
@@ -76,7 +79,14 @@ void ProfileDialog::onSaveClicked() {
     u.email = ui->emailEdit->text().toStdString();
     u.avatar_url = new_avatar_path_.toStdString();
 
-    uc_.execute(u);
+    const auto img = ui->avatarWgt->image();
+
+    QBuffer buffer;
+    buffer.open(QIODevice::WriteOnly);
+
+    img.save(&buffer, "PNG");
+
+    uc_.execute(u, toBytes(buffer.data()));
 
     startLoadAnim();
 }
@@ -85,6 +95,7 @@ void ProfileDialog::onProfileChanged(std::expected<User, Error> res) {
     stopLoadAnim();
     if (res.has_value()) {
         setUser(*res);
+        ui->errLabel->setText("Changes have been saved");
     } else {
         // User u;
         // u.name = "Igor";

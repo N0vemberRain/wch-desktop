@@ -22,6 +22,7 @@ public:
     ~ProfileDialog();
 
     void setUser(const User& u) noexcept;
+    void setAvatar(QPixmap img) noexcept;
 
 signals:
     void avatarChanged(const QString& filename);

@@ -17,6 +17,7 @@ public:
     ~UserHeaderWgt();
 
     void setUser(const User& u) noexcept;
+    void setAvatar(QPixmap img);
 private:
     Ui::UserHeaderWgt *ui;
 

@@ -1,8 +1,11 @@
 #include "avatarprovider.h"
 
 #include "core/ports/users_service.h"
+#include "utils.h"
 
 #include <QStandardPaths>
+#include <QFileInfo>
+#include <QDir>
 
 AvatarProvider::AvatarProvider(UsersService& srv, QObject* parent)
     : QObject(parent)
@@ -10,6 +13,15 @@ AvatarProvider::AvatarProvider(UsersService& srv, QObject* parent)
 {
     cache_path_ = QStandardPaths::writableLocation(
         QStandardPaths::CacheLocation) + "/avatars";
+
+    QDir cache_dir{cache_path_};
+    if (!cache_dir.exists()) {
+        if (!cache_dir.mkpath(".")) {
+            throw std::runtime_error{
+                "AvatarProvider: Can't create cache directory"
+            };
+        }
+    }
 
     connect(&srv_, &UsersService::getAvatarFinished, this,
             &AvatarProvider::onGetAvatarFinished);
@@ -20,7 +32,7 @@ std::optional<QPixmap> AvatarProvider::getImage(const QString& user_id) {
         return it.value();
     }
 
-    const auto path = cache_path_ + user_id + ".png";
+    const auto path = cache_path_ + "/" + user_id + ".png";
     QPixmap pix;
     if (pix.load(path)) {
         memory_cache_.insert(user_id, pix);
@@ -37,6 +49,44 @@ std::optional<QPixmap> AvatarProvider::getImage(const QString& user_id) {
 
 void AvatarProvider::onGetAvatarFinished(std::expected<AvatarData, Error> res) {
     if (res.has_value()) {
+        QPixmap pix;
+        pix.loadFromData(toQByteArray(res.value().img_data));
+        memory_cache_.insert(QString::fromStdString(res.value().user_id), pix);
+        pix.save(cache_path_ + "/" + QString::fromStdString(res.value().user_id) + ".png", "PNG");
+
         emit getAvatarFinished(res.value());
+    }
+}
+
+void AvatarProvider::updateImage(const QString& user_id, const QString& av_url) {
+    QPixmap new_av;
+    if(!new_av.load(av_url)) {
+        throw std::runtime_error{
+            "AvatarProvider:updateImage: can't load image from file " +
+            av_url.toStdString()};
+    }
+
+    memory_cache_[user_id] = new_av;
+    save(user_id, new_av);
+}
+
+QPixmap AvatarProvider::addImage(const QString& user_id, const QByteArray& img_data) {
+    QPixmap pix;
+    if (!pix.loadFromData(img_data, "PNG")) {
+        throw std::runtime_error{"AvatarProvider::addImage: can't crate a new avatar from data"};
+    }
+
+    memory_cache_[user_id] = pix;
+    save(user_id, pix);
+
+    return pix;
+}
+
+void AvatarProvider::save(const QString& user_id, QPixmap pix) {
+    const auto filename = cache_path_ + "/" + user_id + ".png";
+    if (!pix.save(filename, "PNG")) {
+        throw std::runtime_error{
+            "AvatartProvider:updateImage: can't save image on disk " +
+            filename.toStdString()};
     }
 }
