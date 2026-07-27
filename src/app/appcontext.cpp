@@ -46,6 +46,10 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
             this, [this](auto res) {
         emit loadingChatsFinished(res);
     });
+
+    chats_service->addOption("authorization",
+                             session_manager.getSession().getToken().value,
+                             "Bearer");
 }
 
 AppContext::~AppContext() = default;

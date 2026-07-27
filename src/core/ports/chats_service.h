@@ -15,7 +15,9 @@ public:
     virtual ~ChatsService() = default;
 
     virtual void getChatsList(const UserID& id) = 0;
-
+    virtual void addOption(const std::string& key,
+                           const std::string& value,
+                           const std::string& key_param="") = 0;
 signals:
     void getChatsListFinished(std::expected<std::list<Chat>, Error>);
 };

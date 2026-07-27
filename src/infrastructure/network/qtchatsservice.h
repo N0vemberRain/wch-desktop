@@ -21,13 +21,16 @@ public:
 
     void getChatsList(const UserID& id) override;
 
+    void addOption(const std::string& key,
+                   const std::string& value,
+                   const std::string& key_param="") override;
 private slots:
     void onGetChatsListFinished(const QGrpcStatus& s);
 
 private:
     Error errorHandle(const QGrpcStatus& s);
 
-    using GetChatsResponse = chats::v1::GetChatsResponse;
+    using GetChatsResponse = chats::v1::ListChatsForUserResponse;
     using Client = chats::v1::ChatsService::Client;
 
     std::shared_ptr<QGrpcHttp2Channel> channel_;

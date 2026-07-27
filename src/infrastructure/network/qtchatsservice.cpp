@@ -1,7 +1,7 @@
 #include "qtchatsservice.h"
 
 #include "utils.h"
-#include "mock/mockchatfactory.h"
+// #include "mock/mockchatfactory.h"
 
 #include <QUrl>
 #include <QGrpcHttp2Channel>
@@ -19,26 +19,36 @@ QtChatsService::QtChatsService() {
     }
 }
 
+void QtChatsService::addOption(const std::string& key, const std::string& value, const std::string& value_param) {
+    QByteArray bytes;
+    if (value_param.empty()) {
+        bytes = QByteArray::fromStdString(value);
+    } else {
+        bytes = QByteArray::fromStdString(value_param + " " + value);
+    }
+    options_.addMetadata(QByteArray::fromStdString(key), bytes);
+}
+
 void QtChatsService::getChatsList(const UserID& id) {
-    chats::v1::GetChatsByUserIDRequest request;
+    chats::v1::ListChatsForUserRequest request;
     request.setUserId(QString::fromStdString(id));
 
-    reply_ = std::move(client_->GetChatsByUserID(request));
+    reply_ = std::move(client_->ListChatsForUser(request, options_));
     connect(reply_.get(), &QGrpcCallReply::finished, this,
             &QtChatsService::onGetChatsListFinished);
 }
 
 void QtChatsService::onGetChatsListFinished(const QGrpcStatus& s) {
     if (!s.isOk()) {
-        // emit getChatsListFinished(std::unexpected(errorHandle(s)));
-        // return;
+        emit getChatsListFinished(std::unexpected(errorHandle(s)));
+        return;
 
-        auto chats_v = MockChatFactory::getChatList(
-            ":/mock_data/src/mock/data/chats_list.json");
-        std::list<Chat> chats_l;
-        std::ranges::move(chats_v, std::back_inserter(chats_l));
+        // auto chats_v = MockChatFactory::getChatList(
+        //     ":/mock_data/src/mock/data/chats_list.json");
+        // std::list<Chat> chats_l;
+        // std::ranges::move(chats_v, std::back_inserter(chats_l));
 
-        emit getChatsListFinished(chats_l);
+        // emit getChatsListFinished(chats_l);
         return;
     }
 

@@ -35,12 +35,13 @@ service ChatsService {
     rpc GetChatByName(GetChatByNameRequest) returns (GetChatResponse);
     rpc UpdateChat(UpdateChatRequest) returns (ChatResponse);
     rpc DeleteChat(DeleteChatRequest) returns (ChatResponse);
-    rpc GetChatsByUserID(GetChatsByUserIDRequest) returns (GetChatsResponse);
 
     rpc AddParticipant(AddParticipantRequest) returns (ParticipantResponse);
     rpc RemoveParticipant(RemoveParticipantRequest) returns (ParticipantResponse);
     rpc ListParticipants(ListParticipantsRequest) returns (ListParticipantsResponse);
     rpc CheckParticipant(CheckParticipantRequest) returns (CheckParticipantResponse);
+
+    rpc ListChatsForUser(ListChatsForUserRequest) returns (ListChatsForUserResponse);
 }
 
 message CreateChatRequest {
@@ -70,11 +71,11 @@ message GetChatResponse {
 message ChatResponse {
 }
 
-message GetChatsByUserIDRequest {
+message ListChatsForUserRequest {
     string user_id = 1;
 }
 
-message GetChatsResponse {
+message ListChatsForUserResponse {
     repeated Chat chats = 1;
 }
 
