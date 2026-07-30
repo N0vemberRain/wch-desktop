@@ -24,13 +24,16 @@ public:
     void addOption(const std::string& key,
                    const std::string& value,
                    const std::string& key_param="") override;
+    void updateChatInfo(const Chat& c,
+                        const std::vector<std::byte>& av_data) override;
 private slots:
     void onGetChatsListFinished(const QGrpcStatus& s);
-
+    void onUpdateChatFinished(const QGrpcStatus& s);
 private:
     Error errorHandle(const QGrpcStatus& s);
 
     using GetChatsResponse = chats::v1::ListChatsForUserResponse;
+    using UpdateChatResponse = chats::v1::ChatResponse;
     using Client = chats::v1::ChatsService::Client;
 
     std::shared_ptr<QGrpcHttp2Channel> channel_;
@@ -38,4 +41,5 @@ private:
     std::unique_ptr<QGrpcCallReply> reply_;
 
     QGrpcCallOptions options_;
+    Chat chat_tmp_;
 };

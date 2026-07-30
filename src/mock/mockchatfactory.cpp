@@ -93,7 +93,7 @@ std::vector<Chat> MockChatFactory::getChatList(const QString& filename) {
         chat.name = obj["name"].toString().toStdString();
         chat.type = obj["type"].toString() == "group" ?
                     Chat::Type::Group :
-                    Chat::Type::Dialog;
+                    Chat::Type::Direct;
         chat.avatar = obj["avatar"].toString().toStdString();
         chat.unread_count = obj["unread_count"].toInt();
         chat.last_message = obj["last_message"].toString().toStdString();

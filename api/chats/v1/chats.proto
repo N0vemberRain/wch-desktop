@@ -11,6 +11,12 @@ message Chat {
     string updated_at = 5;
 }
 
+message Avatar {
+    bytes data = 1;
+    string mime_type = 2;
+    string owner_id = 3;
+}
+
 message ChatUser {
     string id = 1;
     string display_name = 2;
@@ -50,6 +56,7 @@ message CreateChatRequest {
 
 message UpdateChatRequest {
     Chat chat = 1;
+    Avatar avatar = 2;
 }
 
 message DeleteChatRequest {

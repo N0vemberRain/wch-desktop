@@ -1,7 +1,7 @@
 #include "qtchatsservice.h"
 
 #include "utils.h"
-// #include "mock/mockchatfactory.h"
+#include "mock/mockchatfactory.h"
 
 #include <QUrl>
 #include <QGrpcHttp2Channel>
@@ -41,14 +41,14 @@ void QtChatsService::getChatsList(const UserID& id) {
 void QtChatsService::onGetChatsListFinished(const QGrpcStatus& s) {
     if (!s.isOk()) {
         emit getChatsListFinished(std::unexpected(errorHandle(s)));
-        return;
+        // return;
 
-        // auto chats_v = MockChatFactory::getChatList(
-        //     ":/mock_data/src/mock/data/chats_list.json");
-        // std::list<Chat> chats_l;
-        // std::ranges::move(chats_v, std::back_inserter(chats_l));
+        auto chats_v = MockChatFactory::getChatList(
+            ":/mock_data/src/mock/data/chats_list.json");
+        std::list<Chat> chats_l;
+        std::ranges::move(chats_v, std::back_inserter(chats_l));
 
-        // emit getChatsListFinished(chats_l);
+        emit getChatsListFinished(chats_l);
         return;
     }
 
@@ -59,14 +59,56 @@ void QtChatsService::onGetChatsListFinished(const QGrpcStatus& s) {
             Chat c;
             c.id = c_dto.id_proto().toStdString();
             c.name = c_dto.name().toStdString();
-            c.type = c_dto.type() == "Group" ?
+            c.type = c_dto.type() == "group" ?
                          Chat::Type::Group :
-                         Chat::Type::Dialog;
+                         Chat::Type::Direct;
             c.updated_at = fromQString(c_dto.updatedAt());
             chats.emplace_back(c);
         }
 
         emit getChatsListFinished(chats);
+    } else {
+        emit getChatsListFinished(std::unexpected(
+            Error{ErrorCode::Unknown, "Unknown error"}));
+    }
+}
+
+void QtChatsService::updateChatInfo(
+    const Chat& c,
+    const std::vector<std::byte>& av_data
+) {
+    chats::v1::UpdateChatRequest request;
+    chats::v1::Chat dto;
+    dto.setName(QString::fromStdString(c.name));
+    dto.setId_proto(QString::fromStdString(c.id));
+    auto type = QString::fromStdString(Chat::typeToString(c.type));
+    dto.setType(type);
+
+    chats::v1::Avatar av_dto;
+    av_dto.setOwnerId(QString::fromStdString(c.id));
+    av_dto.setMimeType("PNG");
+    av_dto.setData(toQByteArray(av_data));
+
+    request.setChat(dto);
+    request.setAvatar(av_dto);
+
+    reply_ = std::move(client_->UpdateChat(request, options_));
+
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtChatsService::onUpdateChatFinished);
+
+    chat_tmp_ = c;
+}
+
+void QtChatsService::onUpdateChatFinished(const QGrpcStatus& s) {
+    if (!s.isOk()) {
+        emit updateChatInfoFinished(std::unexpected(errorHandle(s)));
+        return;
+    }
+
+    auto resp = reply_->read<UpdateChatResponse>();
+    if (resp.has_value()) {
+        emit updateChatInfoFinished(chat_tmp_);
     } else {
         emit getChatsListFinished(std::unexpected(
             Error{ErrorCode::Unknown, "Unknown error"}));

@@ -25,7 +25,8 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     send_msgs_use_case{msgs_service.get(), session_manager.getSession()},
     update_profile_uc{users_service.get()},
     load_chats_uc{chats_service.get()},
-    av_provider{*users_service.get()}
+    update_chat_uc{chats_service.get()},
+    av_provider{std::make_unique<AvatarProvider>(*users_service.get())}
 {
     if (!session_manager.hasSession()) {
         throw std::runtime_error{"session has to be initialized before AppContext"};
@@ -54,6 +55,30 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
 
 AppContext::~AppContext() = default;
 
+const User& AppContext::getCurrentUser() const noexcept {
+    return session_manager.getSession().getCurrentUser();
+}
+
+const UserID& AppContext::getCurrentUserID() const noexcept {
+    return session_manager.getSession().getCurrentUserID();
+}
+
+const Token& AppContext::getToken() const noexcept {
+    return session_manager.getSession().getToken();
+}
+
+AvatarProvider* AppContext::getAvatarProvider() const noexcept {
+    return av_provider.get();
+}
+
+const SendMessageUseCase& AppContext::getSendMessageUC() const noexcept {
+    return send_msgs_use_case;
+}
+
+UpdateProfileUseCase& AppContext::getUpdateUserUC() noexcept {
+    return update_profile_uc;
+}
+
 void AppContext::setupCurrentUserProfile() {
     is_loading_ = true;
     load_current_user_use_case.execute();
@@ -80,7 +105,7 @@ void AppContext::onLoadAvatarFinished(std::expected<AvatarData, Error> res) {
     if (!res.has_value())
         return;
 
-    auto new_av = av_provider.addImage(QString::fromStdString(res.value().user_id),
+    auto new_av = av_provider->addImage(QString::fromStdString(res.value().user_id),
                             toQByteArray(res.value().img_data));
     emit loadingAvatarFinished(new_av);
 }

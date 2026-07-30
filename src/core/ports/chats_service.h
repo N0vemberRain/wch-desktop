@@ -18,6 +18,9 @@ public:
     virtual void addOption(const std::string& key,
                            const std::string& value,
                            const std::string& key_param="") = 0;
+    virtual void updateChatInfo(const Chat& c,
+                                const std::vector<std::byte>& av_data) = 0;
 signals:
     void getChatsListFinished(std::expected<std::list<Chat>, Error>);
+    void updateChatInfoFinished(std::expected<Chat, Error>);
 };

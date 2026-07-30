@@ -23,7 +23,7 @@ class ChatWgt : public QWidget
 
 public:
     explicit ChatWgt(AvatarProvider* av_provider,
-                    SendMessageUseCase* send_msgs_uc,
+                    const SendMessageUseCase& send_msgs_uc,
                     QWidget *parent = nullptr);
     ~ChatWgt();
 
@@ -48,5 +48,5 @@ private:
     Ui::ChatWgt *ui;
 
     QHash<QString, ChatHistoryModel*> chat_models_;
-    SendMessageUseCase* send_msgs_uc_;
+    const SendMessageUseCase& send_msgs_uc_;
 };

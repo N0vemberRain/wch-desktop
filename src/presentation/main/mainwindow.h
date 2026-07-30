@@ -43,6 +43,7 @@ private slots:
 
     void settingsCalled();
     void currentUserProfileClicked();
+    void onShowChatInfo(const Chat& c);
 
     void onCurrentUserChanged(const User& u);
 

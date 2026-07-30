@@ -13,7 +13,7 @@ class SendMessageUseCase : public QObject {
 public:
     explicit SendMessageUseCase(MessageService* srv, const Session& s);
 
-    void execute(Message msg);
+    void execute(Message msg) const;
 
 signals:
     void requestFinished(SendMessageResult res);

@@ -5,6 +5,8 @@
 #include <QVector>
 #include <QPixmap>
 
+#include "core/domain/chat.h"
+
 class ChatListModel : public QAbstractListModel
 {
     Q_OBJECT
@@ -16,6 +18,7 @@ public:
         int unread_count;
         QPixmap avatar;
         QString id;
+        Chat::Type type;
     };
 
     explicit ChatListModel(QObject *parent = nullptr);
@@ -32,6 +35,7 @@ public:
         UnreadCount,
         Avatar = Qt::UserRole + 4,
         Id = Qt::UserRole + 5,
+        Type = Qt::UserRole + 6,
     };
 
     void addChat(const ChatItem& item);

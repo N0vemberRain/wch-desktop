@@ -69,6 +69,8 @@ add_executable(wch-desktop
     core/ports/chats_service.h
     infrastructure/network/qtchatsservice.h infrastructure/network/qtchatsservice.cpp
     core/usecases/loadchatsforcurrentuserusecase.h core/usecases/loadchatsforcurrentuserusecase.cpp
+    presentation/chatinfo/chatinfodialog.h presentation/chatinfo/chatinfodialog.cpp presentation/chatinfo/chatinfodialog.ui
+    core/usecases/updatechatusecase.h core/usecases/updatechatusecase.cpp
 
 )
 

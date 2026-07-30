@@ -8,7 +8,8 @@
 
 #include <QString>
 #include <QModelIndex>
-
+#include <QMenu>
+#include <QAction>
 
 ChatsListWgt::ChatsListWgt(QWidget *parent) :
     QWidget(parent),
@@ -34,6 +35,10 @@ ChatsListWgt::ChatsListWgt(QWidget *parent) :
     ui->listView->setSelectionMode(QAbstractItemView::SingleSelection);
 
     connect(ui->listView, &QListView::clicked, this, &ChatsListWgt::onItemClicked);
+
+    ui->listView->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->listView, &QListView::customContextMenuRequested,
+            this, &ChatsListWgt::onContextMenuRequested);
 }
 
 ChatsListWgt::~ChatsListWgt()
@@ -59,7 +64,36 @@ void ChatsListWgt::addChats(std::list<Chat> chats) {
             QString::fromStdString(c.last_message),
             c.unread_count,
             QString::fromStdString(c.avatar),
-            QString::fromStdString(c.id)
+            QString::fromStdString(c.id),
+            c.type
         });
     }
+}
+
+void ChatsListWgt::onContextMenuRequested(const QPoint& pos) {
+    auto idx = ui->listView->indexAt(pos);
+    if (!idx.isValid()) {
+        return;
+    }
+
+    QMenu menu{this};
+    auto chat_info = menu.addAction("Chat Info");
+
+    auto selected = menu.exec(ui->listView->viewport()->mapToGlobal(pos));
+    if (selected == chat_info) {
+        onOpenChatInfo(idx);
+    }
+}
+
+void ChatsListWgt::onOpenChatInfo(const QModelIndex& index) {
+    const auto chat_name = index.data(Qt::UserRole + 1).toString();
+    const auto chat_id = index.data(Qt::UserRole + 5).toString();
+    const auto type = Chat::typeFromInt(index.data(Qt::UserRole + 6).toInt());
+
+    Chat chat;
+    chat.name = chat_name.toStdString();
+    chat.id = chat_id.toStdString();
+    chat.type = type;
+
+    emit showChatInfo(chat);
 }

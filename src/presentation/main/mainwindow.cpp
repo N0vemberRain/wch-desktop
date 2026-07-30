@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 
 #include "presentation/profile/profiledialog.h"
+#include "presentation/chatinfo/chatinfodialog.h"
 
 #include <QPixmap>
 #include <QImageReader>
@@ -28,20 +29,17 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
 
     chats_wgt_ = new ChatsListWgt{this};
 
-//    list_view_ = new QListView(this);
-//    chats_model_ = new ChatListModel(list_view_);
-//    chat_delegate_ = new ChatDelegate(list_view_);
+    connect(chats_wgt_, &ChatsListWgt::showChatInfo, this, &MainWindow::onShowChatInfo);
+
     sidebar_ = new SidebarWidget(this);
     if (ctx_->isLoading()) {
         sidebar_->startLoadingIcon();
     }
 
-    chat_wgt_ = new ChatWgt{&ctx_->av_provider, &ctx_->send_msgs_use_case, this};
+    chat_wgt_ = new ChatWgt{ctx_->getAvatarProvider(), ctx_->getSendMessageUC(), this};
     connect(ctx_.get(), &AppContext::currentUserChanged,
             this, &MainWindow::onCurrentUserChanged);
 
-//    list_view_->setModel(chats_model_);
-//    list_view_->setItemDelegate(chat_delegate_);
 
     splitter->addWidget(sidebar_);
 //    splitter->addWidget(list_view_);
@@ -81,7 +79,7 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
 
     connect(ctx_.get(), &AppContext::loadingProfileFinished, this, [this](){
         // sidebar_->stopLoadingIcon();
-        nav_wgt_->setUser(ctx_->session_manager.getSession().getCurrentUser());
+        nav_wgt_->setUser(ctx_->getCurrentUser());
         is_profile_loaded_ = true;
         if (is_chats_loaded_) {
             sidebar_->stopLoadingIcon();
@@ -153,12 +151,24 @@ void MainWindow::resizeEvent(QResizeEvent* e) {
 }
 
 void MainWindow::currentUserProfileClicked() {
-    ProfileDialog dialog{ctx_->update_profile_uc};
-    dialog.setUser(ctx_->session_manager.getSession().getCurrentUser());
-    auto img_opt = ctx_->av_provider.getImage(
-        QString::fromStdString(ctx_->session_manager.getSession().getCurrentUserID()));
+    ProfileDialog dialog{ctx_->getUpdateUserUC()};
+    dialog.setUser(ctx_->getCurrentUser());
+    auto img_opt = ctx_->getAvatarProvider()->getImage(
+        QString::fromStdString(ctx_->getCurrentUserID()));
     if (img_opt.has_value()) {
         dialog.setAvatar(img_opt.value());
+    }
+
+    if (dialog.exec() == QDialog::Accepted) {
+        qDebug() << "ProfileDialog accepted";
+    }
+}
+
+void MainWindow::onShowChatInfo(const Chat& c) {
+    ChatInfoDialog dialog{ctx_->getUpdateChatUC(), c};
+    if (const auto img = ctx_->getAvatarProvider()->getImage(
+            QString::fromStdString(c.id)); img.has_value()) {
+        dialog.setAvatar(img.value());
     }
 
     if (dialog.exec() == QDialog::Accepted) {
@@ -170,7 +180,8 @@ void MainWindow::onCurrentUserChanged(const User& u) {
     chat_wgt_->onCurrentUserChanged(u);
     nav_wgt_->setUser(u);
 
-    ctx_->av_provider.updateImage(QString::fromStdString(u.id), QString::fromStdString(u.avatar_url));
+    ctx_->getAvatarProvider()->updateImage(
+        QString::fromStdString(u.id), QString::fromStdString(u.avatar_url));
 }
 
 void MainWindow::onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res) {

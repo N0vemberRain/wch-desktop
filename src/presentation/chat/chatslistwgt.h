@@ -9,6 +9,7 @@
 class QString;
 class QModelIndex;
 class ChatListModel;
+class QPoint;
 
 namespace Ui {
 class ChatsListWgt;
@@ -27,9 +28,11 @@ public slots:
     void updateUnreadMessagesCount(const QString& chat_id, int unread);
 private slots:
     void onItemClicked(const QModelIndex& index);
-
+    void onContextMenuRequested(const QPoint& pos);
+    void onOpenChatInfo(const QModelIndex& idx);
 signals:
     void showChat(const QString& chat_id, const QString& chat_name);
+    void showChatInfo(const Chat& c);
 private:
     Ui::ChatsListWgt *ui;
 

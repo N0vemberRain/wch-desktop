@@ -12,7 +12,7 @@ SendMessageUseCase::SendMessageUseCase(MessageService* srv, const Session& s)
     });
 }
 
-void SendMessageUseCase::execute(Message msg) {
+void SendMessageUseCase::execute(Message msg) const {
     msg.sender_id = session_.getCurrentUserID();
     msg.sender_name = session_.getCurrentUser().name;
 

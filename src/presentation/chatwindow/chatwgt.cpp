@@ -14,7 +14,7 @@
 #include <QUuid>
 #include <QKeyEvent>
 
-ChatWgt::ChatWgt(AvatarProvider* av_provider, SendMessageUseCase* send_msgs_uc, QWidget *parent) :
+ChatWgt::ChatWgt(AvatarProvider* av_provider, const SendMessageUseCase& send_msgs_uc, QWidget *parent) :
     QWidget(parent),
     send_msgs_uc_(send_msgs_uc),
     ui(new Ui::ChatWgt)
@@ -32,7 +32,7 @@ ChatWgt::ChatWgt(AvatarProvider* av_provider, SendMessageUseCase* send_msgs_uc, 
 
     connect(ui->view->verticalScrollBar(), &QScrollBar::valueChanged, this, &ChatWgt::isScrollBarInEnd);
     connect(ui->sendButton, &QPushButton::clicked, this, &ChatWgt::sendButtonClicked);
-    connect(send_msgs_uc_, &SendMessageUseCase::requestFinished, this, &ChatWgt::requestFinished);
+    connect(&send_msgs_uc_, &SendMessageUseCase::requestFinished, this, &ChatWgt::requestFinished);
 
     ui->msgEdit->installEventFilter(this);
     ui->msgEdit->setFocus();
@@ -99,7 +99,7 @@ void ChatWgt::sendButtonClicked() {
     msg.status = MessageStatus::Pending;
     msg.created_at = fromQDateTime(QDateTime::currentDateTime());
 
-    send_msgs_uc_->execute(msg);
+    send_msgs_uc_.execute(msg);
 
     addMessage(msg);
 
