@@ -40,7 +40,6 @@ target_sources(wch_grpc
     api/users/v1/users.proto
 )
 
-
 get_target_property(TYPE1 wch_proto TYPE)
 message(STATUS "wch_proto type=${TYPE1}")
 

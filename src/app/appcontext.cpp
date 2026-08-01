@@ -44,13 +44,14 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     });
 
     connect(&load_chats_uc, &LoadChatsForCurrentUserUseCase::requestFinished,
-            this, [this](auto res) {
-        emit loadingChatsFinished(res);
-    });
+            this, &AppContext::onLoadChatsFinished);
 
     chats_service->addOption("authorization",
                              session_manager.getSession().getToken().value,
                              "Bearer");
+
+    connect(&update_chat_uc, &UpdateChatUseCase::requestFinished,
+            this, &AppContext::onUpdateChatFinished);
 }
 
 AppContext::~AppContext() = default;
@@ -109,3 +110,31 @@ void AppContext::onLoadAvatarFinished(std::expected<AvatarData, Error> res) {
                             toQByteArray(res.value().img_data));
     emit loadingAvatarFinished(new_av);
 }
+
+void AppContext::onLoadChatsFinished(std::expected<std::list<Chat>, Error> res) {
+    emit loadingChatsFinished(res);
+
+    if (!res.has_value()) {
+        return;
+    }
+
+
+}
+
+void AppContext::onUpdateChatFinished(std::expected<Chat, Error> res, AvatarData av) {
+    if (!res.has_value()) {
+        return;
+    }
+
+    if (av.img_data.size() != 0) {
+        auto new_img = av_provider->addImage(
+            QString::fromStdString(av.user_id),
+            toQByteArray(av.img_data));
+
+        emit updateChatFinished(res.value(), new_img);
+        return;
+    }
+
+    emit updateChatFinished(res.value(), QPixmap{});
+}
+

@@ -39,6 +39,7 @@ public:
     };
 
     void addChat(const ChatItem& item);
+    void updateChat(ChatItem item);
 
     void setUnreadMessagesCount(const QString& chat_id, int unread);
 protected:

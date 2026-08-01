@@ -70,6 +70,21 @@ void ChatsListWgt::addChats(std::list<Chat> chats) {
     }
 }
 
+void ChatsListWgt::updateChat(Chat&& c, QPixmap new_av) {
+    model_->updateChat({
+            QString::fromStdString(c.name),
+            QString::fromStdString(c.last_message),
+            c.unread_count,
+            new_av,
+            QString::fromStdString(c.id),
+            c.type
+    });
+}
+
+void ChatsListWgt::updateChat(Chat&& chat) {
+
+}
+
 void ChatsListWgt::onContextMenuRequested(const QPoint& pos) {
     auto idx = ui->listView->indexAt(pos);
     if (!idx.isValid()) {

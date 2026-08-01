@@ -56,9 +56,12 @@ signals:
     void loadingAvatarFinished(QPixmap img);
     void loadingChatsFinished(std::expected<std::list<Chat>, Error>);
     void currentUserChanged(const User& u);
+    void updateChatFinished(Chat chat, QPixmap new_av);
 private slots:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
     void onLoadAvatarFinished(std::expected<AvatarData, Error> res);
+    void onUpdateChatFinished(std::expected<Chat, Error> res, AvatarData av);
+    void onLoadChatsFinished(std::expected<std::list<Chat>, Error> res);
 private:
     SessionManager session_manager;
     std::unique_ptr<SessionStorage> session_storage;

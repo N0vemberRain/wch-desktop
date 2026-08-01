@@ -48,6 +48,7 @@ service ChatsService {
     rpc CheckParticipant(CheckParticipantRequest) returns (CheckParticipantResponse);
 
     rpc ListChatsForUser(ListChatsForUserRequest) returns (ListChatsForUserResponse);
+    //rpc ListAvatarsForChats(ListAvatarsForChatsRequest) returns (ListAvatarsForChatsResponse);
 }
 
 message CreateChatRequest {
@@ -117,3 +118,11 @@ message CheckParticipantResponse {
     bool is_participant = 1;
     ChatParticipantRole role = 2;
 }
+
+/*message ListAvatarsForChatsRequest {
+    repeated string ids = 1;
+}
+
+message ListAvatarsForChatsResponse {
+    repeated Avatar avatars = 1;
+}*/

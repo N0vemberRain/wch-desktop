@@ -20,6 +20,7 @@ public:
     ~QtChatsService() override = default;
 
     void getChatsList(const UserID& id) override;
+    void getAvatarsForChats(const std::list<ChatID>& ids) override;
 
     void addOption(const std::string& key,
                    const std::string& value,
@@ -29,10 +30,12 @@ public:
 private slots:
     void onGetChatsListFinished(const QGrpcStatus& s);
     void onUpdateChatFinished(const QGrpcStatus& s);
+    void onGetAvatarsForUsers(const QGrpcStatus& s);
 private:
     Error errorHandle(const QGrpcStatus& s);
 
     using GetChatsResponse = chats::v1::ListChatsForUserResponse;
+    // using GetAvatarsResponse = chats::v1::ListAvatarsForChatsResponse;
     using UpdateChatResponse = chats::v1::ChatResponse;
     using Client = chats::v1::ChatsService::Client;
 

@@ -1,5 +1,7 @@
 #include "chatlistmodel.h"
 
+#include <ranges>
+
 ChatListModel::ChatListModel(QObject *parent)
     : QAbstractListModel(parent)
 {
@@ -51,6 +53,22 @@ void ChatListModel::addChat(const ChatItem &item) {
     beginInsertRows(QModelIndex(), items_.size(), items_.size());
     items_.append(item);
     endInsertRows();
+}
+
+void ChatListModel::updateChat(ChatItem chat) {
+    auto it = std::ranges::find_if(items_, [&](const auto& item) {
+        return item.id == chat.id ? true : false;
+    });
+
+    if (it == items_.end())
+        return;
+
+    *it = std::move(chat);
+
+    const auto row = std::distance(items_.begin(), it);
+    auto idx = index(row);
+
+    emit dataChanged(idx, idx, {Name, LastMessage, UnreadCount, Avatar, Id, Type});
 }
 
 void ChatListModel::setUnreadMessagesCount(const QString &chat_id, int unread) {

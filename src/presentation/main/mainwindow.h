@@ -46,6 +46,7 @@ private slots:
     void onShowChatInfo(const Chat& c);
 
     void onCurrentUserChanged(const User& u);
+    void onUpdateChatFinished(Chat chat, QPixmap new_av);
 
     void onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res);
 private:

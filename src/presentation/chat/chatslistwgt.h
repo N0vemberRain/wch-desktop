@@ -24,6 +24,8 @@ public:
     ~ChatsListWgt();
 
     void addChats(std::list<Chat> chats);
+    void updateChat(Chat&& chat, QPixmap new_av);
+    void updateChat(Chat&& chat);
 public slots:
     void updateUnreadMessagesCount(const QString& chat_id, int unread);
 private slots:

@@ -88,6 +88,7 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     connect(ctx_.get(), &AppContext::loadingAvatarFinished, nav_wgt_, &NavigationWgt::setAvatar);
     connect(ctx_.get(), &AppContext::loadingChatsFinished, this,
             &MainWindow::onLoadingChatsFinished);
+    connect(ctx_.get(), &AppContext::updateChatFinished, this, &MainWindow::onUpdateChatFinished);
 }
 
 MainWindow::~MainWindow()
@@ -197,4 +198,8 @@ void MainWindow::onLoadingChatsFinished(std::expected<std::list<Chat>, Error> re
     if (is_profile_loaded_) {
         sidebar_->stopLoadingIcon();
     }
+}
+
+void MainWindow::onUpdateChatFinished(Chat chat, QPixmap new_av) {
+    chats_wgt_->updateChat(std::move(chat), new_av);
 }

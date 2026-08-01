@@ -6,6 +6,7 @@
 
 #include "core/domain/chat.h"
 #include "core/domain/errors.h"
+#include "core/domain/types.h"
 
 class ChatsService;
 
@@ -18,9 +19,10 @@ public:
     void execute(const Chat& c, const std::vector<std::byte>& avatar_bytes);
 
 signals:
-    void requestFinished(std::expected<Chat, Error>);
+    void requestFinished(std::expected<Chat, Error>, const AvatarData& av_data);
 
 private:
     ChatsService* srv_;
+    AvatarData av_data_tmp_;
 };
 
