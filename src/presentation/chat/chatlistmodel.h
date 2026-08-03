@@ -40,6 +40,7 @@ public:
 
     void addChat(const ChatItem& item);
     void updateChat(ChatItem item);
+    void updateAvatarForChat(const QString& chat_id, QPixmap a) noexcept;
 
     void setUnreadMessagesCount(const QString& chat_id, int unread);
 protected:

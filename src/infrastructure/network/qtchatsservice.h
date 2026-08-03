@@ -35,7 +35,7 @@ private:
     Error errorHandle(const QGrpcStatus& s);
 
     using GetChatsResponse = chats::v1::ListChatsForUserResponse;
-    // using GetAvatarsResponse = chats::v1::ListAvatarsForChatsResponse;
+    using GetAvatarsResponse = chats::v1::ListAvatarsForChatsResponse;
     using UpdateChatResponse = chats::v1::ChatResponse;
     using Client = chats::v1::ChatsService::Client;
 

@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package chats.v1;
+
+message Chat {
+    string id = 1;
+    string type = 2;
+    string name = 3;
+
+    string created_at = 4;
+    string updated_at = 5;
+}
+
+message Avatar {
+    bytes data = 1;
+    string mime_type = 2;
+    string owner_id = 3;
+}
+
+message ChatUser {
+    string id = 1;
+    string display_name = 2;
+    string avatar_url = 3;
+}
+
+enum ChatParticipantRole {
+    CHAT_PARTICIPANT_ROLE_UNSPECIFIED = 0;
+    CHAT_PARTICIPANT_ROLE_MEMBER = 1;
+    CHAT_PARTICIPANT_ROLE_ADMIN = 2;
+    CHAT_PARTICIPANT_ROLE_OWNER = 3;
+}
+
+message ChatParticipant {
+    string user_id = 1;
+    ChatParticipantRole role = 2;
+}

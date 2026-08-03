@@ -49,6 +49,9 @@ private slots:
     void onUpdateChatFinished(Chat chat, QPixmap new_av);
 
     void onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res);
+    void onLoadingAvatarsForChatsFinished(const QHash<QString, QPixmap>& avs);
+
+    void onCreateNewChat();
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<AppContext> ctx_;

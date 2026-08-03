@@ -39,16 +39,20 @@ void QtChatsService::getChatsList(const UserID& id) {
 }
 
 void QtChatsService::getAvatarsForChats(const std::list<ChatID>& ids) {
-    // chats::v1::ListAvatarsForChatsRequest request;
+    chats::v1::ListAvatarsForChatsRequest request;
 
-    // QStringList qids{};
-    // std::ranges::copy(qids, std::back_inserter(qids));
+    QStringList qids{};
+    // std::ranges::copy(qids, std::back_inserter(qids), );
+    std::ranges::transform(ids, std::back_inserter(qids),
+                           [](const auto& chat_id) {
+                               return QString::fromStdString(chat_id);
+    });
 
-    // request.setIds(qids);
+    request.setIds(qids);
 
-    // reply_ = std::move(client_->ListAvatarsForChats(request, options_));
-    // connect(reply_.get(), &QGrpcCallReply::finished, this,
-    //         &QtChatsService::onGetAvatarsForUsers);
+    reply_ = std::move(client_->ListAvatarsForChats(request, options_));
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtChatsService::onGetAvatarsForUsers);
 }
 
 void QtChatsService::onGetChatsListFinished(const QGrpcStatus& s) {
@@ -160,27 +164,27 @@ void QtChatsService::onGetAvatarsForUsers(const QGrpcStatus& s) {
         return;
     }
 
-    // auto resp = reply_->read<GetAvatarsResponse>();
-    // if (resp.has_value()) {
-    //     auto& avs = resp.value().avatars();
-    //     std::vector<AvatarData> res;
-    //     std::transform(
-    //         std::make_move_iterator(avs.begin()),
-    //         std::make_move_iterator(avs.end()),
-    //         std::back_inserter(res),
-    //         [](const chats::v1::Avatar& av) {
-    //             AvatarData a;
-    //             a.img_data = toBytes(av.data());
-    //             a.mime_type = av.mimeType().toStdString();
-    //             a.user_id = av.ownerId().toStdString();
+    auto resp = reply_->read<GetAvatarsResponse>();
+    if (resp.has_value()) {
+        auto& avs = resp.value().avatars();
+        std::vector<AvatarData> res;
+        std::transform(
+            std::make_move_iterator(avs.begin()),
+            std::make_move_iterator(avs.end()),
+            std::back_inserter(res),
+            [](const chats::v1::Avatar& av) {
+                AvatarData a;
+                a.img_data = toBytes(av.data());
+                a.mime_type = av.mimeType().toStdString();
+                a.user_id = av.ownerId().toStdString();
 
-    //             return a;
-    //         }
-    //     );
+                return a;
+            }
+        );
 
-    //     emit getAvatarsForChatsFinished(res);
-    // } else {
-    //     emit getChatsListFinished(std::unexpected(
-    //         Error{ErrorCode::Unknown, "Unknown error"}));
-    // }
+        emit getAvatarsForChatsFinished(res);
+    } else {
+        emit getChatsListFinished(std::unexpected(
+            Error{ErrorCode::Unknown, "Unknown error"}));
+    }
 }

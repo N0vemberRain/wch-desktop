@@ -20,6 +20,7 @@ public:
     void execute(const UserID& user_id);
 signals:
     void requestFinished(std::expected<std::list<Chat>, Error> res);
+    void requestAvatarsFinished(std::expected<std::vector<AvatarData>, Error> res);
 private:
     ChatsService* srv_;
 };

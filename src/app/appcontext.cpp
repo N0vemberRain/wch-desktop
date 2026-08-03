@@ -45,6 +45,22 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
 
     connect(&load_chats_uc, &LoadChatsForCurrentUserUseCase::requestFinished,
             this, &AppContext::onLoadChatsFinished);
+    connect(&load_chats_uc, &LoadChatsForCurrentUserUseCase::requestAvatarsFinished,
+            this, [this](std::expected<std::vector<AvatarData>, Error> res) {
+        if (!res.has_value()) {
+            return;
+        }
+
+        QHash<QString, QPixmap> avs;
+        for (const auto& av : res.value()) {
+            auto pix = av_provider->addImage(
+                QString::fromStdString(av.user_id),
+                toQByteArray(av.img_data));
+            avs.insert(QString::fromStdString(av.user_id), pix);
+        }
+
+        emit loadingAvatarsForChatsFinished(avs);
+    });
 
     chats_service->addOption("authorization",
                              session_manager.getSession().getToken().value,

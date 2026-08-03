@@ -71,6 +71,23 @@ void ChatListModel::updateChat(ChatItem chat) {
     emit dataChanged(idx, idx, {Name, LastMessage, UnreadCount, Avatar, Id, Type});
 }
 
+void ChatListModel::updateAvatarForChat(const QString& chat_id, QPixmap av) noexcept {
+    auto it = std::ranges::find_if(items_, [&](const auto& item) {
+        return item.id == chat_id;
+    });
+
+    if (it == items_.end()) {
+        return;
+    }
+
+    it->avatar = av;
+
+    const auto row = std::distance(items_.begin(), it);
+    auto idx = index(row);
+
+    emit dataChanged(idx, idx, {Avatar});
+}
+
 void ChatListModel::setUnreadMessagesCount(const QString &chat_id, int unread) {
     for (ChatItem& c : items_) {
         if (c.id == chat_id) {

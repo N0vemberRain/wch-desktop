@@ -10,6 +10,11 @@ LoadChatsForCurrentUserUseCase::LoadChatsForCurrentUserUseCase(ChatsService* srv
             [this](auto res) {
                 emit requestFinished(res);
     });
+
+    connect(srv_, &ChatsService::getAvatarsForChatsFinished, this,
+            [this](auto res) {
+                emit requestAvatarsFinished(res);
+    });
 }
 
 void LoadChatsForCurrentUserUseCase::execute(const UserID& user_id) {

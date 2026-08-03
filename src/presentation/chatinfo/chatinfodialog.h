@@ -19,6 +19,7 @@ class ChatInfoDialog : public QDialog
 
 public:
     explicit ChatInfoDialog(UpdateChatUseCase& uc, const Chat& chat, QWidget *parent = nullptr);
+    explicit ChatInfoDialog(UpdateChatUseCase& uc, QWidget *parent = nullptr);
     ~ChatInfoDialog();
 
     void setAvatar(QPixmap img) noexcept;

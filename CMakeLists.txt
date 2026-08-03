@@ -24,6 +24,7 @@ qt_add_protobuf(wch_proto
         api/auth/v1/auth.proto
         api/msgs/v1/msgs.proto
         api/users/v1/users.proto
+        api/chats/v1/chats_types.proto
         api/chats/v1/chats.proto
 )
 
@@ -32,12 +33,14 @@ qt_add_grpc(wch_grpc CLIENT
         api/auth/v1/auth.proto
         api/msgs/v1/msgs.proto
         api/users/v1/users.proto
+        api/chats/v1/chats_types.proto
         api/chats/v1/chats.proto
 )
 
 target_sources(wch_grpc
   PRIVATE
     api/users/v1/users.proto
+    api/chats/v1/chats_types.proto
 )
 
 get_target_property(TYPE1 wch_proto TYPE)

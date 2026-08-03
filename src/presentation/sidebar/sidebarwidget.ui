@@ -65,7 +65,7 @@
     <layout class="QVBoxLayout" name="groupsLayout"/>
    </item>
    <item>
-    <widget class="QToolButton" name="addGroupButton">
+    <widget class="QToolButton" name="addGroupChatButton">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>

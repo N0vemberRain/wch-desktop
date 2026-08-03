@@ -85,6 +85,10 @@ void ChatsListWgt::updateChat(Chat&& chat) {
 
 }
 
+void ChatsListWgt::updateAvatarForChat(const QString& chat_id, QPixmap av) noexcept {
+    model_->updateAvatarForChat(chat_id, av);
+}
+
 void ChatsListWgt::onContextMenuRequested(const QPoint& pos) {
     auto idx = ui->listView->indexAt(pos);
     if (!idx.isValid()) {

@@ -17,11 +17,12 @@ public:
     void startLoadingIcon() noexcept;
     void stopLoadingIcon() noexcept;
 private slots:
-    void onAddGroupAction();
+    void onAddGroupChatAction();
     void onSettingsAction();
 
 signals:
     void settingsOpen();
+    void createNewChat();
 
 private:
     Ui::SidebarWidget *ui;

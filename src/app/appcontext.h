@@ -55,6 +55,7 @@ signals:
     void loadingProfileFinished();
     void loadingAvatarFinished(QPixmap img);
     void loadingChatsFinished(std::expected<std::list<Chat>, Error>);
+    void loadingAvatarsForChatsFinished(const QHash<QString, QPixmap>&);
     void currentUserChanged(const User& u);
     void updateChatFinished(Chat chat, QPixmap new_av);
 private slots:

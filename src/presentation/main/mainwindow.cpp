@@ -88,6 +88,8 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     connect(ctx_.get(), &AppContext::loadingAvatarFinished, nav_wgt_, &NavigationWgt::setAvatar);
     connect(ctx_.get(), &AppContext::loadingChatsFinished, this,
             &MainWindow::onLoadingChatsFinished);
+    connect(ctx_.get(), &AppContext::loadingAvatarsForChatsFinished, this,
+            &MainWindow::onLoadingAvatarsForChatsFinished);
     connect(ctx_.get(), &AppContext::updateChatFinished, this, &MainWindow::onUpdateChatFinished);
 }
 
@@ -202,4 +204,10 @@ void MainWindow::onLoadingChatsFinished(std::expected<std::list<Chat>, Error> re
 
 void MainWindow::onUpdateChatFinished(Chat chat, QPixmap new_av) {
     chats_wgt_->updateChat(std::move(chat), new_av);
+}
+
+void MainWindow::onLoadingAvatarsForChatsFinished(const QHash<QString, QPixmap>& avs) {
+    foreach(const auto& key, avs.keys()) {
+        chats_wgt_->updateAvatarForChat(key, avs[key]);
+    }
 }
