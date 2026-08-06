@@ -2,6 +2,7 @@
 #include "ui_chatslistwgt.h"
 
 #include "presentation/chat/chatdelegate.h"
+#include "presentation/chat/chatsfiltermodel.h"
 // #include "mock/mockchatfactory.h"
 
 #include "chatlistmodel.h"
@@ -17,7 +18,12 @@ ChatsListWgt::ChatsListWgt(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    model_ = new ChatListModel{ui->listView};
+    model_ = new ChatListModel{};
+
+    proxy_ = new ChatsFilterModel{this};
+    proxy_->setSourceModel(model_);
+    ui->listView->setModel(proxy_);
+
     auto delegate = new ChatDelegate{ui->listView};
 
 
@@ -30,7 +36,7 @@ ChatsListWgt::ChatsListWgt(QWidget *parent) :
     //                            QString::fromStdString(chat.id)});
     // }
 
-    ui->listView->setModel(model_);
+    // ui->listView->setModel(model_);
     ui->listView->setItemDelegate(delegate);
     ui->listView->setSelectionMode(QAbstractItemView::SingleSelection);
 
@@ -39,6 +45,13 @@ ChatsListWgt::ChatsListWgt(QWidget *parent) :
     ui->listView->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(ui->listView, &QListView::customContextMenuRequested,
             this, &ChatsListWgt::onContextMenuRequested);
+
+    search_timer_.setSingleShot(true);
+    connect(ui->searchLineEdit, &QLineEdit::textChanged, this, [this](const QString&) {
+        search_timer_.start(500);
+    });
+
+    connect(&search_timer_, &QTimer::timeout, this, &ChatsListWgt::performSearch);
 }
 
 ChatsListWgt::~ChatsListWgt()
@@ -126,4 +139,10 @@ void ChatsListWgt::onOpenChatInfo(const QModelIndex& index) {
     chat.type = type;
 
     emit showChatInfo(chat);
+}
+
+void ChatsListWgt::performSearch() {
+    const auto text = ui->searchLineEdit->text();
+    qDebug() << "Searching " << ui->searchLineEdit->text() << '\n';
+    proxy_->setFilterText(text);
 }

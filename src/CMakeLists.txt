@@ -73,6 +73,8 @@ add_executable(wch-desktop
     core/usecases/updatechatusecase.h core/usecases/updatechatusecase.cpp
     core/usecases/createchatusecase.h core/usecases/createchatusecase.cpp
     presentation/chatinfo/createchatdialog.h presentation/chatinfo/createchatdialog.cpp presentation/chatinfo/createchatdialog.ui
+    core/usecases/searchuserusecase.h core/usecases/searchuserusecase.cpp
+    presentation/chat/chatsfiltermodel.h presentation/chat/chatsfiltermodel.cpp
 
 
 )

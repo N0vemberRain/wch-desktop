@@ -1,10 +1,13 @@
 #pragma once
 
 #include <QWidget>
+#include <QTimer>
 
 #include <list>
 
 #include "core/domain/chat.h"
+
+class ChatsFilterModel;
 
 class QString;
 class QModelIndex;
@@ -34,6 +37,8 @@ private slots:
     void onItemClicked(const QModelIndex& index);
     void onContextMenuRequested(const QPoint& pos);
     void onOpenChatInfo(const QModelIndex& idx);
+
+    void performSearch();
 signals:
     void showChat(const QString& chat_id, const QString& chat_name);
     void showChatInfo(const Chat& c);
@@ -41,4 +46,7 @@ private:
     Ui::ChatsListWgt *ui;
 
     ChatListModel* model_;
+    QTimer search_timer_;
+
+    ChatsFilterModel* proxy_;
 };

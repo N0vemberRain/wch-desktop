@@ -27,6 +27,9 @@
     <number>0</number>
    </property>
    <item>
+    <widget class="QLineEdit" name="searchLineEdit"/>
+   </item>
+   <item>
     <widget class="QListView" name="listView"/>
    </item>
   </layout>
