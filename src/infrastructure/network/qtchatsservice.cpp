@@ -8,6 +8,8 @@
 #include <QGrpcCallReply>
 #include <QGrpcStatus>
 
+#include <QDebug>
+
 QtChatsService::QtChatsService() {
     channel_ = std::make_shared<QGrpcHttp2Channel>(
         QUrl{"http://localhost:8085"}
@@ -27,6 +29,39 @@ void QtChatsService::addOption(const std::string& key, const std::string& value,
         bytes = QByteArray::fromStdString(value_param + " " + value);
     }
     options_.addMetadata(QByteArray::fromStdString(key), bytes);
+}
+
+void QtChatsService::createGroupChat(const Chat& c,
+                                   const std::vector<std::byte>& av_data)
+{
+    chats::v1::CreateGroupChatRequest request;
+    chats::v1::Avatar av_dto;
+    av_dto.setOwnerId(QString::fromStdString(c.id));
+    av_dto.setMimeType("PNG");
+    av_dto.setData(toQByteArray(av_data));
+
+    request.setName(QString::fromStdString(c.name));
+    request.setAbout("");
+    request.setAvatar(av_dto);
+
+    reply_ = std::move(client_->CreateGroupChat(request, options_));
+
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtChatsService::onCreateChatFinished);
+
+    chat_tmp_ = c;
+    av_tmp_.img_data = av_data;
+    av_tmp_.mime_type = "PNG";
+}
+
+void QtChatsService::createDirectChat(const UserID& user_id) {
+    chats::v1::CreateDirectChatRequest request;
+    request.setUserId(QString::fromStdString(user_id));
+
+    reply_ = std::move(client_->CreateDirectChat(request, options_));
+
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtChatsService::onCreateChatFinished);
 }
 
 void QtChatsService::getChatsList(const UserID& id) {
@@ -128,11 +163,39 @@ void QtChatsService::onUpdateChatFinished(const QGrpcStatus& s) {
         return;
     }
 
-    auto resp = reply_->read<UpdateChatResponse>();
+    auto resp = reply_->read<ChatResponse>();
     if (resp.has_value()) {
         emit updateChatInfoFinished(chat_tmp_);
     } else {
         emit getChatsListFinished(std::unexpected(
+            Error{ErrorCode::Unknown, "Unknown error"}));
+    }
+}
+
+void QtChatsService::onCreateChatFinished(const QGrpcStatus& s) {
+    if (!s.isOk()) {
+        emit createChatFinished(std::unexpected(errorHandle(s)));
+        return;
+    }
+
+    auto resp = reply_->read<ChatResponse>();
+    if (resp.has_value()) {
+        auto dto = resp.value().chat();
+        Chat c;
+        c.id = dto.id_proto().toStdString();
+        c.name = dto.name().toStdString();
+        c.created_at = fromQString(dto.createdAt());
+        c.updated_at = c.created_at;
+        c.type = dto.type() == "direct" ? Chat::Type::Direct : Chat::Type::Group;
+
+        if (c.type == Chat::Type::Group) {
+            av_tmp_.user_id = c.id;
+            emit createChatFinished(std::make_pair(c, av_tmp_));
+        } else {
+            emit createChatFinished(std::make_pair(c, std::nullopt));
+        }
+    } else {
+        emit createChatFinished(std::unexpected(
             Error{ErrorCode::Unknown, "Unknown error"}));
     }
 }
@@ -155,6 +218,7 @@ Error QtChatsService::errorHandle(const QGrpcStatus& s) {
         error = Error{ErrorCode::Unknown, s.message().toStdString()};
     }
 
+    qDebug() << error.msg << "\n";
     return error;
 }
 

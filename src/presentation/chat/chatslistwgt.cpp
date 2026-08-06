@@ -57,6 +57,17 @@ void ChatsListWgt::updateUnreadMessagesCount(const QString& chat_id, int unread)
     model_->setUnreadMessagesCount(chat_id, unread);
 }
 
+void ChatsListWgt::addChat(const Chat& c, QPixmap av) {
+    model_->addChat({
+        QString::fromStdString(c.name),
+        QString::fromStdString(c.last_message),
+        c.unread_count,
+        !av.isNull() ? av : QPixmap{},
+        QString::fromStdString(c.id),
+        c.type
+    });
+}
+
 void ChatsListWgt::addChats(std::list<Chat> chats) {
     for (auto&& c : chats) {
         model_->addChat({

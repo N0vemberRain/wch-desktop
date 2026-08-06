@@ -23,6 +23,7 @@ public:
     explicit ChatsListWgt(QWidget *parent = nullptr);
     ~ChatsListWgt();
 
+    void addChat(const Chat& chat, QPixmap av = {});
     void addChats(std::list<Chat> chats);
     void updateChat(Chat&& chat, QPixmap new_av);
     void updateChat(Chat&& chat);

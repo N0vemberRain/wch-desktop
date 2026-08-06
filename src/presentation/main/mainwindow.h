@@ -52,6 +52,7 @@ private slots:
     void onLoadingAvatarsForChatsFinished(const QHash<QString, QPixmap>& avs);
 
     void onCreateNewChat();
+    void onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt);
 private:
     Ui::MainWindow *ui;
     std::unique_ptr<AppContext> ctx_;

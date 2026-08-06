@@ -28,6 +28,7 @@ private slots:
     void onSaveClicked();
     void onChatInfoChanged(std::expected<Chat, Error> res);
 private:
+    void setup();
     void startLoadAnim();
     void stopLoadAnim();
 

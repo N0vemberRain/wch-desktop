@@ -15,6 +15,24 @@ ChatInfoDialog::ChatInfoDialog(UpdateChatUseCase& uc, const Chat& chat, QWidget 
     , uc_{uc}
     , chat_tmp_{chat}
 {
+    setup();
+    ui->displayNameEdit->setText(QString::fromStdString(chat_tmp_.name));
+}
+
+ChatInfoDialog::ChatInfoDialog(UpdateChatUseCase& uc, QWidget *parent)
+    : QDialog(parent)
+    , ui(new Ui::ChatInfoDialog)
+    , uc_{uc}
+{
+    setup();
+}
+
+ChatInfoDialog::~ChatInfoDialog()
+{
+    delete ui;
+}
+
+void ChatInfoDialog::setup() {
     ui->setupUi(this);
 
     connect(ui->avatarWgt, &AvatarWgt::clicked, this, &ChatInfoDialog::onAvatarClicked);
@@ -31,13 +49,6 @@ ChatInfoDialog::ChatInfoDialog(UpdateChatUseCase& uc, const Chat& chat, QWidget 
     ui->loadLabel->setScaledContents(true);
     ui->loadLabel->hide();
     ui->verticalLayout->setAlignment(ui->loadLabel, Qt::AlignCenter);
-
-    ui->displayNameEdit->setText(QString::fromStdString(chat.name));
-}
-
-ChatInfoDialog::~ChatInfoDialog()
-{
-    delete ui;
 }
 
 void ChatInfoDialog::setAvatar(QPixmap img) noexcept {

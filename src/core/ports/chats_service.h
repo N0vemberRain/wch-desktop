@@ -3,6 +3,7 @@
 #include <QObject>
 
 #include <expected>
+#include <optional>
 #include <list>
 
 #include "core/domain/types.h"
@@ -14,6 +15,10 @@ class ChatsService : public QObject {
 public:
     virtual ~ChatsService() = default;
 
+    virtual void createGroupChat(
+        const Chat& c,
+        const std::vector<std::byte>& av_data) = 0;
+    virtual void createDirectChat(const UserID& user_id) = 0;
     virtual void getChatsList(const UserID& id) = 0;
     virtual void getAvatarsForChats(const std::list<ChatID>& ids) = 0;
     virtual void addOption(const std::string& key,
@@ -25,4 +30,5 @@ signals:
     void getChatsListFinished(std::expected<std::list<Chat>, Error>);
     void getAvatarsForChatsFinished(std::expected<std::vector<AvatarData>, Error>);
     void updateChatInfoFinished(std::expected<Chat, Error>);
+    void createChatFinished(std::expected<std::pair<Chat, std::optional<AvatarData>>, Error>);
 };

@@ -10,6 +10,7 @@
 #include "core/usecases/updateprofileusecase.h"
 #include "core/usecases/loadchatsforcurrentuserusecase.h"
 #include "core/usecases/updatechatusecase.h"
+#include "core/usecases/createchatusecase.h"
 #include "app/sessionmanager.h"
 #include "core/ports/session_storage.h"
 #include "infrastructure/utils/avatarprovider.h"
@@ -51,6 +52,9 @@ public:
     UpdateChatUseCase& getUpdateChatUC() noexcept {
         return update_chat_uc;
     }
+    CreateChatUseCase& getCreateChatUC() noexcept {
+        return create_chat_uc;
+    }
 signals:
     void loadingProfileFinished();
     void loadingAvatarFinished(QPixmap img);
@@ -58,11 +62,13 @@ signals:
     void loadingAvatarsForChatsFinished(const QHash<QString, QPixmap>&);
     void currentUserChanged(const User& u);
     void updateChatFinished(Chat chat, QPixmap new_av);
+    void createChatFinished(const Chat&, std::optional<QPixmap>);
 private slots:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
     void onLoadAvatarFinished(std::expected<AvatarData, Error> res);
     void onUpdateChatFinished(std::expected<Chat, Error> res, AvatarData av);
     void onLoadChatsFinished(std::expected<std::list<Chat>, Error> res);
+    void onCreateChatFinished(std::expected<std::pair<Chat, std::optional<AvatarData>>, Error> res);
 private:
     SessionManager session_manager;
     std::unique_ptr<SessionStorage> session_storage;
@@ -78,6 +84,7 @@ private:
     UpdateProfileUseCase update_profile_uc;
     LoadChatsForCurrentUserUseCase load_chats_uc;
     UpdateChatUseCase update_chat_uc;
+    CreateChatUseCase create_chat_uc;
 
     std::unique_ptr<AvatarProvider> av_provider;
     bool is_loading_ {false};

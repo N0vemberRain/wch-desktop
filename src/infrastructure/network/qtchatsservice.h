@@ -19,6 +19,9 @@ public:
     QtChatsService();
     ~QtChatsService() override = default;
 
+    void createGroupChat(const Chat& c,
+                        const std::vector<std::byte>& av_data) override;
+    void createDirectChat(const UserID& user_id) override;
     void getChatsList(const UserID& id) override;
     void getAvatarsForChats(const std::list<ChatID>& ids) override;
 
@@ -28,6 +31,7 @@ public:
     void updateChatInfo(const Chat& c,
                         const std::vector<std::byte>& av_data) override;
 private slots:
+    void onCreateChatFinished(const QGrpcStatus& s);
     void onGetChatsListFinished(const QGrpcStatus& s);
     void onUpdateChatFinished(const QGrpcStatus& s);
     void onGetAvatarsForUsers(const QGrpcStatus& s);
@@ -36,7 +40,7 @@ private:
 
     using GetChatsResponse = chats::v1::ListChatsForUserResponse;
     using GetAvatarsResponse = chats::v1::ListAvatarsForChatsResponse;
-    using UpdateChatResponse = chats::v1::ChatResponse;
+    using ChatResponse = chats::v1::ChatResponse;
     using Client = chats::v1::ChatsService::Client;
 
     std::shared_ptr<QGrpcHttp2Channel> channel_;
@@ -45,4 +49,5 @@ private:
 
     QGrpcCallOptions options_;
     Chat chat_tmp_;
+    AvatarData av_tmp_;
 };

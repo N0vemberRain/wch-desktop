@@ -26,6 +26,7 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     update_profile_uc{users_service.get()},
     load_chats_uc{chats_service.get()},
     update_chat_uc{chats_service.get()},
+    create_chat_uc{chats_service.get()},
     av_provider{std::make_unique<AvatarProvider>(*users_service.get())}
 {
     if (!session_manager.hasSession()) {
@@ -68,6 +69,8 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
 
     connect(&update_chat_uc, &UpdateChatUseCase::requestFinished,
             this, &AppContext::onUpdateChatFinished);
+    connect(&create_chat_uc, &CreateChatUseCase::requestFinished,
+            this, &AppContext::onCreateChatFinished);
 }
 
 AppContext::~AppContext() = default;
@@ -154,3 +157,23 @@ void AppContext::onUpdateChatFinished(std::expected<Chat, Error> res, AvatarData
     emit updateChatFinished(res.value(), QPixmap{});
 }
 
+
+void AppContext::onCreateChatFinished(
+    std::expected<std::pair<Chat, std::optional<AvatarData>>, Error> res
+) {
+    if (!res.has_value()) {
+        return;
+    }
+
+    const auto [chat, av_opt] = res.value();
+    if (av_opt.has_value()) {
+        auto pix = av_provider->addImage(
+            QString::fromStdString(chat.id),
+            toQByteArray(av_opt->img_data)
+        );
+
+        emit createChatFinished(chat, pix);
+    } else {
+        emit createChatFinished(chat, std::nullopt);
+    }
+}

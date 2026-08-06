@@ -3,6 +3,7 @@
 
 #include "presentation/profile/profiledialog.h"
 #include "presentation/chatinfo/chatinfodialog.h"
+#include "presentation/chatinfo/createchatdialog.h"
 
 #include <QPixmap>
 #include <QImageReader>
@@ -91,6 +92,10 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     connect(ctx_.get(), &AppContext::loadingAvatarsForChatsFinished, this,
             &MainWindow::onLoadingAvatarsForChatsFinished);
     connect(ctx_.get(), &AppContext::updateChatFinished, this, &MainWindow::onUpdateChatFinished);
+    connect(sidebar_, &SidebarWidget::createNewChat, this,
+            &MainWindow::onCreateNewChat);
+    connect(ctx_.get(), &AppContext::createChatFinished, this,
+            &MainWindow::onCreateNewChatFinished);
 }
 
 MainWindow::~MainWindow()
@@ -210,4 +215,13 @@ void MainWindow::onLoadingAvatarsForChatsFinished(const QHash<QString, QPixmap>&
     foreach(const auto& key, avs.keys()) {
         chats_wgt_->updateAvatarForChat(key, avs[key]);
     }
+}
+
+void MainWindow::onCreateNewChat() {
+    CreateChatDialog dialog{ctx_->getCreateChatUC()};
+    dialog.exec();
+}
+
+void MainWindow::onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt) {
+    chats_wgt_->addChat(chat, av_opt.has_value() ? av_opt.value() : QPixmap{});
 }
