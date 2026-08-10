@@ -8,6 +8,7 @@
 #include "core/usecases/loadcurrentuserusecase.h"
 #include "core/usecases/sendmessageusecase.h"
 #include "core/usecases/updateprofileusecase.h"
+#include "core/usecases/searchusersusecase.h"
 #include "core/usecases/loadchatsforcurrentuserusecase.h"
 #include "core/usecases/updatechatusecase.h"
 #include "core/usecases/createchatusecase.h"
@@ -49,6 +50,9 @@ public:
     AvatarProvider* getAvatarProvider() const noexcept;
     const SendMessageUseCase& getSendMessageUC() const noexcept;
     UpdateProfileUseCase& getUpdateUserUC() noexcept;
+    SearchUsersUseCase& getSearchUsersUC() noexcept {
+        return search_users_uc;
+    }
     UpdateChatUseCase& getUpdateChatUC() noexcept {
         return update_chat_uc;
     }
@@ -82,6 +86,7 @@ private:
     LoadCurrentUserUseCase load_current_user_use_case;
     SendMessageUseCase send_msgs_use_case;
     UpdateProfileUseCase update_profile_uc;
+    SearchUsersUseCase search_users_uc;
     LoadChatsForCurrentUserUseCase load_chats_uc;
     UpdateChatUseCase update_chat_uc;
     CreateChatUseCase create_chat_uc;

@@ -73,8 +73,16 @@ add_executable(wch-desktop
     core/usecases/updatechatusecase.h core/usecases/updatechatusecase.cpp
     core/usecases/createchatusecase.h core/usecases/createchatusecase.cpp
     presentation/chatinfo/createchatdialog.h presentation/chatinfo/createchatdialog.cpp presentation/chatinfo/createchatdialog.ui
-    core/usecases/searchuserusecase.h core/usecases/searchuserusecase.cpp
+    core/usecases/searchusersusecase.h core/usecases/searchusersusecase.cpp
     presentation/chat/chatsfiltermodel.h presentation/chat/chatsfiltermodel.cpp
+
+    presentation/createchat/chattypedialog.h presentation/createchat/chattypedialog.cpp presentation/createchat/chattypedialog.ui
+    presentation/createchat/searchuserdialog.h presentation/createchat/searchuserdialog.cpp presentation/createchat/searchuserdialog.ui
+    core/domain/users_search_filter.h
+    core/domain/user_summary.h
+    presentation/createchat/searchusersmodel.h presentation/createchat/searchusersmodel.cpp
+    presentation/createchat/usersummarydelegate.h presentation/createchat/usersummarydelegate.cpp
+
 
 
 )

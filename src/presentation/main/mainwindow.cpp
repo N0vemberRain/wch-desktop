@@ -4,6 +4,8 @@
 #include "presentation/profile/profiledialog.h"
 #include "presentation/chatinfo/chatinfodialog.h"
 #include "presentation/chatinfo/createchatdialog.h"
+#include "presentation/createchat/chattypedialog.h"
+#include "presentation/createchat/searchuserdialog.h"
 
 #include <QPixmap>
 #include <QImageReader>
@@ -218,8 +220,24 @@ void MainWindow::onLoadingAvatarsForChatsFinished(const QHash<QString, QPixmap>&
 }
 
 void MainWindow::onCreateNewChat() {
-    CreateChatDialog dialog{ctx_->getCreateChatUC()};
-    dialog.exec();
+    ChatTypeDialog dialog{};
+    if (dialog.exec() == QDialog::Accepted) {
+        switch (dialog.getChosenType()) {
+        case Chat::Type::Direct: {
+            SearchUserDialog search_user{ctx_->getSearchUsersUC()};
+            search_user.exec();
+            return;
+        }
+        case Chat::Type::Group: {
+            CreateChatDialog create_dialog{ctx_->getCreateChatUC()};
+            create_dialog.exec();
+            return;
+        }
+        case Chat::Type::Unknown: {
+            QMessageBox::warning(nullptr, "Choose chat's type", "Choose one type from available");
+        }
+        }
+    }
 }
 
 void MainWindow::onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt) {

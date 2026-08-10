@@ -1,5 +1,6 @@
 #include "qtusersservice.h"
 
+#include "core/domain/user_summary.h"
 #include "core/domain/types.h"
 #include "core/domain/errors.h"
 #include "utils.h"
@@ -166,4 +167,43 @@ void QtUsersService::onGetAvatarFinished(const QGrpcStatus& status) {
             data.mime_type = resp.avatar().mimeType().toStdString();
             return std::optional<AvatarData>(data);
     }), Error{ErrorCode::Unknown, "Unknown Error"}));
+}
+
+void QtUsersService::searchUsers(const UsersSearchFilter& filter) {
+    users::v1::SearchUsersRequest request;
+    request.setUsername(QString::fromStdString(filter.name));
+    request.setEmail(QString::fromStdString(filter.email));
+
+    reply_ = std::move(client_->SearchUsers(request, options_));
+
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtUsersService::onSearchUsersFinished);
+}
+
+void QtUsersService::onSearchUsersFinished(const QGrpcStatus& s) {
+    if (!s.isOk()) {
+        // emit getAvatarFinished(std::unexpected(errorHandle(s)));
+
+        std::list<UserSummary> res;
+        res.push_back({"123456", "Name1", "email1"});
+        res.push_back({"123456", "Name2", "email2"});
+        res.push_back({"123456", "Name3", "email3"});
+
+        emit searchUsersFinished(res);
+        return;
+    }
+
+    emit searchUsersFinished(to_expected(reply_->read<SearchResponse>()
+        .and_then([](SearchResponse&& resp) {
+            std::list<UserSummary> res;
+            for (const auto& u : resp.users()) {
+                res.push_back({
+                    u.id_proto().toStdString(),
+                    u.username().toStdString(),
+                    u.email().toStdString()
+                });
+            }
+
+            return std::optional<std::list<UserSummary>>{res};
+        }), Error{ErrorCode::Unknown, "Unknown Error"}));
 }

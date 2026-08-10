@@ -12,6 +12,7 @@ struct Chat {
     enum class Type {
         Direct,
         Group,
+        Unknown,
     };
 
     Chat() = default;

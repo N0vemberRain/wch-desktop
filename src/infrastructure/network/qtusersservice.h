@@ -24,16 +24,19 @@ public:
     void updateUser(const User& u, const std::vector<std::byte>& avatar_bytes) override;
     void addOption(const std::string& key, const std::string& value, const std::string& key_param="") override;
     void requestAvatar(const UserID& user_id) override;
+    void searchUsers(const UsersSearchFilter& filter) override;
 private slots:
     void onGetUserFinished(const QGrpcStatus& status);
     void onUpdateUserFinished(const QGrpcStatus& status);
     void onGetAvatarFinished(const QGrpcStatus& status);
+    void onSearchUsersFinished(const QGrpcStatus& status);
 private:
     Error errorHandle(const QGrpcStatus& s);
 
     using Response = users::v1::GetUserResponse;
     using Client = users::v1::UsersService::Client;
     using GetAvatarResponse = users::v1::GetAvatarResponse;
+    using SearchResponse = users::v1::SearchUsersResponse;
 
     std::shared_ptr<QGrpcHttp2Channel> channel_;
     std::unique_ptr<Client> client_;
