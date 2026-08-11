@@ -194,3 +194,7 @@ void AppContext::onCreateChatFinished(
         emit createChatFinished(chat, std::nullopt);
     }
 }
+
+void AppContext::clearSession() {
+    session_storage->clear();
+}

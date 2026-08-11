@@ -1,8 +1,6 @@
 #include "appcontroller.h"
 
 #include "app/appcontext.h"
-#include "presentation/auth/logindialog.h"
-#include "presentation/main/mainwindow.h"
 
 AppController::AppController(std::shared_ptr<AppContext> ctx, QObject *parent)
     : QObject{parent}
@@ -43,6 +41,7 @@ void AppController::showMainWindow()
         &MainWindow::logoutRequested,
         this,
         [this]() {
+            ctx_->clearSession();
             main_window_.reset();
             showLogin();
         }

@@ -83,6 +83,7 @@ add_executable(wch-desktop
     presentation/createchat/searchusersmodel.h presentation/createchat/searchusersmodel.cpp
     presentation/createchat/usersummarydelegate.h presentation/createchat/usersummarydelegate.cpp
     app/appcontroller.h app/appcontroller.cpp
+    core/usecases/logoutusecase.h core/usecases/logoutusecase.cpp
 
 
 

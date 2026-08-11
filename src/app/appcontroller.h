@@ -4,8 +4,9 @@
 
 #include <memory>
 
-class MainWindow;
-class LoginDialog;
+#include "presentation/main/mainwindow.h"
+#include "presentation/auth/logindialog.h"
+
 class AppContext;
 
 class AppController : public QObject

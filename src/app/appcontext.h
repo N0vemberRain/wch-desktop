@@ -43,6 +43,9 @@ public:
         session_storage->save(session_manager.getSession());
         setupSession();
     }
+
+    void clearSession();
+
     const User& getCurrentUser() const noexcept;
     const UserID& getCurrentUserID() const noexcept;
     const Token& getToken() const noexcept;

@@ -2,14 +2,14 @@
 #include "app/appcontext.h"
 #include "app/appcontroller.h"
 
-#include "presentation/main/mainwindow.h"
-#include "presentation/auth/logindialog.h"
+// #include "presentation/main/mainwindow.h"
+// #include "presentation/auth/logindialog.h"
 #include "infrastructure/network/qtauthservice.h"
 
 #include "core/usecases/loginusecase.h"
-#include "core/usecases/sendmessageusecase.h"
-#include "core/usecases/loadcurrentuserusecase.h"
-#include "core/domain/session.h"
+// #include "core/usecases/sendmessageusecase.h"
+// #include "core/usecases/loadcurrentuserusecase.h"
+// #include "core/domain/session.h"
 
 #include "infrastructure/network/qtmessageservice.h"
 #include "infrastructure/network/qtusersservice.h"
