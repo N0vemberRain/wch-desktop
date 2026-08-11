@@ -55,3 +55,20 @@ void SearchUsersModel::clear() noexcept {
     users_.clear();
     endRemoveRows();
 }
+
+void SearchUsersModel::addAvatarForUser(const QString& user_id, QPixmap img) noexcept {
+    auto it = std::ranges::find_if(users_, [&](const auto& item) {
+        return item.id == user_id;
+    });
+
+    if (it == users_.end()) {
+        return;
+    }
+
+    it->avatar = img;
+
+    const auto row = std::distance(users_.begin(), it);
+    auto idx = index(row);
+
+    emit dataChanged(idx, idx, {AvatarRole});
+}

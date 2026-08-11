@@ -47,6 +47,35 @@ std::optional<QPixmap> AvatarProvider::getImage(const QString& user_id) {
     return std::nullopt;
 }
 
+QVector<QPair<QString, QPixmap>> AvatarProvider::getImages(const QStringList& qids) {
+    QVector<QPair<QString, QPixmap>> res;
+    std::list<std::string> ids;
+    foreach (const auto& id, qids) {
+        if (const auto it = memory_cache_.find(id);
+            it != memory_cache_.end()) {
+            res.append({id, it.value()});
+
+            continue;
+        }
+
+        const auto path = cache_path_ + "/" + id + ".png";
+        QPixmap pix;
+        if (pix.load(path)) {
+            memory_cache_.insert(id, pix);
+            res.append({id, pix});
+
+            continue;
+        }
+
+        ids.push_back(id.toStdString());
+    }
+
+    if (!ids.empty())
+        srv_.requestAvatars(ids);
+
+    return res;
+}
+
 void AvatarProvider::onGetAvatarFinished(std::expected<AvatarData, Error> res) {
     if (res.has_value()) {
         QPixmap pix;
@@ -58,6 +87,32 @@ void AvatarProvider::onGetAvatarFinished(std::expected<AvatarData, Error> res) {
     }
 }
 
+void AvatarProvider::onGetAvatarsFinished(
+    std::expected<std::list<AvatarData>, Error> res
+) {
+    if (!res.has_value())
+        return;
+
+    QVector<QPair<QString, QPixmap>> avs;
+    for (const auto& av_data : res.value()) {
+        QPixmap pix;
+        pix.loadFromData(toQByteArray(av_data.img_data));
+        memory_cache_.insert(
+            QString::fromStdString(av_data.user_id), pix
+        );
+        pix.save(
+            cache_path_ +
+            "/" +
+            QString::fromStdString(av_data.user_id) +
+            ".png",
+            "PNG"
+        );
+
+        avs.append({QString::fromStdString(av_data.user_id), pix});
+    }
+
+    emit getAvatarsFinished(avs);
+}
 void AvatarProvider::updateImage(const QString& user_id, const QString& av_url) {
     QPixmap new_av;
     if(!new_av.load(av_url)) {

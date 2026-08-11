@@ -5,15 +5,22 @@
 #include "core/domain/users_search_filter.h"
 #include "presentation/createchat/searchusersmodel.h"
 #include "presentation/createchat/usersummarydelegate.h"
+#include "infrastructure/utils/avatarprovider.h"
 
 #include <QKeyEvent>
 #include <QMovie>
 
-SearchUserDialog::SearchUserDialog(SearchUsersUseCase& uc, QWidget *parent)
+SearchUserDialog::SearchUserDialog(
+    SearchUsersUseCase& uc,
+    AvatarProvider* av_provider,
+    QWidget *parent
+)
     : QDialog(parent)
     , ui(new Ui::SearchUserDialog)
     , uc_(uc)
+    , av_provider_(av_provider)
 {
+    assert(av_provider_);
     ui->setupUi(this);
 
     connect(ui->findButton, &QPushButton::clicked, this,
@@ -31,6 +38,9 @@ SearchUserDialog::SearchUserDialog(SearchUsersUseCase& uc, QWidget *parent)
     ui->usersListView->setItemDelegate(user_summary_delegate);
 
     setupLoadLabel();
+
+    connect(av_provider_, &AvatarProvider::getAvatarsFinished, this,
+        &SearchUserDialog::onGetAvatarsFinished);
 }
 
 SearchUserDialog::~SearchUserDialog()
@@ -81,15 +91,33 @@ void SearchUserDialog::onSearchFinished(std::expected<std::list<UserSummary>, Er
 
     model_->clear();
 
+    QStringList ids;
     for (const auto& u : res.value()) {
         model_->addUser({
             QString::fromStdString(u.id),
             QString::fromStdString(u.name),
             QString::fromStdString(u.email),
         });
+
+        ids.append(QString::fromStdString(u.id));
     }
 
     stopLoadAnim();
+
+    auto avs = av_provider_->getImages(ids);
+    if (avs.isEmpty()) {
+        return;
+    }
+
+    foreach (const auto& pair, avs) {
+        model_->addAvatarForUser(pair.first, pair.second);
+    }
+}
+
+void SearchUserDialog::onGetAvatarsFinished(const QVector<QPair<QString, QPixmap>>& res) {
+    foreach (const auto& pair, res) {
+        model_->addAvatarForUser(pair.first, pair.second);
+    }
 }
 
 void SearchUserDialog::startLoadAnim() {

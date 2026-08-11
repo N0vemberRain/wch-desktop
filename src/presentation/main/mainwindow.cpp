@@ -224,7 +224,10 @@ void MainWindow::onCreateNewChat() {
     if (dialog.exec() == QDialog::Accepted) {
         switch (dialog.getChosenType()) {
         case Chat::Type::Direct: {
-            SearchUserDialog search_user{ctx_->getSearchUsersUC()};
+            SearchUserDialog search_user{
+                ctx_->getSearchUsersUC(),
+                ctx_->getAvatarProvider()
+            };
             search_user.exec();
             return;
         }

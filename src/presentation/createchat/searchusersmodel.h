@@ -25,6 +25,7 @@ public:
     ~SearchUsersModel() = default;
 
     void addUser(const UserItem& item) noexcept;
+    void addAvatarForUser(const QString& user_id, QPixmap img) noexcept;
 
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;

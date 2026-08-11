@@ -153,6 +153,21 @@ void QtUsersService::requestAvatar(const UserID& user_id) {
             this, &QtUsersService::onGetAvatarFinished);
 }
 
+void QtUsersService::requestAvatars(const std::list<UserID>& ids) {
+    users::v1::GetAvatarsForUsersRequest request;
+
+    QStringList qids;
+    std::ranges::transform(ids, std::back_inserter(qids),
+                           [](const auto& id) {
+                               return QString::fromStdString(id);
+    });
+    request.setIds(std::move(qids));
+
+    reply_ = std::move(client_->GetAvatarsForUsers(request, options_));
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtUsersService::onGetAvatarsFinished);
+}
+
 void QtUsersService::onGetAvatarFinished(const QGrpcStatus& status) {
     if (!status.isOk()) {
         emit getAvatarFinished(std::unexpected(errorHandle(status)));
@@ -167,6 +182,28 @@ void QtUsersService::onGetAvatarFinished(const QGrpcStatus& status) {
             data.mime_type = resp.avatar().mimeType().toStdString();
             return std::optional<AvatarData>(data);
     }), Error{ErrorCode::Unknown, "Unknown Error"}));
+}
+
+void QtUsersService::onGetAvatarsFinished(const QGrpcStatus& status) {
+    if (!status.isOk()) {
+        emit getAvatarsFinished(std::unexpected(errorHandle(status)));
+        return;
+    }
+
+    emit getAvatarsFinished(to_expected(reply_->read<GetAvatarsResponse>()
+        .and_then([](GetAvatarsResponse&& resp) {
+            std::list<AvatarData> res;
+            for (const auto& av : resp.avatars()) {
+                AvatarData data;
+                data.user_id = av.ownerId().toStdString();
+                data.img_data = toBytes(av.data());
+                data.mime_type = av.mimeType().toStdString();
+
+                res.push_back(data);
+            }
+            return std::optional<std::list<AvatarData>>(res);
+    }), Error{ErrorCode::Unknown, "Unknown Error"}));
+
 }
 
 void QtUsersService::searchUsers(const UsersSearchFilter& filter) {

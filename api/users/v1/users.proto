@@ -20,6 +20,7 @@ message User {
 message Avatar {
     bytes data = 1;
     string mime_type = 2;
+    string owner_id = 3;
 }
 
 service UsersService {
@@ -36,6 +37,7 @@ service UsersService {
     rpc ListUsers(ListUsersRequest) returns (ListUsersResponse);
 
     rpc GetAvatarForUser(GetAvatarRequest) returns (GetAvatarResponse);
+    rpc GetAvatarsForUsers(GetAvatarsForUsersRequest) returns (GetAvatarsForUsersResponse);
 }
 
 message CreateUserRequest {
@@ -99,4 +101,12 @@ message GetAvatarRequest {
 message GetAvatarResponse {
     string user_id = 1;
     Avatar avatar = 2;
+}
+
+message GetAvatarsForUsersRequest {
+    repeated string ids = 1;
+}
+
+message GetAvatarsForUsersResponse {
+    repeated Avatar avatars = 1;
 }
