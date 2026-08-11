@@ -1,5 +1,6 @@
 #include "sessionmanager.h"
 #include "app/appcontext.h"
+#include "app/appcontroller.h"
 
 #include "presentation/main/mainwindow.h"
 #include "presentation/auth/logindialog.h"
@@ -31,19 +32,19 @@ int main(int argc, char *argv[])
     auto auth_service = std::make_unique<QtAuthService>();
     auto login_use_case = std::make_unique<LoginUseCase>(*auth_service);
 
-    if (auto session = session_storage->load(); session.has_value()) {
-        session_manager.setSession(std::move(session.value()));
-    } else {
-        LoginDialog dialog{*login_use_case};
-        if (dialog.exec() == QDialog::Accepted) {
-            session.value().setToken(dialog.getToken());
-            session_manager.setSession(std::move(session.value()));
-        } else {
-            return 0;
-        }
-    }
+    // if (auto session = session_storage->load(); session.has_value()) {
+    //     session_manager.setSession(std::move(session.value()));
+    // } else {
+    //     LoginDialog dialog{*login_use_case};
+    //     if (dialog.exec() == QDialog::Accepted) {
+    //         session.value().setToken(dialog.getToken());
+    //         session_manager.setSession(std::move(session.value()));
+    //     } else {
+    //         return 0;
+    //     }
+    // }
 
-    auto ctx = std::make_unique<AppContext>(std::move(auth_service),
+    auto ctx = std::make_shared<AppContext>(std::move(auth_service),
                                             std::make_unique<QtUsersService>(),
                                             std::make_unique<QtMessageService>(),
                                             std::make_unique<QtChatsService>(),
@@ -51,10 +52,14 @@ int main(int argc, char *argv[])
                                             std::move(login_use_case),
                                             std::move(session_manager));
 
-    ctx->setupCurrentUserProfile();
+    // ctx->setupCurrentUserProfile();
 
-    MainWindow w{std::move(ctx)};
-    w.show();
+    AppController controller{ctx};
+
+    controller.run();
+
+    // MainWindow w{std::move(ctx)};
+    // w.show();
 
     return a.exec();
     } catch (const std::exception& e) {

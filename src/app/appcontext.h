@@ -30,12 +30,18 @@ public:
                std::unique_ptr<MessageService> ms,
                std::unique_ptr<ChatsService> cs,
                std::unique_ptr<SessionStorage> ses_storage,
-                std::unique_ptr<LoginUseCase> login_use_case,
+               std::unique_ptr<LoginUseCase> login_use_case,
                SessionManager&& session_manager);
     ~AppContext();
 
+    void loadSession();
     bool hasSession() const noexcept {
         return session_manager.hasSession();
+    }
+    void setSession(std::shared_ptr<Session> s) {
+        session_manager.setSession(s);
+        session_storage->save(session_manager.getSession());
+        setupSession();
     }
     const User& getCurrentUser() const noexcept;
     const UserID& getCurrentUserID() const noexcept;
@@ -59,6 +65,10 @@ public:
     CreateChatUseCase& getCreateChatUC() noexcept {
         return create_chat_uc;
     }
+
+    LoginUseCase& getLoginUC() noexcept {
+        return *login_use_case;
+    }
 signals:
     void loadingProfileFinished();
     void loadingAvatarFinished(QPixmap img);
@@ -74,6 +84,8 @@ private slots:
     void onLoadChatsFinished(std::expected<std::list<Chat>, Error> res);
     void onCreateChatFinished(std::expected<std::pair<Chat, std::optional<AvatarData>>, Error> res);
 private:
+    void setupSession();
+
     SessionManager session_manager;
     std::unique_ptr<SessionStorage> session_storage;
 

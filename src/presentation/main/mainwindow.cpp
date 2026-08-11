@@ -17,7 +17,7 @@
 #include <QPropertyAnimation>
 #include <QMessageBox>
 
-MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppContext> ctx, QWidget *parent)
+MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::shared_ptr<AppContext> ctx, QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     , ctx_(std::move(ctx))
@@ -79,6 +79,7 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::unique_ptr<AppCo
     sidebar_width = sidebar_->width();
     navigation_width = nav_wgt_->width();
     connect(sidebar_, &SidebarWidget::settingsOpen, this, &MainWindow::settingsCalled);
+    connect(sidebar_, &SidebarWidget::logoutClicked, this, &MainWindow::onLogoutClicked);
 
     connect(ctx_.get(), &AppContext::loadingProfileFinished, this, [this](){
         // sidebar_->stopLoadingIcon();
@@ -245,4 +246,8 @@ void MainWindow::onCreateNewChat() {
 
 void MainWindow::onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt) {
     chats_wgt_->addChat(chat, av_opt.has_value() ? av_opt.value() : QPixmap{});
+}
+
+void MainWindow::onLogoutClicked() {
+    emit logoutRequested();
 }

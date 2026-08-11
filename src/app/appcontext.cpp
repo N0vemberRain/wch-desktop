@@ -21,8 +21,8 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     session_storage{std::move(ses_storage)},
     session_manager{std::move(sm)},
     login_use_case{std::move(login_use_case)},
-    load_current_user_use_case{users_service.get(), session_manager.getSession()},
-    send_msgs_use_case{msgs_service.get(), session_manager.getSession()},
+    load_current_user_use_case{users_service.get()/*, session_manager.getSession()*/},
+    send_msgs_use_case{msgs_service.get()/*, session_manager.getSession()*/},
     update_profile_uc{users_service.get()},
     search_users_uc{users_service.get()},
     load_chats_uc{chats_service.get()},
@@ -30,9 +30,9 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     create_chat_uc{chats_service.get()},
     av_provider{std::make_unique<AvatarProvider>(*users_service.get())}
 {
-    if (!session_manager.hasSession()) {
-        throw std::runtime_error{"session has to be initialized before AppContext"};
-    }
+    // if (!session_manager.hasSession()) {
+    //     throw std::runtime_error{"session has to be initialized before AppContext"};
+    // }
 
     connect(&load_current_user_use_case, &LoadCurrentUserUseCase::loadCurrentUserFinished,
         this, &AppContext::onLoadCurrentUserFinished);
@@ -64,9 +64,6 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
         emit loadingAvatarsForChatsFinished(avs);
     });
 
-    chats_service->addOption("authorization",
-                             session_manager.getSession().getToken().value,
-                             "Bearer");
 
     connect(&update_chat_uc, &UpdateChatUseCase::requestFinished,
             this, &AppContext::onUpdateChatFinished);
@@ -75,6 +72,25 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
 }
 
 AppContext::~AppContext() = default;
+
+void AppContext::loadSession() {
+    auto session = session_storage->load();
+    if (session.has_value()) {
+        auto s_ptr = std::make_shared<Session>(session.value());
+        session_manager.setSession(s_ptr);
+        setupSession();
+    }
+}
+
+void AppContext::setupSession() {
+    load_current_user_use_case.setSession(session_manager.getSessionPtr());
+    send_msgs_use_case.setSession(session_manager.getSessionPtr());
+        chats_service->addOption("authorization",
+                 session_manager.getSession().getToken().value,
+                 "Bearer");
+
+    setupCurrentUserProfile();
+}
 
 const User& AppContext::getCurrentUser() const noexcept {
     return session_manager.getSession().getCurrentUser();

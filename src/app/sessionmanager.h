@@ -1,6 +1,6 @@
 #pragma once
 
-#include <optional>
+#include <memory>
 #include <cassert>
 
 #include "core/domain/session.h"
@@ -11,25 +11,28 @@ public:
     SessionManager();
 
     bool hasSession() const noexcept {
-        return session_.has_value();
+        return session_ != nullptr;
+    }
+    auto getSessionPtr() noexcept {
+        return session_;
     }
     const Session& getSession() const noexcept {
-        assert(session_.has_value());
-        return session_.value();
+        assert(session_);
+        return *session_;
     }
     Session& getSession() noexcept {
-        assert(session_.has_value());
-        return session_.value();
+        assert(session_);
+        return *session_;
     }
 
-    void setSession(Session&& s) noexcept {
-        session_ = std::move(s);
+    void setSession(std::shared_ptr<Session> s) noexcept {
+        session_ = s;
     }
 
     void clear() noexcept {
         session_.reset();
     }
 private:
-    std::optional<Session> session_;
+    std::shared_ptr<Session> session_;
 };
 

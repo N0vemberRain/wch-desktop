@@ -11,7 +11,8 @@ class Session;
 class SendMessageUseCase : public QObject {
     Q_OBJECT
 public:
-    explicit SendMessageUseCase(MessageService* srv, const Session& s);
+    explicit SendMessageUseCase(MessageService* srv);
+    void setSession(std::shared_ptr<Session> s_ptr);
 
     void execute(Message msg) const;
 
@@ -20,5 +21,5 @@ signals:
 
 private:
     MessageService* srv_;
-    const Session& session_;
+    std::shared_ptr<Session> session_;
 };

@@ -24,6 +24,8 @@ signals:
     void settingsOpen();
     void createNewChat();
 
+    void logoutClicked();
+
 private:
     Ui::SidebarWidget *ui;
 };

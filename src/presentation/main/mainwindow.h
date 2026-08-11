@@ -30,10 +30,13 @@ class MainWindow : public QMainWindow
 
 public:
     MainWindow(SendMessageUseCase* send_msgs_uc, QWidget *parent = nullptr);
-    explicit MainWindow(std::unique_ptr<AppContext> ctx, QWidget *parent = nullptr);
+    explicit MainWindow(std::shared_ptr<AppContext> ctx, QWidget *parent = nullptr);
     ~MainWindow();
 
     void resizeEvent(QResizeEvent* e) override;
+
+signals:
+    void logoutRequested();
 private slots:
     void switchToChat(const QModelIndex& index);
     void showChat(const QString& id, const QString& name);
@@ -53,9 +56,11 @@ private slots:
 
     void onCreateNewChat();
     void onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt);
+
+    void onLogoutClicked();
 private:
     Ui::MainWindow *ui;
-    std::unique_ptr<AppContext> ctx_;
+    std::shared_ptr<AppContext> ctx_;
 
     ChatsListWgt *chats_wgt_;
 

@@ -82,6 +82,7 @@ add_executable(wch-desktop
     core/domain/user_summary.h
     presentation/createchat/searchusersmodel.h presentation/createchat/searchusersmodel.cpp
     presentation/createchat/usersummarydelegate.h presentation/createchat/usersummarydelegate.cpp
+    app/appcontroller.h app/appcontroller.cpp
 
 
 

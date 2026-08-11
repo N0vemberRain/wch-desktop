@@ -23,6 +23,10 @@ SidebarWidget::SidebarWidget(QWidget *parent) :
     auto gif = new QMovie{":/icons/icons/load_spin.gif", QByteArray{}, this};
     ui->loadingWgt->setMovie(gif);
     ui->loadingWgt->setScaledContents(true);
+
+    connect(ui->logoutButton, &QPushButton::clicked, this, [this]() {
+        emit logoutClicked();
+    });
 }
 
 SidebarWidget::~SidebarWidget()

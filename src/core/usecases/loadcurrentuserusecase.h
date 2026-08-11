@@ -10,10 +10,12 @@ class LoadCurrentUserUseCase : public QObject
 {
     Q_OBJECT
 public:
-    explicit LoadCurrentUserUseCase(UsersService* srv, const Session& s);
+    explicit LoadCurrentUserUseCase(UsersService* srv);
 
     LoadCurrentUserUseCase(const LoadCurrentUserUseCase&) = delete;
     LoadCurrentUserUseCase& operator=(const LoadCurrentUserUseCase&) = delete;
+
+    void setSession(std::shared_ptr<Session> s_ptr) noexcept;
 
     void execute();
 
@@ -28,7 +30,7 @@ private:
     void onGetAvatarFinished(std::expected<AvatarData, Error> res);
 private:
     UsersService* srv_;
-    const Session& session_;
+    std::shared_ptr<Session> session_;
 
     bool is_running_ {false};
 };
