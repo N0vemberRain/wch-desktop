@@ -164,10 +164,9 @@ void MainWindow::resizeEvent(QResizeEvent* e) {
 void MainWindow::currentUserProfileClicked() {
     ProfileDialog dialog{ctx_->getUpdateUserUC()};
     dialog.setUser(ctx_->getCurrentUser());
-    auto img_opt = ctx_->getAvatarProvider()->getImage(
-        QString::fromStdString(ctx_->getCurrentUserID()));
-    if (img_opt.has_value()) {
-        dialog.setAvatar(img_opt.value());
+    auto img = nav_wgt_->getUserAvatar();
+    if (!img.isNull()) {
+        dialog.setAvatar(img);
     }
 
     if (dialog.exec() == QDialog::Accepted) {
@@ -175,11 +174,10 @@ void MainWindow::currentUserProfileClicked() {
     }
 }
 
-void MainWindow::onShowChatInfo(const Chat& c) {
+void MainWindow::onShowChatInfo(const Chat& c, QPixmap chat_av) {
     ChatInfoDialog dialog{ctx_->getUpdateChatUC(), c};
-    if (const auto img = ctx_->getAvatarProvider()->getImage(
-            QString::fromStdString(c.id)); img.has_value()) {
-        dialog.setAvatar(img.value());
+    if (!chat_av.isNull()) {
+        dialog.setAvatar(chat_av);
     }
 
     if (dialog.exec() == QDialog::Accepted) {
@@ -190,9 +188,6 @@ void MainWindow::onShowChatInfo(const Chat& c) {
 void MainWindow::onCurrentUserChanged(const User& u) {
     chat_wgt_->onCurrentUserChanged(u);
     nav_wgt_->setUser(u);
-
-    ctx_->getAvatarProvider()->updateImage(
-        QString::fromStdString(u.id), QString::fromStdString(u.avatar_url));
 }
 
 void MainWindow::onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res) {

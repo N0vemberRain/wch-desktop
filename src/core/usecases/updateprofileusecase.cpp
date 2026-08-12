@@ -5,8 +5,8 @@
 UpdateProfileUseCase::UpdateProfileUseCase(UsersService* srv)
     : srv_{srv}
 {
-    connect(srv_, &UsersService::currentUserChanged, this,
-            [this](std::expected<User, Error> res) {
+    connect(srv_, &UsersService::updateUserFinished, this,
+            [this](auto res) {
         emit requestFinished(res);
     });
 }
@@ -17,7 +17,7 @@ void UpdateProfileUseCase::execute(const User& u) {
 
 void UpdateProfileUseCase::execute(
     const User& u,
-    const std::vector<std::byte>& av_data)
+    const AvatarData& av)
 {
-    srv_->updateUser(u, av_data);
+    srv_->updateUser(u, av);
 }

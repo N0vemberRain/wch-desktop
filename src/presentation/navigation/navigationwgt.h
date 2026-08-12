@@ -14,6 +14,7 @@ public:
     explicit NavigationWgt(QWidget* parent = nullptr);
 
     void setUser(const User& u) noexcept;
+    QPixmap getUserAvatar() const noexcept;
 
 public slots:
     void setAvatar(QPixmap img) noexcept;

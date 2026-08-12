@@ -40,5 +40,6 @@ private:
 
 
     QString new_avatar_path_;
+    User user_tmp_;
 };
 

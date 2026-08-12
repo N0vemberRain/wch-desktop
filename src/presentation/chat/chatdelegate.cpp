@@ -63,13 +63,14 @@ void ChatDelegate::paint(QPainter *painter,
         painter->setBrush(QColor("#cccccc"));
         painter->setPen(Qt::NoPen);
         painter->drawEllipse(avatarRect);
+
+        // Optional: first letter
+        painter->setPen(Qt::black);
+        QFont avatarFont = option.font;
+        avatarFont.setBold(true);
+        painter->setFont(avatarFont);
+        painter->drawText(avatarRect, Qt::AlignCenter, name.left(1).toUpper());
     }
-    // Optional: first letter
-    painter->setPen(Qt::black);
-    QFont avatarFont = option.font;
-    avatarFont.setBold(true);
-    painter->setFont(avatarFont);
-    painter->drawText(avatarRect, Qt::AlignCenter, name.left(1).toUpper());
 
     // --- Name (bold if unread) ---
     QFont nameFont = option.font;

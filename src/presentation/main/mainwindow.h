@@ -46,7 +46,7 @@ private slots:
 
     void settingsCalled();
     void currentUserProfileClicked();
-    void onShowChatInfo(const Chat& c);
+    void onShowChatInfo(const Chat& c, QPixmap chat_av);
 
     void onCurrentUserChanged(const User& u);
     void onUpdateChatFinished(Chat chat, QPixmap new_av);

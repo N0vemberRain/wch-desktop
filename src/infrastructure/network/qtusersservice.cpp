@@ -11,6 +11,8 @@
 #include <QUrl>
 #include <QMessageBox>
 
+#include <QBuffer>
+
 QtUsersService::QtUsersService() {
     channel_ = std::make_shared<QGrpcHttp2Channel>(
         QUrl{"http://localhost:8082"}
@@ -61,9 +63,6 @@ void QtUsersService::addOption(const std::string& key, const std::string& value,
 }
 
 void QtUsersService::updateUser(const User& u) {
-
-    new_avatar_path_ = QString::fromStdString(u.avatar_url);
-
     users::v1::UpdateUserRequest request;
     users::v1::User dto;
     dto.setUsername(QString::fromStdString(u.name));
@@ -79,8 +78,9 @@ void QtUsersService::updateUser(const User& u) {
             &QtUsersService::onUpdateUserFinished);
 }
 
-void QtUsersService::updateUser(const User& u, const std::vector<std::byte>& av_data) {
-    new_avatar_path_ = QString::fromStdString(u.avatar_url);
+void QtUsersService::updateUser(const User& u, const AvatarData& av_data) {
+    user_tmp_ = u;
+    av_tmp_ = av_data;
 
     users::v1::UpdateUserRequest request;
     users::v1::User dto;
@@ -91,7 +91,8 @@ void QtUsersService::updateUser(const User& u, const std::vector<std::byte>& av_
     request.setUser(dto);
 
     users::v1::Avatar av_dto;
-    av_dto.setData(toQByteArray(av_data));
+
+    av_dto.setData(toQByteArray(av_tmp_.img_data));
     av_dto.setMimeType("PNG");
     request.setAvatar(av_dto);
 
@@ -103,7 +104,7 @@ void QtUsersService::updateUser(const User& u, const std::vector<std::byte>& av_
 
 void QtUsersService::onUpdateUserFinished(const QGrpcStatus& s) {
     if (!s.isOk()) {
-        emit currentUserChanged(std::unexpected(errorHandle(s)));
+        emit updateUserFinished(std::unexpected(errorHandle(s)));
         // User u;
         // u.name = "Igor";
         // u.avatar_url = new_avatar_path_.toStdString();
@@ -111,14 +112,9 @@ void QtUsersService::onUpdateUserFinished(const QGrpcStatus& s) {
         return;
     }
 
-    emit currentUserChanged(to_expected(reply_->read<Response>()
-        .and_then([](Response&& resp) {
-            User u;
-            u.id = resp.user().id_proto().toStdString();
-            u.name = resp.user().username().toStdString();
-            u.email = resp.user().email().toStdString();
-
-            return std::optional<User>(u);
+    emit updateUserFinished(to_expected(reply_->read<UpdateResponse>()
+        .and_then([this](UpdateResponse&& resp) {
+            return std::optional<std::pair<User, AvatarData>>({user_tmp_, av_tmp_});
     }), Error{ErrorCode::Unknown, "Unknown Error"}));
 }
 

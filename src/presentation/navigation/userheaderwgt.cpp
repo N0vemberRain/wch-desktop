@@ -49,3 +49,7 @@ void UserHeaderWgt::setAvatar(QPixmap img) {
     ui->avatarLable->setFixedSize(100, 100);
     ui->avatarLable->setAlignment(Qt::AlignCenter | Qt::AlignRight);
 }
+
+QPixmap UserHeaderWgt::getAvatar() const noexcept {
+    return ui->avatarLable->pixmap();
+}

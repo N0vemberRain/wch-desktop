@@ -68,3 +68,7 @@ void NavigationWgt::setUser(const User& u) noexcept {
 void NavigationWgt::setAvatar(QPixmap img) noexcept {
     user_wgt_->setAvatar(img);
 }
+
+QPixmap NavigationWgt::getUserAvatar() const noexcept {
+    return user_wgt_->getAvatar();
+}

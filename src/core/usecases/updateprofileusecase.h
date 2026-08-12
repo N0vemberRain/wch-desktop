@@ -6,6 +6,7 @@
 
 #include "core/domain/user.h"
 #include "core/domain/errors.h"
+#include "core/domain/types.h"
 
 class UsersService;
 
@@ -16,10 +17,10 @@ public:
     explicit UpdateProfileUseCase(UsersService* srv);
 
     void execute(const User& u);
-    void execute(const User& u, const std::vector<std::byte>& avatar_bytes);
+    void execute(const User& u, const AvatarData& av);
 
 signals:
-    void requestFinished(std::expected<User, Error>);
+    void requestFinished(std::expected<std::pair<User, AvatarData>, Error>);
 private:
     UsersService* srv_;
 };

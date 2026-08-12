@@ -25,8 +25,8 @@ ProfileDialog::ProfileDialog(UpdateProfileUseCase& uc, QWidget *parent)
     connect(ui->buttonBox->button(QDialogButtonBox::Save), &QPushButton::clicked,
             this, &ProfileDialog::onSaveClicked);
 
-    connect(&uc_, &UpdateProfileUseCase::requestFinished,
-            this, &ProfileDialog::onProfileChanged);
+    // connect(&uc_, &UpdateProfileUseCase::requestFinished,
+    //         this, &ProfileDialog::onProfileChanged);
 
     auto gif = new QMovie{":/icons/icons/load_spin.gif", QByteArray{}, this};
     ui->loadLabel->setFixedSize(40, 40);
@@ -45,6 +45,8 @@ void ProfileDialog::setUser(const User& u) noexcept {
     ui->displayNameEdit->setText(QString::fromStdString(u.name));
     ui->emailEdit->setText(QString::fromStdString(u.email));
     ui->userNameEdit->setText(QString::fromStdString(u.name));
+
+    user_tmp_ = u;
 }
 
 void ProfileDialog::setAvatar(QPixmap img) noexcept {
@@ -77,16 +79,16 @@ void ProfileDialog::onSaveClicked() {
     User u;
     u.name = ui->userNameEdit->text().toStdString();
     u.email = ui->emailEdit->text().toStdString();
-    u.avatar_url = new_avatar_path_.toStdString();
 
     const auto img = ui->avatarWgt->image();
 
     QBuffer buffer;
     buffer.open(QIODevice::WriteOnly);
-
     img.save(&buffer, "PNG");
 
-    uc_.execute(u, toBytes(buffer.data()));
+    AvatarData av_data{user_tmp_.id, toBytes(buffer.data()), "PNG"};
+
+    uc_.execute(u, av_data);
 
     startLoadAnim();
 }

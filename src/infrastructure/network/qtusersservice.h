@@ -21,7 +21,7 @@ public:
 
     void getUser(const UserID& user_id) override;
     void updateUser(const User& u) override;
-    void updateUser(const User& u, const std::vector<std::byte>& avatar_bytes) override;
+    void updateUser(const User& u, const AvatarData& av) override;
     void addOption(const std::string& key, const std::string& value, const std::string& key_param="") override;
     void requestAvatar(const UserID& user_id) override;
     void requestAvatars(const std::list<UserID>& ids) override;
@@ -36,6 +36,7 @@ private:
     Error errorHandle(const QGrpcStatus& s);
 
     using Response = users::v1::GetUserResponse;
+    using UpdateResponse = users::v1::UserResponse;
     using Client = users::v1::UsersService::Client;
     using GetAvatarResponse = users::v1::GetAvatarResponse;
     using GetAvatarsResponse = users::v1::GetAvatarsForUsersResponse;
@@ -47,6 +48,7 @@ private:
 
     QGrpcCallOptions options_;
 
-    QString new_avatar_path_;
+    User user_tmp_;
+    AvatarData av_tmp_;
 };
 

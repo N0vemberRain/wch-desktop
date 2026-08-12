@@ -32,6 +32,8 @@ public:
     void clear() noexcept {
         session_.reset();
     }
+
+    void updateUser(const User& u);
 private:
     std::shared_ptr<Session> session_;
 };

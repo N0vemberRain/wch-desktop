@@ -41,7 +41,7 @@ private slots:
     void performSearch();
 signals:
     void showChat(const QString& chat_id, const QString& chat_name);
-    void showChatInfo(const Chat& c);
+    void showChatInfo(const Chat& c, QPixmap chat_av);
 private:
     Ui::ChatsListWgt *ui;
 

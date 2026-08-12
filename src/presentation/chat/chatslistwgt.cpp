@@ -132,13 +132,14 @@ void ChatsListWgt::onOpenChatInfo(const QModelIndex& index) {
     const auto chat_name = index.data(Qt::UserRole + 1).toString();
     const auto chat_id = index.data(Qt::UserRole + 5).toString();
     const auto type = Chat::typeFromInt(index.data(Qt::UserRole + 6).toInt());
+    QPixmap chat_av = index.data(Qt::UserRole + 4).value<QPixmap>();
 
     Chat chat;
     chat.name = chat_name.toStdString();
     chat.id = chat_id.toStdString();
     chat.type = type;
 
-    emit showChatInfo(chat);
+    emit showChatInfo(chat, chat_av);
 }
 
 void ChatsListWgt::performSearch() {

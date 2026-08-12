@@ -24,6 +24,8 @@ public:
 
     void updateImage(const QString& user_id, const QString& av_url);
     QPixmap addImage(const QString& user_id, const QByteArray& img_data);
+
+    QString addAvatarForUser(const AvatarData& av_data);
 private slots:
     void onGetAvatarFinished(std::expected<AvatarData, Error> res);
     void onGetAvatarsFinished(std::expected<std::list<AvatarData>, Error> res);
@@ -33,7 +35,7 @@ signals:
     void getAvatarsFinished(const QVector<QPair<QString, QPixmap>>& res);
 
 private:
-    void save(const QString& user_id, QPixmap pix);
+    QString save(const QString& user_id, QPixmap pix);
 
     UsersService& srv_;
 

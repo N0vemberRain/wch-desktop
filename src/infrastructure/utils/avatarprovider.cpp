@@ -25,19 +25,21 @@ AvatarProvider::AvatarProvider(UsersService& srv, QObject* parent)
 
     connect(&srv_, &UsersService::getAvatarFinished, this,
             &AvatarProvider::onGetAvatarFinished);
+    connect(&srv_, &UsersService::getAvatarsFinished, this,
+            &AvatarProvider::onGetAvatarsFinished);
 }
 
 std::optional<QPixmap> AvatarProvider::getImage(const QString& user_id) {
-    if (const auto it = memory_cache_.find(user_id); it != memory_cache_.end()) {
-        return it.value();
-    }
+    // if (const auto it = memory_cache_.find(user_id); it != memory_cache_.end()) {
+    //     return it.value();
+    // }
 
-    const auto path = cache_path_ + "/" + user_id + ".png";
-    QPixmap pix;
-    if (pix.load(path)) {
-        memory_cache_.insert(user_id, pix);
-        return pix;
-    }
+    // const auto path = cache_path_ + "/" + user_id + ".png";
+    // QPixmap pix;
+    // if (pix.load(path)) {
+    //     memory_cache_.insert(user_id, pix);
+    //     return pix;
+    // }
 
     if (!pending_requests_.contains(user_id)) {
         pending_requests_.insert(user_id);
@@ -51,21 +53,21 @@ QVector<QPair<QString, QPixmap>> AvatarProvider::getImages(const QStringList& qi
     QVector<QPair<QString, QPixmap>> res;
     std::list<std::string> ids;
     foreach (const auto& id, qids) {
-        if (const auto it = memory_cache_.find(id);
-            it != memory_cache_.end()) {
-            res.append({id, it.value()});
+        // if (const auto it = memory_cache_.find(id);
+        //     it != memory_cache_.end()) {
+        //     res.append({id, it.value()});
 
-            continue;
-        }
+        //     continue;
+        // }
 
-        const auto path = cache_path_ + "/" + id + ".png";
-        QPixmap pix;
-        if (pix.load(path)) {
-            memory_cache_.insert(id, pix);
-            res.append({id, pix});
+        // const auto path = cache_path_ + "/" + id + ".png";
+        // QPixmap pix;
+        // if (pix.load(path)) {
+        //     memory_cache_.insert(id, pix);
+        //     res.append({id, pix});
 
-            continue;
-        }
+        //     continue;
+        // }
 
         ids.push_back(id.toStdString());
     }
@@ -137,11 +139,26 @@ QPixmap AvatarProvider::addImage(const QString& user_id, const QByteArray& img_d
     return pix;
 }
 
-void AvatarProvider::save(const QString& user_id, QPixmap pix) {
+QString AvatarProvider::addAvatarForUser(const AvatarData& av) {
+    QPixmap pix;
+    if (!pix.loadFromData(toQByteArray(av.img_data))) {
+        throw std::runtime_error{"AvatarProvider::addImage: can't crate a new avatar from data"};
+    }
+
+    const auto qid = QString::fromStdString(av.user_id);
+    auto key = save(qid, pix);
+    memory_cache_[qid] = pix;
+
+    return key;
+}
+
+QString AvatarProvider::save(const QString& user_id, QPixmap pix) {
     const auto filename = cache_path_ + "/" + user_id + ".png";
     if (!pix.save(filename, "PNG")) {
         throw std::runtime_error{
             "AvatartProvider:updateImage: can't save image on disk " +
             filename.toStdString()};
     }
+
+    return filename;
 }

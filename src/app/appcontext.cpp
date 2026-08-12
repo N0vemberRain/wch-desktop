@@ -39,10 +39,15 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     connect(&load_current_user_use_case, &LoadCurrentUserUseCase::loadAvatarFinished,
             this, &AppContext::onLoadAvatarFinished);
 
-    connect(users_service.get(), &UsersService::currentUserChanged,
-            this, [this](std::expected<User, Error> res) {
-        if (res.has_value())
-            emit currentUserChanged(res.value());
+    connect(&update_profile_uc, &UpdateProfileUseCase::requestFinished, this,
+            [this](std::expected<std::pair<User, AvatarData>, Error> res) {
+        if (res.has_value()) {
+            User u = res.value().first;
+            u.avatar_url = av_provider->addAvatarForUser(res.value().second).toStdString();
+            session_manager.updateUser(u);
+
+            emit currentUserChanged(u);
+        }
     });
 
     connect(&load_chats_uc, &LoadChatsForCurrentUserUseCase::requestFinished,
