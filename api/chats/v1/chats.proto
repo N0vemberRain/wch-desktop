@@ -54,6 +54,7 @@ message GetChatResponse {
 
 message ChatResponse {
     Chat chat = 1;
+    Avatar avatar = 2; // optional
 }
 
 message ListChatsForUserRequest {
@@ -97,7 +98,7 @@ message CheckParticipantResponse {
 }
 
 message ListAvatarsForChatsRequest {
-    repeated string ids = 1;
+    repeated ChatSummary chats = 1;
 }
 
 message ListAvatarsForChatsResponse {

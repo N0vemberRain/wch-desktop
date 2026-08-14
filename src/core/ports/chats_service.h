@@ -20,7 +20,8 @@ public:
         const std::vector<std::byte>& av_data) = 0;
     virtual void createDirectChat(const UserID& user_id) = 0;
     virtual void getChatsList(const UserID& id) = 0;
-    virtual void getAvatarsForChats(const std::list<ChatID>& ids) = 0;
+    // std::pair - chat id, is chat direct
+    virtual void getAvatarsForChats(const std::list<std::pair<ChatID, bool>>& ids) = 0;
     virtual void addOption(const std::string& key,
                            const std::string& value,
                            const std::string& key_param="") = 0;

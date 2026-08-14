@@ -4,10 +4,12 @@
 
 #include <expected>
 
+#include "core/domain/user.h"
 #include "core/domain/user_summary.h"
 #include "core/domain/errors.h"
 
 class SearchUsersUseCase;
+class CreateChatUseCase;
 class QEvent;
 class SearchUsersModel;
 class AvatarProvider;
@@ -22,25 +24,34 @@ class SearchUserDialog : public QDialog
 
 public:
     explicit SearchUserDialog(
-        SearchUsersUseCase& uc,
+        SearchUsersUseCase& suc,
+        CreateChatUseCase& cuc,
         AvatarProvider* av_provider,
         QWidget *parent = nullptr);
     ~SearchUserDialog();
 
+signals:
+    void showUserProfile(const User& u, QPixmap av);
 private slots:
     void onFindClicked();
     void onSearchFinished(std::expected<std::list<UserSummary>, Error> res);
     void onGetAvatarsFinished(const QVector<QPair<QString, QPixmap>>& res);
+    void onContextMenuRequested(const QPoint& pos);
 protected:
     bool eventFilter(QObject* obj, QEvent* event) override;
 private:
+    void setupContextMenu();
     void setupLoadLabel();
     void startLoadAnim();
     void stopLoadAnim();
 
+    void onShowProfile(const QModelIndex& idx);
+    void onCreateChat(const QModelIndex& idx);
+
     Ui::SearchUserDialog *ui;
 
-    SearchUsersUseCase& uc_;
+    SearchUsersUseCase& suc_;
+    CreateChatUseCase& cuc_;
 
     AvatarProvider* av_provider_;
 

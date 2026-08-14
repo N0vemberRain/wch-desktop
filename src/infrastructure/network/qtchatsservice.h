@@ -23,7 +23,7 @@ public:
                         const std::vector<std::byte>& av_data) override;
     void createDirectChat(const UserID& user_id) override;
     void getChatsList(const UserID& id) override;
-    void getAvatarsForChats(const std::list<ChatID>& ids) override;
+    void getAvatarsForChats(const std::list<std::pair<ChatID, bool>>& ids) override;
 
     void addOption(const std::string& key,
                    const std::string& value,

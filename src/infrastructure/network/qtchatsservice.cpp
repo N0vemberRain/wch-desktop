@@ -73,17 +73,19 @@ void QtChatsService::getChatsList(const UserID& id) {
             &QtChatsService::onGetChatsListFinished);
 }
 
-void QtChatsService::getAvatarsForChats(const std::list<ChatID>& ids) {
+void QtChatsService::getAvatarsForChats(const std::list<std::pair<ChatID, bool>>& chats_info) {
     chats::v1::ListAvatarsForChatsRequest request;
 
-    QStringList qids{};
     // std::ranges::copy(qids, std::back_inserter(qids), );
-    std::ranges::transform(ids, std::back_inserter(qids),
-                           [](const auto& chat_id) {
-                               return QString::fromStdString(chat_id);
-    });
+    QList<chats::v1::ChatSummary> chats;
 
-    request.setIds(qids);
+    for (const auto& [chat_id, is_direct] : chats_info) {
+        chats::v1::ChatSummary sum;
+        sum.setId_proto(QString::fromStdString(chat_id));
+        sum.setIsDirect(is_direct);
+        chats.append(std::move(sum));
+    }
+    request.setChats(std::move(chats));
 
     reply_ = std::move(client_->ListAvatarsForChats(request, options_));
     connect(reply_.get(), &QGrpcCallReply::finished, this,
@@ -120,10 +122,13 @@ void QtChatsService::onGetChatsListFinished(const QGrpcStatus& s) {
 
         emit getChatsListFinished(chats);
 
-        std::list<ChatID> ids;
-        std::transform(chats.cbegin(), chats.cend(), std::back_inserter(ids),
-                       [](const Chat& c) { return c.id; });
-        getAvatarsForChats(ids);
+        std::list<std::pair<ChatID, bool>> chats_info;
+        std::transform(chats.cbegin(), chats.cend(), std::back_inserter(chats_info),
+                       [](const Chat& c) {
+                           const auto is_direct = c.type == Chat::Type::Direct ? true : false;
+                            return std::make_pair(c.id, is_direct);
+        });
+        getAvatarsForChats(chats_info);
     } else {
         emit getChatsListFinished(std::unexpected(
             Error{ErrorCode::Unknown, "Unknown error"}));
@@ -192,7 +197,17 @@ void QtChatsService::onCreateChatFinished(const QGrpcStatus& s) {
             av_tmp_.user_id = c.id;
             emit createChatFinished(std::make_pair(c, av_tmp_));
         } else {
-            emit createChatFinished(std::make_pair(c, std::nullopt));
+            if (resp.value().hasAvatar()) {
+                auto av = resp.value().avatar();
+                AvatarData new_av;
+                new_av.img_data = toBytes(av.data());
+                new_av.mime_type = av.mimeType().toStdString();
+                new_av.user_id = av.ownerId().toStdString();
+
+                emit createChatFinished(std::make_pair(c, new_av));
+            } else {
+                emit createChatFinished(std::make_pair(c, std::nullopt));
+            }
         }
     } else {
         emit createChatFinished(std::unexpected(

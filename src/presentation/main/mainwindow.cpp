@@ -174,6 +174,19 @@ void MainWindow::currentUserProfileClicked() {
     }
 }
 
+void MainWindow::onShowUserProfile(const User& u, QPixmap av) {
+    ProfileDialog dialog{ctx_->getUpdateUserUC(), ProfileDialog::Type::Show};
+    dialog.setUser(u);
+    if (!av.isNull()) {
+        dialog.setAvatar(av);
+    }
+
+    if (dialog.exec() == QDialog::Accepted) {
+        qDebug() << "ProfileDialog accepted";
+    }
+
+}
+
 void MainWindow::onShowChatInfo(const Chat& c, QPixmap chat_av) {
     ChatInfoDialog dialog{ctx_->getUpdateChatUC(), c};
     if (!chat_av.isNull()) {
@@ -222,8 +235,12 @@ void MainWindow::onCreateNewChat() {
         case Chat::Type::Direct: {
             SearchUserDialog search_user{
                 ctx_->getSearchUsersUC(),
+                ctx_->getCreateChatUC(),
                 ctx_->getAvatarProvider()
             };
+
+            connect(&search_user, &SearchUserDialog::showUserProfile, this,
+                    &MainWindow::onShowUserProfile);
             search_user.exec();
             return;
         }

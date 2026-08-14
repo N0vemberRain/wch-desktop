@@ -17,6 +17,11 @@ message Avatar {
     string owner_id = 3;
 }
 
+message ChatSummary {
+    string id = 1;
+    bool is_direct = 2;
+}
+
 message ChatUser {
     string id = 1;
     string display_name = 2;

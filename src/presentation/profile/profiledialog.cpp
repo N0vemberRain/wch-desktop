@@ -13,7 +13,7 @@
 #include <QMovie>
 #include <QBuffer>
 
-ProfileDialog::ProfileDialog(UpdateProfileUseCase& uc, QWidget *parent)
+ProfileDialog::ProfileDialog(UpdateProfileUseCase& uc, Type type, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::ProfileDialog)
     , uc_(uc)
@@ -34,6 +34,14 @@ ProfileDialog::ProfileDialog(UpdateProfileUseCase& uc, QWidget *parent)
     ui->loadLabel->setScaledContents(true);
     ui->loadLabel->hide();
     ui->verticalLayout->setAlignment(ui->loadLabel, Qt::AlignCenter);
+
+    if (type == Type::Show) {
+        ui->buttonBox->hide();
+
+        ui->displayNameEdit->setEnabled(false);
+        ui->emailEdit->setEnabled(false);
+        ui->avatarWgt->setEnabled(false);
+    }
 }
 
 ProfileDialog::~ProfileDialog()

@@ -54,6 +54,8 @@ private slots:
     void onLoadingChatsFinished(std::expected<std::list<Chat>, Error> res);
     void onLoadingAvatarsForChatsFinished(const QHash<QString, QPixmap>& avs);
 
+    void onShowUserProfile(const User& u, QPixmap av);
+
     void onCreateNewChat();
     void onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt);
 
