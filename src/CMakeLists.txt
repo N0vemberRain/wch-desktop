@@ -84,6 +84,10 @@ add_executable(wch-desktop
     presentation/createchat/usersummarydelegate.h presentation/createchat/usersummarydelegate.cpp
     app/appcontroller.h app/appcontroller.cpp
     core/usecases/logoutusecase.h core/usecases/logoutusecase.cpp
+    presentation/chatinfo/chatparticipantsmodel.h presentation/chatinfo/chatparticipantsmodel.cpp
+    presentation/chatinfo/participantdelegate.h presentation/chatinfo/participantdelegate.cpp
+    core/usecases/loadparticipantsusecase.h core/usecases/loadparticipantsusecase.cpp
+    core/domain/chat_participant.h
 
 
 

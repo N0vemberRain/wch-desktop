@@ -188,7 +188,12 @@ void MainWindow::onShowUserProfile(const User& u, QPixmap av) {
 }
 
 void MainWindow::onShowChatInfo(const Chat& c, QPixmap chat_av) {
-    ChatInfoDialog dialog{ctx_->getUpdateChatUC(), c};
+    ChatInfoDialog dialog{
+        ctx_->getAvatarProvider(),
+        ctx_->getUpdateChatUC(),
+        ctx_->getLoadParticipantsUC(),
+        c
+    };
     if (!chat_av.isNull()) {
         dialog.setAvatar(chat_av);
     }

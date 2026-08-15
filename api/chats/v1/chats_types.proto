@@ -36,6 +36,9 @@ enum ChatParticipantRole {
 }
 
 message ChatParticipant {
-    string user_id = 1;
-    ChatParticipantRole role = 2;
+    string chat_id = 1;
+    string user_id = 2;
+    string name = 3;
+    ChatParticipantRole role = 4;
+    Avatar avatar = 5;	// optional
 }

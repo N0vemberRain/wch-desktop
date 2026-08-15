@@ -84,7 +84,7 @@ message ListParticipantsRequest {
 }
 
 message ListParticipantsResponse {
-    repeated ChatUser users = 1;
+    repeated ChatParticipant users = 1;
 }
 
 message CheckParticipantRequest {

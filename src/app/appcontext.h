@@ -11,6 +11,7 @@
 #include "core/usecases/searchusersusecase.h"
 #include "core/usecases/loadchatsforcurrentuserusecase.h"
 #include "core/usecases/updatechatusecase.h"
+#include "core/usecases/loadparticipantsusecase.h"
 #include "core/usecases/createchatusecase.h"
 #include "app/sessionmanager.h"
 #include "core/ports/session_storage.h"
@@ -72,6 +73,9 @@ public:
     LoginUseCase& getLoginUC() noexcept {
         return *login_use_case;
     }
+    LoadParticipantsUseCase& getLoadParticipantsUC() noexcept {
+        return load_participants_uc;
+    }
 signals:
     void loadingProfileFinished();
     void loadingAvatarFinished(QPixmap img);
@@ -104,6 +108,7 @@ private:
     SearchUsersUseCase search_users_uc;
     LoadChatsForCurrentUserUseCase load_chats_uc;
     UpdateChatUseCase update_chat_uc;
+    LoadParticipantsUseCase load_participants_uc;
     CreateChatUseCase create_chat_uc;
 
     std::unique_ptr<AvatarProvider> av_provider;

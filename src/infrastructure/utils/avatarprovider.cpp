@@ -139,6 +139,31 @@ QPixmap AvatarProvider::addImage(const QString& user_id, const QByteArray& img_d
     return pix;
 }
 
+QPixmap AvatarProvider::addImage(const AvatarData& data) {
+    if (data.img_data.empty()) {
+        throw std::runtime_error{"AvatarProvider:addImage: image data is empty"};
+    }
+    if (data.user_id.empty()) {
+        throw std::runtime_error{"AvatarProvider:addImage: user id is empty"};
+    }
+    if (data.mime_type.empty()) {
+        throw std::runtime_error{"AvatarProvider:addImage: mime type is empty"};
+    }
+    QPixmap pix;
+    if (!pix.loadFromData(
+            toQByteArray(data.img_data),
+            data.mime_type.data()
+    )) {
+        throw std::runtime_error{"AvatarProvider::addImage: can't crate a new avatar from data"};
+    }
+
+    QString qid = QString::fromStdString(data.user_id);
+    memory_cache_[qid] = pix;
+    save(qid, pix);
+
+    return pix;
+}
+
 QString AvatarProvider::addAvatarForUser(const AvatarData& av) {
     QPixmap pix;
     if (!pix.loadFromData(toQByteArray(av.img_data))) {

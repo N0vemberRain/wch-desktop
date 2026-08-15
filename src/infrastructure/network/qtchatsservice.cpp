@@ -267,3 +267,49 @@ void QtChatsService::onGetAvatarsForUsers(const QGrpcStatus& s) {
             Error{ErrorCode::Unknown, "Unknown error"}));
     }
 }
+
+void QtChatsService::listChatParticipants(const ChatID& chat_id) {
+    chats::v1::ListParticipantsRequest request;
+    request.setChatId(QString::fromStdString(chat_id));
+
+    reply_ = std::move(client_->ListParticipants(request, options_));
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtChatsService::onListParticipantsFinished);
+}
+
+void QtChatsService::onListParticipantsFinished(const QGrpcStatus& s) {
+    if (!s.isOk()) {
+        emit listChatParticipantsFinished(std::unexpected(errorHandle(s)));
+        return;
+    }
+
+    auto resp = reply_->read<ListParticipantsResponse>();
+    if (!resp.has_value()) {
+        emit listChatParticipantsFinished(std::unexpected(
+            Error{ErrorCode::Unknown, "Unknown Error"}));
+    }
+
+    std::list<ChatParticipant> users;
+    auto& users_dto = resp.value().users();
+    std::ranges::transform(users_dto, std::back_inserter(users),
+                           [](auto& user_dto){
+                               ChatParticipant user;
+        user.chat_id = user_dto.chatId().toStdString();
+        user.user_id = user_dto.userId().toStdString();
+        user.name = user_dto.name().toStdString();
+        user.role = ChatParticipant::Role::Admin;
+        if (user_dto.hasAvatar()) {
+            auto av_dto = user_dto.avatar();
+            AvatarData av;
+            av.img_data = toBytes(av_dto.data());
+            av.mime_type = av_dto.mimeType().toStdString();
+            av.user_id = av_dto.ownerId().toStdString();
+
+            user.avatar = av;
+        }
+
+        return user;
+    });
+
+    emit listChatParticipantsFinished(users);
+}

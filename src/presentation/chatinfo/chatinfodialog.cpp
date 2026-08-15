@@ -1,7 +1,10 @@
 #include "chatinfodialog.h"
 #include "ui_chatinfodialog.h"
 
+#include "presentation/chatinfo/chatparticipantsmodel.h"
+#include "presentation/chatinfo/participantdelegate.h"
 #include "core/usecases/updatechatusecase.h"
+#include "core/usecases/loadparticipantsusecase.h"
 #include "utils.h"
 
 #include <QPushButton>
@@ -9,20 +12,42 @@
 #include <QFileDialog>
 #include <QBuffer>
 
-ChatInfoDialog::ChatInfoDialog(UpdateChatUseCase& uc, const Chat& chat, QWidget *parent)
+ChatInfoDialog::ChatInfoDialog(
+    AvatarProvider* av_provider,
+    UpdateChatUseCase& uuc, LoadParticipantsUseCase& luc,
+    const Chat& chat, QWidget *parent
+)
     : QDialog(parent)
     , ui(new Ui::ChatInfoDialog)
-    , uc_{uc}
+    , av_provider_{av_provider}
+    , uuc_{uuc}
+    , luc_{luc}
     , chat_tmp_{chat}
 {
     setup();
     ui->displayNameEdit->setText(QString::fromStdString(chat_tmp_.name));
+
+    model_ = new ChatParticipantsModel{ui->participantsListView};
+    ui->participantsListView->setModel(model_);
+
+    auto participants_delegate = new ParticipantDelegate{ui->participantsListView};
+    ui->participantsListView->setItemDelegate(participants_delegate);
+    connect(&luc_, &LoadParticipantsUseCase::requestFinished, this,
+            &ChatInfoDialog::onLoadParticipantsFinished);
+
+    luc_.execute(chat_tmp_.id);
 }
 
-ChatInfoDialog::ChatInfoDialog(UpdateChatUseCase& uc, QWidget *parent)
+ChatInfoDialog::ChatInfoDialog(
+    AvatarProvider* av_provider,
+    UpdateChatUseCase& uuc, LoadParticipantsUseCase& luc,
+    QWidget *parent
+)
     : QDialog(parent)
     , ui(new Ui::ChatInfoDialog)
-    , uc_{uc}
+    , av_provider_{av_provider}
+    , uuc_{uuc}
+    , luc_{luc}
 {
     setup();
 }
@@ -40,7 +65,7 @@ void ChatInfoDialog::setup() {
     connect(ui->buttonBox->button(QDialogButtonBox::Save), &QPushButton::clicked,
             this, &ChatInfoDialog::onSaveClicked);
 
-    connect(&uc_, &UpdateChatUseCase::requestFinished,
+    connect(&uuc_, &UpdateChatUseCase::requestFinished,
             this, &ChatInfoDialog::onChatInfoChanged);
 
     auto gif = new QMovie{":/icons/icons/load_spin.gif", QByteArray{}, this};
@@ -49,6 +74,7 @@ void ChatInfoDialog::setup() {
     ui->loadLabel->setScaledContents(true);
     ui->loadLabel->hide();
     ui->verticalLayout->setAlignment(ui->loadLabel, Qt::AlignCenter);
+
 }
 
 void ChatInfoDialog::setAvatar(QPixmap img) noexcept {
@@ -90,7 +116,7 @@ void ChatInfoDialog::onSaveClicked() {
     buffer.open(QIODevice::WriteOnly);
     img.save(&buffer, "PNG");
 
-    uc_.execute(chat, toBytes(buffer.data()));
+    uuc_.execute(chat, toBytes(buffer.data()));
 
     startLoadAnim();
 }
@@ -112,4 +138,27 @@ void ChatInfoDialog::onChatInfoChanged(std::expected<Chat, Error> res) {
     } else {
         ui->errLabel->setText(QString::fromStdString(res.error().msg));
     }
+}
+
+void ChatInfoDialog::onLoadParticipantsFinished(
+        std::expected<std::list<ChatParticipant>, Error> res
+) {
+    if (!res.has_value()) {
+        ui->errLabel->setText(QString::fromStdString(res.error().msg));
+    }
+
+    for (const auto& p : res.value()) {
+        if (p.avatar.img_data.empty()) {
+            model_->addUser({p.user_id, p.name, QPixmap{}});
+        } else {
+            try {
+                auto pix = av_provider_->addImage(p.avatar);
+                model_->addUser({p.user_id, p.name, pix});
+            } catch (const std::exception& e) {
+                ui->errLabel->setText(QString::fromStdString(e.what()));
+            }
+        }
+    }
+
+    stopLoadAnim();
 }

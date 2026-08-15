@@ -24,6 +24,7 @@ public:
 
     void updateImage(const QString& user_id, const QString& av_url);
     QPixmap addImage(const QString& user_id, const QByteArray& img_data);
+    QPixmap addImage(const AvatarData& data);
 
     QString addAvatarForUser(const AvatarData& av_data);
 private slots:
