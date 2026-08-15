@@ -17,4 +17,13 @@ public:
 
     QSize sizeHint(const QStyleOptionViewItem &option,
                    const QModelIndex &index) const override;
+
+    void setSelectedColor(QColor color) {
+        selected_color_ = color;
+    }
+    void unsetSelectedColor() {
+        selected_color_ = "red";
+    }
+private:
+    QColor selected_color_ {"red"};
 };

@@ -15,6 +15,27 @@ void ChatDelegate::paint(QPainter *painter,
                          const QStyleOptionViewItem &option,
                          const QModelIndex &index) const
 {
+
+    QStyleOptionViewItem opt = option;
+    initStyleOption(&opt, index);
+
+    // Draw the standard item background/state.
+    // opt.widget->style()->drawControl(
+    //     QStyle::CE_ItemViewItem,
+    //     &opt,
+    //     painter,
+    //     opt.widget
+    //     );
+
+    if (opt.state & QStyle::State_MouseOver) {
+        painter->fillRect(opt.rect, selected_color_);
+    }
+
+    // if (opt.state & QStyle::State_Selected) {
+    //     painter->fillRect(opt.rect, QColor("#d0e8ff"));
+    // }
+
+
     painter->save();
 
     QRect rect = option.rect;

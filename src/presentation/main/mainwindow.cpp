@@ -66,6 +66,7 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::shared_ptr<AppCo
 
 
     connect(chats_wgt_, &ChatsListWgt::showChat, this, &MainWindow::showChat);
+    connect(chats_wgt_, &ChatsListWgt::chatSelected, this, &MainWindow::onChatSelected);
     connect(chat_wgt_, &ChatWgt::updateUnreadMessagesCount,
             chats_wgt_, &ChatsListWgt::updateUnreadMessagesCount);
 
@@ -246,6 +247,8 @@ void MainWindow::onCreateNewChat() {
 
             connect(&search_user, &SearchUserDialog::showUserProfile, this,
                     &MainWindow::onShowUserProfile);
+            connect(&search_user, &SearchUserDialog::addUserToChat, this,
+                    &MainWindow::onAddUserToChat);
             search_user.exec();
             return;
         }
@@ -263,6 +266,17 @@ void MainWindow::onCreateNewChat() {
 
 void MainWindow::onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt) {
     chats_wgt_->addChat(chat, av_opt.has_value() ? av_opt.value() : QPixmap{});
+}
+
+void MainWindow::onAddUserToChat(const QString& user_id) {
+    selected_user_id_ = user_id;
+
+    chats_wgt_->startChatSelection(ChatsListWgt::SelectionMode::SelectGroupChat);
+    chats_wgt_->setFocus();
+}
+
+void MainWindow::onChatSelected(const QString& chat_id) {
+    qDebug() << "Add user " << selected_user_id_ << " to chat " << chat_id << "\n";
 }
 
 void MainWindow::onLogoutClicked() {

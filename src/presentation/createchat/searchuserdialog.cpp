@@ -152,6 +152,7 @@ void SearchUserDialog::onContextMenuRequested(const QPoint& pos) {
     QMenu menu{this};
     auto user_info = menu.addAction("Show User Profile");
     auto create_chat = menu.addAction("Create New Chat");
+    auto add_user_to_chat = menu.addAction("Add to Chat");
 
     auto selected = menu.exec(ui->usersListView->viewport()->mapToGlobal(pos));
     if (selected == user_info) {
@@ -160,6 +161,10 @@ void SearchUserDialog::onContextMenuRequested(const QPoint& pos) {
     }
     if (selected == create_chat) {
         onCreateChat(idx);
+        return;
+    }
+    if (selected == add_user_to_chat) {
+        onAddUserToChat(idx);
         return;
     }
 }
@@ -186,4 +191,14 @@ void SearchUserDialog::onCreateChat(const QModelIndex& idx) {
     }
 
     cuc_.execute(id);
+}
+
+void SearchUserDialog::onAddUserToChat(const QModelIndex& idx) {
+    const auto id = idx.data(Qt::UserRole + 1).toString();
+    if (id.isEmpty()) {
+        throw std::runtime_error{"SearchUserDialog:onCreateChat: id.empty == true"};
+    }
+
+    emit addUserToChat(id);
+    accept();
 }

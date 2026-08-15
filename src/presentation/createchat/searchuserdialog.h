@@ -32,6 +32,7 @@ public:
 
 signals:
     void showUserProfile(const User& u, QPixmap av);
+    void addUserToChat(const QString& user_id);
 private slots:
     void onFindClicked();
     void onSearchFinished(std::expected<std::list<UserSummary>, Error> res);
@@ -47,6 +48,7 @@ private:
 
     void onShowProfile(const QModelIndex& idx);
     void onCreateChat(const QModelIndex& idx);
+    void onAddUserToChat(const QModelIndex& idx);
 
     Ui::SearchUserDialog *ui;
 

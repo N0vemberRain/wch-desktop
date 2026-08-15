@@ -141,7 +141,7 @@ void ChatInfoDialog::onChatInfoChanged(std::expected<Chat, Error> res) {
 }
 
 void ChatInfoDialog::onLoadParticipantsFinished(
-        std::expected<std::list<ChatParticipant>, Error> res
+    std::expected<std::list<ChatParticipant>, Error> res
 ) {
     if (!res.has_value()) {
         ui->errLabel->setText(QString::fromStdString(res.error().msg));

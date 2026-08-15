@@ -52,6 +52,10 @@ ChatsListWgt::ChatsListWgt(QWidget *parent) :
     });
 
     connect(&search_timer_, &QTimer::timeout, this, &ChatsListWgt::performSearch);
+
+    // ui->listView->setProperty("chatSelectionMode", true);
+    // ui->listView->style()->unpolish(ui->listView);
+    // ui->listView->style()->polish(ui->listView);
 }
 
 ChatsListWgt::~ChatsListWgt()
@@ -60,8 +64,28 @@ ChatsListWgt::~ChatsListWgt()
 }
 
 void ChatsListWgt::onItemClicked(const QModelIndex& index) {
-    const auto chat_name = index.data(Qt::UserRole + 1).toString();
-    const auto chat_id = index.data(Qt::UserRole + 5).toString();
+    if (selection_mode_ == SelectionMode::SelectGroupChat) {
+        selectGroupChat(index);
+    } else {
+        openChat(index);
+    }
+}
+
+void ChatsListWgt::selectGroupChat(const QModelIndex& idx) {
+    const auto type = Chat::typeFromInt(idx.data(Qt::UserRole + 6).toInt());
+    if (type != Chat::Type::Group) {
+        return;
+    }
+
+    const auto chat_id = idx.data(Qt::UserRole + 5).toString();
+
+    emit chatSelected(chat_id);
+    stopChatSelection();
+}
+
+void ChatsListWgt::openChat(const QModelIndex& idx) {
+    const auto chat_name = idx.data(Qt::UserRole + 1).toString();
+    const auto chat_id = idx.data(Qt::UserRole + 5).toString();
 
     emit showChat(chat_id, chat_name);
 }
@@ -146,4 +170,36 @@ void ChatsListWgt::performSearch() {
     const auto text = ui->searchLineEdit->text();
     qDebug() << "Searching " << ui->searchLineEdit->text() << '\n';
     proxy_->setFilterText(text);
+}
+
+void ChatsListWgt::startChatSelection(SelectionMode mode) {
+    selection_mode_ = mode;
+    auto d = dynamic_cast<ChatDelegate*>(ui->listView->itemDelegate());
+    d->setSelectedColor("green");
+    setFocus();
+    ui->listView->setFocus();
+
+    ui->listView->setProperty("chatSelectionMode", true);
+    ui->listView->style()->unpolish(ui->listView);
+    ui->listView->style()->polish(ui->listView);
+    ui->listView->update();
+
+    // ui->listView->setStyleSheet(
+    //     "QListView::item:selected {"
+    //     "    background: #4CAF50;"
+    //     "    color: white;"
+    //     "}"
+    //     );
+}
+
+void ChatsListWgt::stopChatSelection() {
+    selection_mode_ = SelectionMode::Normal;
+    auto d = dynamic_cast<ChatDelegate*>(ui->listView->itemDelegate());
+    d->unsetSelectedColor();
+
+    ui->listView->setProperty("chatSelectionMode", false);
+    ui->listView->style()->unpolish(ui->listView);
+    ui->listView->style()->polish(ui->listView);
+    ui->listView->update();
+
 }

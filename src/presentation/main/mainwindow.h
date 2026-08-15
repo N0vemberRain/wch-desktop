@@ -58,6 +58,10 @@ private slots:
 
     void onCreateNewChat();
     void onCreateNewChatFinished(const Chat& chat, std::optional<QPixmap> av_opt);
+    // Store selected user id to tmp variable in order to add the user later
+    void onAddUserToChat(const QString& user_id);
+    // Send a request to the chats service in order to add the user to the chat
+    void onChatSelected(const QString& chat_id);
 
     void onLogoutClicked();
 private:
@@ -85,5 +89,7 @@ private:
 
     bool is_profile_loaded_ {false};
     bool is_chats_loaded_ {false};
+
+    QString selected_user_id_;
 };
 #endif // MAINWINDOW_H
