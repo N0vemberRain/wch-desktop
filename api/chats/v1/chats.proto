@@ -67,7 +67,8 @@ message ListChatsForUserResponse {
 
 message AddParticipantRequest {
     string chat_id = 1;
-    ChatParticipant participant = 2;
+    string user_id = 2;
+    ChatParticipantRole role = 3;
 }
 
 message RemoveParticipantRequest {

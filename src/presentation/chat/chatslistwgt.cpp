@@ -11,6 +11,7 @@
 #include <QModelIndex>
 #include <QMenu>
 #include <QAction>
+#include <QMessageBox>
 
 ChatsListWgt::ChatsListWgt(QWidget *parent) :
     QWidget(parent),
@@ -74,6 +75,8 @@ void ChatsListWgt::onItemClicked(const QModelIndex& index) {
 void ChatsListWgt::selectGroupChat(const QModelIndex& idx) {
     const auto type = Chat::typeFromInt(idx.data(Qt::UserRole + 6).toInt());
     if (type != Chat::Type::Group) {
+        QMessageBox::warning(this, "Error", "This is a direct chat, choose group one", QMessageBox::Ok);
+        stopChatSelection();
         return;
     }
 

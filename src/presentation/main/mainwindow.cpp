@@ -100,6 +100,9 @@ MainWindow::MainWindow(/*SendMessageUseCase* send_msgs_uc*/std::shared_ptr<AppCo
             &MainWindow::onCreateNewChat);
     connect(ctx_.get(), &AppContext::createChatFinished, this,
             &MainWindow::onCreateNewChatFinished);
+
+    connect(ctx_.get(), &AppContext::addParticipantFinished, this,
+            &MainWindow::onAddParticipantFinished);
 }
 
 MainWindow::~MainWindow()
@@ -277,6 +280,20 @@ void MainWindow::onAddUserToChat(const QString& user_id) {
 
 void MainWindow::onChatSelected(const QString& chat_id) {
     qDebug() << "Add user " << selected_user_id_ << " to chat " << chat_id << "\n";
+
+    ctx_->getAddParticipantUC().execute(
+        chat_id.toStdString(),
+        selected_user_id_.toStdString(),
+        ChatParticipant::Role::Admin
+    );
+}
+
+void MainWindow::onAddParticipantFinished(std::optional<Error> res) {
+    if (res.has_value()) {
+        ui->statusbar->showMessage(QString::fromStdString(res.value().msg), 10000);
+    } else {
+        ui->statusbar->showMessage(QString{"User has been added to chat"}, 10000);
+    }
 }
 
 void MainWindow::onLogoutClicked() {

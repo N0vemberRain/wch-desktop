@@ -287,6 +287,7 @@ void QtChatsService::onListParticipantsFinished(const QGrpcStatus& s) {
     if (!resp.has_value()) {
         emit listChatParticipantsFinished(std::unexpected(
             Error{ErrorCode::Unknown, "Unknown Error"}));
+        return;
     }
 
     std::list<ChatParticipant> users;
@@ -312,4 +313,33 @@ void QtChatsService::onListParticipantsFinished(const QGrpcStatus& s) {
     });
 
     emit listChatParticipantsFinished(users);
+}
+
+void QtChatsService::addParticipant(
+    const ChatID& chat_id,
+    const UserID& user_id,
+    ChatParticipant::Role role)
+{
+    chats::v1::AddParticipantRequest request;
+    request.setChatId(QString::fromStdString(chat_id));
+    request.setUserId(QString::fromStdString(user_id));
+    request.setRole(chats::v1::ChatParticipantRoleGadget::ChatParticipantRole::CHAT_PARTICIPANT_ROLE_ADMIN);
+
+    reply_ = std::move(client_->AddParticipant(request, options_));
+    connect(reply_.get(), &QGrpcCallReply::finished, this,
+            &QtChatsService::onAddParticipantFinished);
+}
+
+void QtChatsService::onAddParticipantFinished(const QGrpcStatus& s) {
+    if (!s.isOk()) {
+        emit addParticipantFinished(errorHandle(s));
+        return;
+    }
+
+    auto resp = reply_->read<AddParticipantResponse>();
+    if (resp.has_value()) {
+        emit addParticipantFinished(std::nullopt);
+    } else {
+        emit addParticipantFinished(Error{ErrorCode::Unknown, "Unknown Error"});
+    }
 }

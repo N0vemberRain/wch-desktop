@@ -27,6 +27,7 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
     search_users_uc{users_service.get()},
     load_chats_uc{chats_service.get()},
     update_chat_uc{chats_service.get()},
+    add_participant_uc{chats_service.get()},
     load_participants_uc{chats_service.get()},
     create_chat_uc{chats_service.get()},
     av_provider{std::make_unique<AvatarProvider>(*users_service.get())}
@@ -75,6 +76,11 @@ AppContext::AppContext(std::unique_ptr<AuthService> as,
             this, &AppContext::onUpdateChatFinished);
     connect(&create_chat_uc, &CreateChatUseCase::requestFinished,
             this, &AppContext::onCreateChatFinished);
+
+    connect(&add_participant_uc, &AddParticipantUseCase::requestFinished,
+            this, [this](auto res) {
+        emit addParticipantFinished(res);
+    });
 }
 
 AppContext::~AppContext() = default;

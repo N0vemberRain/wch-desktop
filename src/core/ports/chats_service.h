@@ -29,6 +29,7 @@ public:
     virtual void updateChatInfo(const Chat& c,
                                 const std::vector<std::byte>& av_data) = 0;
 
+    virtual void addParticipant(const ChatID& chat_id, const UserID& user_id, ChatParticipant::Role role) = 0;
     virtual void listChatParticipants(const ChatID& chat_id) = 0;
 signals:
     void getChatsListFinished(std::expected<std::list<Chat>, Error>);
@@ -36,5 +37,6 @@ signals:
     void updateChatInfoFinished(std::expected<Chat, Error>);
     void createChatFinished(std::expected<std::pair<Chat, std::optional<AvatarData>>, Error>);
 
+    void addParticipantFinished(std::optional<Error> error);
     void listChatParticipantsFinished(std::expected<std::list<ChatParticipant>, Error> res);
 };

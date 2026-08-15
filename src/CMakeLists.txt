@@ -88,6 +88,7 @@ add_executable(wch-desktop
     presentation/chatinfo/participantdelegate.h presentation/chatinfo/participantdelegate.cpp
     core/usecases/loadparticipantsusecase.h core/usecases/loadparticipantsusecase.cpp
     core/domain/chat_participant.h
+    core/usecases/addparticipantusecase.h core/usecases/addparticipantusecase.cpp
 
 
 

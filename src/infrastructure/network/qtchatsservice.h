@@ -31,6 +31,7 @@ public:
     void updateChatInfo(const Chat& c,
                         const std::vector<std::byte>& av_data) override;
 
+    void addParticipant(const ChatID& chat_id, const UserID& user_id, ChatParticipant::Role role) override;
     void listChatParticipants(const ChatID& chat_id) override;
 private slots:
     void onCreateChatFinished(const QGrpcStatus& s);
@@ -38,6 +39,7 @@ private slots:
     void onUpdateChatFinished(const QGrpcStatus& s);
     void onGetAvatarsForUsers(const QGrpcStatus& s);
 
+    void onAddParticipantFinished(const QGrpcStatus& s);
     void onListParticipantsFinished(const QGrpcStatus& s);
 private:
     Error errorHandle(const QGrpcStatus& s);
@@ -47,6 +49,7 @@ private:
     using ChatResponse = chats::v1::ChatResponse;
     using Client = chats::v1::ChatsService::Client;
 
+    using AddParticipantResponse = chats::v1::ParticipantResponse;
     using ListParticipantsResponse = chats::v1::ListParticipantsResponse;
 
     std::shared_ptr<QGrpcHttp2Channel> channel_;

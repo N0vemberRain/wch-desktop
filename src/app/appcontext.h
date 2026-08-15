@@ -11,6 +11,7 @@
 #include "core/usecases/searchusersusecase.h"
 #include "core/usecases/loadchatsforcurrentuserusecase.h"
 #include "core/usecases/updatechatusecase.h"
+#include "core/usecases/addparticipantusecase.h"
 #include "core/usecases/loadparticipantsusecase.h"
 #include "core/usecases/createchatusecase.h"
 #include "app/sessionmanager.h"
@@ -73,6 +74,9 @@ public:
     LoginUseCase& getLoginUC() noexcept {
         return *login_use_case;
     }
+    AddParticipantUseCase& getAddParticipantUC() noexcept {
+        return add_participant_uc;
+    }
     LoadParticipantsUseCase& getLoadParticipantsUC() noexcept {
         return load_participants_uc;
     }
@@ -84,6 +88,8 @@ signals:
     void currentUserChanged(const User& u);
     void updateChatFinished(Chat chat, QPixmap new_av);
     void createChatFinished(const Chat&, std::optional<QPixmap>);
+
+    void addParticipantFinished(std::optional<Error> res);
 private slots:
     void onLoadCurrentUserFinished(std::expected<User, Error> res);
     void onLoadAvatarFinished(std::expected<AvatarData, Error> res);
@@ -108,6 +114,7 @@ private:
     SearchUsersUseCase search_users_uc;
     LoadChatsForCurrentUserUseCase load_chats_uc;
     UpdateChatUseCase update_chat_uc;
+    AddParticipantUseCase add_participant_uc;
     LoadParticipantsUseCase load_participants_uc;
     CreateChatUseCase create_chat_uc;
 

@@ -62,6 +62,7 @@ private slots:
     void onAddUserToChat(const QString& user_id);
     // Send a request to the chats service in order to add the user to the chat
     void onChatSelected(const QString& chat_id);
+    void onAddParticipantFinished(std::optional<Error> res);
 
     void onLogoutClicked();
 private:
